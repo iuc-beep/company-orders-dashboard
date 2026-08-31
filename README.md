@@ -1,47 +1,29 @@
 # Company Orders Dashboard — GitHub Pages
 
-This dashboard is a static website. It reads `data.csv`, automatically identifies the latest two dates in the dataset, and shows:
-- Total orders for the month containing the latest date
-- Total orders for the previous month
-- Orders on the latest date
-- Orders on the previous date
-- Company-wise breakdown
-- Search and sorting
-- Month-over-month change
+This dashboard is designed for daily order reporting.
 
-## data.csv format
+## What updates automatically
 
-Keep these three columns:
+- The table always uses the two latest dates available in `data.csv`.
+- The date headers change automatically (for example: `31 Aug 2026` and `30 Aug 2026`).
+- Current-month and previous-month totals are recalculated from the latest date in the dataset.
+- Company-wise order counts are recalculated whenever `data.csv` changes.
 
-```csv
-date,COMPANY_NAME,orders
-2026-08-31,ABC 1,120
-2026-08-31,ABC 2,85
-2026-08-30,ABC 1,110
-```
+## How to update the dashboard
 
-`orders` is the number of orders for that company on that date.
-
-## Update process
-
-1. Prepare the latest `data.csv`.
-2. Replace the old `data.csv` in GitHub.
+1. Prepare your latest order dump with at least these columns:
+   - `date`
+   - `COMPANY_NAME`
+   - `orders`
+2. Update `data.csv` in this GitHub repository.
 3. Commit the change.
-4. GitHub Pages redeploys the site automatically.
-5. The dashboard will automatically pick the latest two dates — no date-column editing is required.
+4. Wait a short time for GitHub Pages to redeploy.
+5. Open the same GitHub Pages URL. The dashboard will show the updated data.
 
-## Important
+### Important
 
-The included September data is DEMO/SYNTHETIC data created only to demonstrate the September view. Replace it with your actual September counts before sharing the dashboard.
+For a public GitHub repository, do not upload buyer names, phone numbers, addresses, order IDs, payment information, or other sensitive/raw order-level data. Keep `data.csv` aggregated to company + date + order count.
 
-## GitHub Pages setup
+## GitHub Pages
 
-1. Create a GitHub repository, for example `company-orders-dashboard`.
-2. Upload `index.html` and `data.csv`.
-3. Open the repository's Settings → Pages.
-4. Under Build and deployment, choose `Deploy from a branch`.
-5. Select `main` and `/(root)`, then Save.
-6. GitHub will publish the site at a URL similar to:
-   `https://YOUR-USERNAME.github.io/company-orders-dashboard/`
-
-GitHub Pages is a static public website. Do not upload sensitive order-level/customer data to a public repository. This dashboard intentionally uses aggregated company/date counts rather than order IDs.
+Keep `index.html` and `data.csv` in the root of the repository and publish the `main` branch from `/root`.
