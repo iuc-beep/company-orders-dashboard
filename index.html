@@ -161,7 +161,7 @@ h1{
   margin-top:6px;
 }
 
-/* PANELS */
+/* PANEL */
 
 .panel{
   background:var(--card);
@@ -273,26 +273,19 @@ tbody tr:hover td:first-child{
   background:#f5f8ff;
 }
 
-.status-pill{
-  display:inline-block;
-  padding:5px 10px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:700;
+.percent{
+  font-weight:750;
 }
 
-.cancelled{
-  background:#fff0f0;
-  color:var(--red);
-}
-
-.delivered{
-  background:#ecfdf3;
+.percent.good{
   color:var(--green);
 }
 
-.rto{
-  background:#fff7ed;
+.percent.bad{
+  color:var(--red);
+}
+
+.percent.orange{
   color:var(--orange);
 }
 
@@ -314,8 +307,6 @@ tbody tr:hover td:first-child{
   border-radius:12px;
   color:#9f1239;
 }
-
-/* RESPONSIVE */
 
 @media(max-width:1000px){
   .cards{
@@ -357,18 +348,21 @@ tbody tr:hover td:first-child{
 <div class="wrap">
 
 <header>
+
   <div>
     <h1>Total Order Dashboard</h1>
     <div class="sub" id="range">Loading data…</div>
   </div>
 
   <div class="badge" id="updated">Loading…</div>
+
 </header>
 
 
 <!-- TABS -->
 
 <div class="tabs">
+
   <button class="tab active" id="ordersTab">
     📊 Orders Dashboard
   </button>
@@ -376,37 +370,73 @@ tbody tr:hover td:first-child{
   <button class="tab" id="statusTab">
     📦 Status Analysis
   </button>
+
 </div>
 
 
-<!-- ================= ORDERS DASHBOARD ================= -->
+<!-- =========================================================
+     ORDERS DASHBOARD
+========================================================= -->
 
 <section id="ordersPage">
 
   <section class="cards">
 
     <div class="card">
-      <div class="label" id="m1label">Current Month</div>
+      <div class="label" id="m1label">
+        September 2026
+      </div>
+
       <div class="value" id="m1">—</div>
-      <div class="small">Monthly total orders</div>
+
+      <div class="small">
+        Total orders
+      </div>
     </div>
 
+
     <div class="card">
-      <div class="label" id="m2label">Previous Month</div>
+
+      <div class="label" id="m2label">
+        August 2026
+      </div>
+
       <div class="value" id="m2">—</div>
-      <div class="small">Monthly total orders</div>
+
+      <div class="small">
+        Total orders
+      </div>
+
     </div>
 
+
     <div class="card">
-      <div class="label" id="d1label">Latest Completed Date</div>
+
+      <div class="label" id="d1label">
+        31-08-2026
+      </div>
+
       <div class="value" id="d1">—</div>
-      <div class="small">Orders</div>
+
+      <div class="small">
+        Daily orders
+      </div>
+
     </div>
 
+
     <div class="card">
-      <div class="label" id="d2label">Previous Date</div>
+
+      <div class="label" id="d2label">
+        30-08-2026
+      </div>
+
       <div class="value" id="d2">—</div>
-      <div class="small">Orders</div>
+
+      <div class="small">
+        Daily orders
+      </div>
+
     </div>
 
   </section>
@@ -415,11 +445,18 @@ tbody tr:hover td:first-child{
   <section class="panel">
 
     <div class="panel-title">
-      <h2>Company-wise Order Summary</h2>
 
-      <div class="sub" style="color:#667085">
+      <h2>
+        Company-wise Order Summary
+      </h2>
+
+      <div
+        class="sub"
+        style="color:#667085"
+      >
         Previous two completed dates
       </div>
+
     </div>
 
 
@@ -430,12 +467,29 @@ tbody tr:hover td:first-child{
         placeholder="Search company name…"
       >
 
+
       <select id="sort">
-        <option value="current">Sort: current month</option>
-        <option value="previous">Sort: previous month</option>
-        <option value="latest">Sort: latest date</option>
-        <option value="prevdate">Sort: previous date</option>
-        <option value="name">Sort: company name</option>
+
+        <option value="current">
+          Sort: September
+        </option>
+
+        <option value="previous">
+          Sort: August
+        </option>
+
+        <option value="latest">
+          Sort: latest date
+        </option>
+
+        <option value="prevdate">
+          Sort: previous date
+        </option>
+
+        <option value="name">
+          Sort: company name
+        </option>
+
       </select>
 
     </div>
@@ -446,13 +500,31 @@ tbody tr:hover td:first-child{
       <table>
 
         <thead>
+
           <tr>
-            <th>Company Name</th>
-            <th id="currentHead">Current Month</th>
-            <th id="previousHead">Previous Month</th>
-            <th id="latestHead">Latest Date</th>
-            <th id="prevHead">Previous Date</th>
+
+            <th>
+              Company Name
+            </th>
+
+            <th id="currentHead">
+              September 2026
+            </th>
+
+            <th id="previousHead">
+              August 2026
+            </th>
+
+            <th id="latestHead">
+              31-08-2026
+            </th>
+
+            <th id="prevHead">
+              30-08-2026
+            </th>
+
           </tr>
+
         </thead>
 
         <tbody id="body"></tbody>
@@ -461,10 +533,14 @@ tbody tr:hover td:first-child{
 
     </div>
 
+
     <div class="footer">
-      Orders are read from data.csv. Daily columns automatically show
-      the two completed dates immediately before the latest date available
-      in the dataset.
+
+      Monthly totals are calculated for the latest completed
+      month and the immediately previous month.
+      Daily data uses the two dates immediately before
+      the latest available date.
+
     </div>
 
   </section>
@@ -473,70 +549,110 @@ tbody tr:hover td:first-child{
 
 
 
-<!-- ================= STATUS ANALYSIS ================= -->
+<!-- =========================================================
+     STATUS ANALYSIS
+========================================================= -->
 
 <section id="statusPage" class="hidden">
 
+
   <section class="cards">
 
+
     <div class="card">
-      <div class="label" id="statusMonthLabel">
-        Current Month
+
+      <div
+        class="label"
+        id="statusMonthLabel"
+      >
+        September 2026
       </div>
 
-      <div class="value" id="statusMonthCount">
+      <div
+        class="value"
+        id="statusMonthCount"
+      >
         —
       </div>
 
-      <div class="small" id="statusMonthSmall">
+      <div
+        class="small"
+        id="statusMonthSmall"
+      >
         Selected status
       </div>
+
     </div>
 
 
     <div class="card">
-      <div class="label" id="statusPrevMonthLabel">
-        Previous Month
+
+      <div
+        class="label"
+        id="statusPrevMonthLabel"
+      >
+        August 2026
       </div>
 
-      <div class="value" id="statusPrevMonthCount">
+      <div
+        class="value"
+        id="statusPrevMonthCount"
+      >
         —
       </div>
 
       <div class="small">
         Selected status
       </div>
+
     </div>
 
 
     <div class="card">
-      <div class="label" id="statusDay1Label">
-        —
+
+      <div
+        class="label"
+        id="statusDay1Label"
+      >
+        31-08-2026
       </div>
 
-      <div class="value" id="statusDay1Count">
+      <div
+        class="value"
+        id="statusDay1Count"
+      >
         —
       </div>
 
       <div class="small">
         Selected status
       </div>
+
     </div>
 
 
     <div class="card">
-      <div class="label" id="statusDay2Label">
-        —
+
+      <div
+        class="label"
+        id="statusDay2Label"
+      >
+        30-08-2026
       </div>
 
-      <div class="value" id="statusDay2Count">
+      <div
+        class="value"
+        id="statusDay2Count"
+      >
         —
       </div>
 
       <div class="small">
         Selected status
       </div>
+
     </div>
+
 
   </section>
 
@@ -544,37 +660,69 @@ tbody tr:hover td:first-child{
 
   <section class="panel">
 
+
     <div class="panel-title">
 
-      <h2>Status Analysis</h2>
+      <h2>
+        Status Analysis
+      </h2>
 
-      <div class="sub" style="color:#667085">
-        Seller-wise day and month analysis
+      <div
+        class="sub"
+        style="color:#667085"
+      >
+        Seller-wise analysis
       </div>
 
     </div>
 
 
+    <!-- SELECTORS -->
+
     <div class="controls">
 
+
       <select id="statusSelect">
-        <option value="cancelled">Cancelled</option>
-        <option value="delivered">Delivered</option>
-        <option value="rto">RTO</option>
+
+        <option value="cancelled">
+          Cancelled
+        </option>
+
+        <option value="delivered">
+          Delivered
+        </option>
+
+        <option value="rto">
+          RTO
+        </option>
+
       </select>
 
 
       <select id="sellerSelect">
-        <option value="ALL">All Sellers</option>
+
+        <option value="ALL">
+          All Sellers
+        </option>
+
       </select>
+
 
     </div>
 
 
+
     <!-- DAILY -->
 
-    <div class="panel-title" style="margin-top:12px">
-      <h2>Day-wise Analysis</h2>
+    <div
+      class="panel-title"
+      style="margin-top:12px"
+    >
+
+      <h2>
+        Day-wise Analysis
+      </h2>
+
     </div>
 
 
@@ -583,11 +731,23 @@ tbody tr:hover td:first-child{
       <table>
 
         <thead>
+
           <tr>
-            <th>Company Name</th>
-            <th id="statusDay1Head">Date 1</th>
-            <th id="statusDay2Head">Date 2</th>
+
+            <th>
+              Company Name
+            </th>
+
+            <th id="statusDay1Head">
+              31-08-2026
+            </th>
+
+            <th id="statusDay2Head">
+              30-08-2026
+            </th>
+
           </tr>
+
         </thead>
 
         <tbody id="statusDailyBody"></tbody>
@@ -597,10 +757,18 @@ tbody tr:hover td:first-child{
     </div>
 
 
+
     <!-- MONTHLY -->
 
-    <div class="panel-title" style="margin-top:25px">
-      <h2>Month-wise Analysis</h2>
+    <div
+      class="panel-title"
+      style="margin-top:25px"
+    >
+
+      <h2>
+        Month-wise Analysis
+      </h2>
+
     </div>
 
 
@@ -609,12 +777,27 @@ tbody tr:hover td:first-child{
       <table>
 
         <thead>
+
           <tr>
-            <th>Company Name</th>
-            <th id="statusMonthHead">Current Month</th>
-            <th id="statusPrevMonthHead">Previous Month</th>
-            <th>Cancellation %</th>
+
+            <th>
+              Company Name
+            </th>
+
+            <th id="statusMonthHead">
+              September 2026
+            </th>
+
+            <th id="statusPrevMonthHead">
+              August 2026
+            </th>
+
+            <th id="percentageHead">
+              Status %
+            </th>
+
           </tr>
+
         </thead>
 
         <tbody id="statusMonthlyBody"></tbody>
@@ -625,11 +808,18 @@ tbody tr:hover td:first-child{
 
 
     <div class="footer">
-      Status data is read from orders.csv.
-      Seller is identified using COMPANY_NAME,
-      date using ORDER_CREATED_AT,
-      and status using FINAL_STATUS.
+
+      Percentage is calculated as:
+      <b>Selected Status Orders ÷ Total Orders × 100</b>.
+
+      For Cancelled, this represents Cancellation %.
+      For Delivered, Delivered %.
+      For RTO, RTO %.
+
+      Status is determined using FINAL_STATUS.
+
     </div>
+
 
   </section>
 
@@ -638,151 +828,218 @@ tbody tr:hover td:first-child{
 </div>
 
 
+
 <script>
 
-/* ============================================================
-   COMMON FUNCTIONS
-============================================================ */
+/* =========================================================
+   BASIC FUNCTIONS
+========================================================= */
 
 const fmt = n =>
-  new Intl.NumberFormat('en-IN').format(n || 0);
+  new Intl.NumberFormat('en-IN')
+    .format(n || 0);
 
 
 function formatDate(date){
-  const d = new Date(date + "T00:00:00");
 
-  const day = String(d.getDate()).padStart(2,"0");
-  const month = String(d.getMonth()+1).padStart(2,"0");
-  const year = d.getFullYear();
+  const d =
+    new Date(
+      date + "T00:00:00"
+    );
+
+  const day =
+    String(d.getDate())
+      .padStart(2,"0");
+
+  const month =
+    String(d.getMonth()+1)
+      .padStart(2,"0");
+
+  const year =
+    d.getFullYear();
 
   return `${day}-${month}-${year}`;
 }
 
 
 function monthName(date){
+
   return new Intl.DateTimeFormat(
     'en-US',
     {
       month:'long',
       year:'numeric'
     }
-  ).format(new Date(date + "T00:00:00"));
+  ).format(
+    new Date(
+      date + "T00:00:00"
+    )
+  );
+
 }
 
 
-function normalizeStatus(status){
+function esc(s){
 
-  const s = String(status || "")
-    .trim()
-    .toLowerCase();
+  return String(s).replace(
+    /[&<>"']/g,
+    c => ({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#39;'
+    }[c])
+  );
 
-  if(
-    s.includes("cancel")
-  ){
-    return "cancelled";
-  }
-
-  if(
-    s.includes("deliver")
-  ){
-    return "delivered";
-  }
-
-  if(
-    s.includes("rto") ||
-    s.includes("return to origin")
-  ){
-    return "rto";
-  }
-
-  return "";
 }
 
 
-/* ============================================================
+/* =========================================================
    CSV PARSER
-============================================================ */
+========================================================= */
 
 function parseCSV(text){
 
   const rows = [];
+
   let row = [];
   let cell = "";
   let quote = false;
 
-  for(let i=0;i<text.length;i++){
+
+  for(
+    let i=0;
+    i<text.length;
+    i++
+  ){
 
     const c = text[i];
     const n = text[i+1];
 
-    if(c === '"' && quote && n === '"'){
+
+    if(
+      c === '"' &&
+      quote &&
+      n === '"'
+    ){
+
       cell += '"';
       i++;
       continue;
+
     }
+
 
     if(c === '"'){
+
       quote = !quote;
       continue;
+
     }
 
-    if(c === ',' && !quote){
-
-      row.push(cell);
-      cell = "";
-
-      continue;
-    }
 
     if(
-      (c === '\n' || c === '\r') &&
+      c === ',' &&
       !quote
     ){
 
-      if(c === '\r' && n === '\n'){
+      row.push(cell);
+      cell = "";
+
+      continue;
+
+    }
+
+
+    if(
+      (
+        c === '\n' ||
+        c === '\r'
+      ) &&
+      !quote
+    ){
+
+      if(
+        c === '\r' &&
+        n === '\n'
+      ){
+
         i++;
+
       }
+
 
       row.push(cell);
       cell = "";
 
-      if(row.some(x => x !== "")){
+
+      if(
+        row.some(
+          x => x !== ""
+        )
+      ){
+
         rows.push(row);
+
       }
+
 
       row = [];
 
       continue;
+
     }
 
+
     cell += c;
+
   }
 
-  if(cell.length || row.length){
+
+  if(
+    cell.length ||
+    row.length
+  ){
+
     row.push(cell);
     rows.push(row);
+
   }
 
-  if(!rows.length) return [];
 
-  const head = rows
-    .shift()
-    .map(x => x.trim());
+  if(!rows.length)
+    return [];
 
-  return rows.map(r =>
-    Object.fromEntries(
-      head.map((h,i) => [
-        h,
-        (r[i] ?? "").trim()
-      ])
-    )
+
+  const head =
+    rows
+      .shift()
+      .map(
+        x => x.trim()
+      );
+
+
+  return rows.map(
+    r =>
+      Object.fromEntries(
+        head.map(
+          (h,i) =>
+            [
+              h,
+              (r[i] ?? "")
+                .trim()
+            ]
+        )
+      )
   );
+
 }
 
 
-/* ============================================================
-   ORDERS DASHBOARD
-============================================================ */
+/* =========================================================
+   ORDERS DATA
+========================================================= */
 
 let records = [];
 let agg = [];
@@ -794,189 +1051,293 @@ async function loadOrders(){
 
     const text =
       await fetch(
-        'data.csv?ts=' + Date.now()
-      ).then(r => r.text());
+        'data.csv?ts=' +
+        Date.now()
+      ).then(
+        r => r.text()
+      );
 
 
-    records = parseCSV(text)
+    records =
+      parseCSV(text)
       .map(x => {
 
-        let raw = String(
-          x.date || ""
-        ).trim();
+        const raw =
+          String(
+            x.date || ""
+          ).trim();
 
-        let date = raw.slice(0,10);
 
         return {
-          date,
+
+          date:
+            raw.slice(0,10),
+
           company:
             x.COMPANY_NAME ||
             x.company ||
             "",
+
           orders:
-            Number(x.orders) || 0
+            Number(
+              x.orders
+            ) || 0
+
         };
 
       })
       .filter(
-        x => x.date && x.company
+        x =>
+          x.date &&
+          x.company
       );
 
 
     const dates =
-      [...new Set(
-        records.map(x => x.date)
-      )].sort();
+      [
+        ...new Set(
+          records.map(
+            x => x.date
+          )
+        )
+      ].sort();
 
 
     if(dates.length < 3){
 
       throw new Error(
-        "At least three different dates are required."
+        "Not enough dates."
       );
 
     }
 
 
     /*
-      IMPORTANT:
+      Latest date is treated
+      as current/incomplete.
 
-      Latest date is treated as current/incomplete data.
+      Therefore:
 
-      Therefore daily dashboard shows:
-      latest - 1 day
-      latest - 2 days
+      Latest = 01 Sept
+
+      Daily 1 = 31 Aug
+      Daily 2 = 30 Aug
     */
 
-    const latestAvailable =
-      dates[dates.length - 1];
 
-    const latest =
+    const latestAvailable =
+      dates[
+        dates.length - 1
+      ];
+
+
+    const day1Date =
       new Date(
-        latestAvailable + "T00:00:00"
+        latestAvailable +
+        "T00:00:00"
       );
 
-    latest.setDate(
-      latest.getDate() - 1
+
+    day1Date.setDate(
+      day1Date.getDate() - 1
     );
+
+
+    const day2Date =
+      new Date(
+        latestAvailable +
+        "T00:00:00"
+      );
+
+
+    day2Date.setDate(
+      day2Date.getDate() - 2
+    );
+
+
+    const latest =
+      day1Date
+        .toISOString()
+        .slice(0,10);
+
 
     const prev =
-      new Date(latest);
-
-    prev.setDate(
-      prev.getDate() - 1
-    );
+      day2Date
+        .toISOString()
+        .slice(0,10);
 
 
-    const latestDate =
-      latest.toISOString().slice(0,10);
+    /*
+      CURRENT MONTH = month of
+      latest completed day
 
-    const prevDate =
-      prev.toISOString().slice(0,10);
+      Example:
+      31 Aug => August
+    */
+
+    const currentMonth =
+      latest.slice(0,7);
 
 
-    const curMonth =
-      latestDate.slice(0,7);
+    /*
+      But for the dashboard monthly
+      totals we specifically want:
+
+      September + August
+
+      when latest available data
+      is in September.
+
+      So use the latest available
+      dataset month as Current Month.
+    */
+
+    const monthlyBase =
+      latestAvailable.slice(0,7);
 
 
     const previousMonthDate =
       new Date(
-        latestDate + "T00:00:00"
+        monthlyBase +
+        "-01T00:00:00"
       );
+
 
     previousMonthDate.setMonth(
       previousMonthDate.getMonth() - 1
     );
 
-    const pm =
+
+    const previousMonth =
       previousMonthDate
         .toISOString()
         .slice(0,7);
 
 
     const companies =
-      [...new Set(
-        records.map(x => x.company)
-      )];
+      [
+        ...new Set(
+          records.map(
+            x => x.company
+          )
+        )
+      ];
 
 
-    const m = new Map();
+    const map =
+      new Map();
 
 
-    for(const c of companies){
+    for(
+      const company
+      of companies
+    ){
 
-      m.set(c,{
-        company:c,
-        current:0,
-        previous:0,
-        latest:0,
-        prevdate:0
-      });
+      map.set(
+        company,
+        {
+          company,
+          current:0,
+          previous:0,
+          latest:0,
+          prevdate:0
+        }
+      );
 
     }
 
 
-    for(const x of records){
+    for(
+      const x
+      of records
+    ){
 
       const o =
-        m.get(x.company);
+        map.get(
+          x.company
+        );
 
-      if(!o) continue;
 
-
-      if(
-        x.date.slice(0,7) === curMonth
-      ){
-        o.current += x.orders;
-      }
+      if(!o)
+        continue;
 
 
       if(
-        x.date.slice(0,7) === pm
+        x.date.slice(0,7) ===
+        monthlyBase
       ){
-        o.previous += x.orders;
+
+        o.current +=
+          x.orders;
+
       }
 
 
-      if(x.date === latestDate){
-        o.latest += x.orders;
+      if(
+        x.date.slice(0,7) ===
+        previousMonth
+      ){
+
+        o.previous +=
+          x.orders;
+
       }
 
 
-      if(x.date === prevDate){
-        o.prevdate += x.orders;
+      if(
+        x.date === latest
+      ){
+
+        o.latest +=
+          x.orders;
+
+      }
+
+
+      if(
+        x.date === prev
+      ){
+
+        o.prevdate +=
+          x.orders;
+
       }
 
     }
 
 
-    agg = [...m.values()];
+    agg =
+      [...map.values()];
 
 
     const totalCurrent =
       agg.reduce(
-        (a,x) => a + x.current,
+        (a,x) =>
+          a + x.current,
         0
       );
 
 
     const totalPrevious =
       agg.reduce(
-        (a,x) => a + x.previous,
+        (a,x) =>
+          a + x.previous,
         0
       );
 
 
     const totalLatest =
       agg.reduce(
-        (a,x) => a + x.latest,
+        (a,x) =>
+          a + x.latest,
         0
       );
 
 
     const totalPrev =
       agg.reduce(
-        (a,x) => a + x.prevdate,
+        (a,x) =>
+          a + x.prevdate,
         0
       );
 
@@ -984,14 +1345,16 @@ async function loadOrders(){
     document.getElementById(
       'm1label'
     ).textContent =
-      monthName(latestDate);
+      monthName(
+        monthlyBase + "-01"
+      );
 
 
     document.getElementById(
       'm2label'
     ).textContent =
       monthName(
-        pm + "-01"
+        previousMonth + "-01"
       );
 
 
@@ -1010,13 +1373,13 @@ async function loadOrders(){
     document.getElementById(
       'd1label'
     ).textContent =
-      formatDate(latestDate);
+      formatDate(latest);
 
 
     document.getElementById(
       'd2label'
     ).textContent =
-      formatDate(prevDate);
+      formatDate(prev);
 
 
     document.getElementById(
@@ -1034,31 +1397,35 @@ async function loadOrders(){
     document.getElementById(
       'currentHead'
     ).textContent =
-      monthName(latestDate);
+      monthName(
+        monthlyBase + "-01"
+      );
 
 
     document.getElementById(
       'previousHead'
     ).textContent =
-      monthName(pm + "-01");
+      monthName(
+        previousMonth + "-01"
+      );
 
 
     document.getElementById(
       'latestHead'
     ).textContent =
-      formatDate(latestDate);
+      formatDate(latest);
 
 
     document.getElementById(
       'prevHead'
     ).textContent =
-      formatDate(prevDate);
+      formatDate(prev);
 
 
     document.getElementById(
       'range'
     ).textContent =
-      `Orders data: ${formatDate(prevDate)} → ${formatDate(latestDate)}`;
+      `Orders: ${monthName(monthlyBase+"-01")} + ${monthName(previousMonth+"-01")} • Daily: ${formatDate(latest)} & ${formatDate(prev)}`;
 
 
     document.getElementById(
@@ -1069,7 +1436,8 @@ async function loadOrders(){
 
     renderOrders();
 
-  }catch(e){
+  }
+  catch(e){
 
     console.error(e);
 
@@ -1082,6 +1450,10 @@ async function loadOrders(){
 
 }
 
+
+/* =========================================================
+   RENDER ORDERS
+========================================================= */
 
 function renderOrders(){
 
@@ -1110,62 +1482,182 @@ function renderOrders(){
   a.sort(
     (x,y) =>
       sort === "name"
-      ? x.company.localeCompare(y.company)
-      : (y[sort] ?? 0) -
+      ?
+        x.company.localeCompare(
+          y.company
+        )
+      :
+        (y[sort] ?? 0) -
         (x[sort] ?? 0)
   );
 
 
   document.getElementById(
     'body'
-  ).innerHTML = a.map(x => `
+  ).innerHTML =
 
-    <tr>
+    a.map(
+      x => `
 
-      <td>${esc(x.company)}</td>
+        <tr>
 
-      <td>${fmt(x.current)}</td>
+          <td>
+            ${esc(x.company)}
+          </td>
 
-      <td>${fmt(x.previous)}</td>
+          <td>
+            ${fmt(x.current)}
+          </td>
 
-      <td>${fmt(x.latest)}</td>
+          <td>
+            ${fmt(x.previous)}
+          </td>
 
-      <td>${fmt(x.prevdate)}</td>
+          <td>
+            ${fmt(x.latest)}
+          </td>
 
-    </tr>
+          <td>
+            ${fmt(x.prevdate)}
+          </td>
 
-  `).join('');
+        </tr>
 
-}
-
-
-function esc(s){
-
-  return String(s).replace(
-    /[&<>"']/g,
-    c => ({
-      '&':'&amp;',
-      '<':'&lt;',
-      '>':'&gt;',
-      '"':'&quot;',
-      "'":'&#39;'
-    }[c])
-  );
+      `
+    ).join('');
 
 }
 
 
-/* ============================================================
-   STATUS ANALYSIS
-============================================================ */
+/* =========================================================
+   STATUS DATA
+========================================================= */
 
 let statusRecords = [];
-let statusLatestDate = "";
+
 let statusDay1 = "";
 let statusDay2 = "";
+
 let statusCurrentMonth = "";
 let statusPreviousMonth = "";
 
+
+/* =========================================================
+   NORMALIZE FINAL_STATUS
+========================================================= */
+
+function normalizeStatus(status){
+
+  const s =
+    String(
+      status || ""
+    )
+    .trim()
+    .toLowerCase();
+
+
+  if(
+    s.includes("cancel")
+  ){
+
+    return "cancelled";
+
+  }
+
+
+  if(
+    s.includes("rto") ||
+    s.includes("return to origin")
+  ){
+
+    return "rto";
+
+  }
+
+
+  if(
+    s.includes("deliver")
+  ){
+
+    return "delivered";
+
+  }
+
+
+  return "";
+
+}
+
+
+/* =========================================================
+   PARSE ORDER DATE
+========================================================= */
+
+function parseOrderDate(raw){
+
+  raw =
+    String(
+      raw || ""
+    ).trim();
+
+
+  /*
+    YYYY-MM-DD
+  */
+
+  if(
+    /^\d{4}-\d{2}-\d{2}/
+      .test(raw)
+  ){
+
+    return raw.slice(
+      0,
+      10
+    );
+
+  }
+
+
+  /*
+    DD-MM-YYYY
+    DD/MM/YYYY
+  */
+
+  const match =
+    raw.match(
+      /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})/
+    );
+
+
+  if(match){
+
+    const day =
+      match[1]
+        .padStart(2,"0");
+
+
+    const month =
+      match[2]
+        .padStart(2,"0");
+
+
+    const year =
+      match[3];
+
+
+    return `${year}-${month}-${day}`;
+
+  }
+
+
+  return "";
+
+}
+
+
+/* =========================================================
+   LOAD STATUS DATA
+========================================================= */
 
 async function loadStatus(){
 
@@ -1173,71 +1665,27 @@ async function loadStatus(){
 
     const text =
       await fetch(
-        'orders.csv?ts=' + Date.now()
-      ).then(r => r.text());
+        'orders.csv?ts=' +
+        Date.now()
+      ).then(
+        r => r.text()
+      );
 
 
     statusRecords =
       parseCSV(text)
       .map(x => {
 
-        const raw =
-          String(
-            x.ORDER_CREATED_AT || ""
-          ).trim();
-
-
-        let date = "";
-
-
-        /*
-          Supports:
-
-          2026-09-01 12:30:00
-          2026-09-01T12:30:00
-          01-09-2026 12:30:00
-          01/09/2026 12:30:00
-        */
-
-        if(
-          /^\d{4}-\d{2}-\d{2}/.test(raw)
-        ){
-
-          date =
-            raw.slice(0,10);
-
-        }else{
-
-          const match =
-            raw.match(
-              /^(\d{1,2})[-\/](\d{1,2})[-\/](\d{4})/
-            );
-
-          if(match){
-
-            const day =
-              match[1].padStart(2,"0");
-
-            const month =
-              match[2].padStart(2,"0");
-
-            const year =
-              match[3];
-
-            date =
-              `${year}-${month}-${day}`;
-
-          }
-
-        }
-
-
         return {
 
-          date,
+          date:
+            parseOrderDate(
+              x.ORDER_CREATED_AT
+            ),
 
           company:
-            x.COMPANY_NAME || "",
+            x.COMPANY_NAME ||
+            "",
 
           status:
             normalizeStatus(
@@ -1254,27 +1702,34 @@ async function loadStatus(){
       );
 
 
-    if(!statusRecords.length){
+    if(
+      !statusRecords.length
+    ){
 
       throw new Error(
-        "No valid records found in orders.csv"
+        "No records found."
       );
 
     }
 
 
     const dates =
-      [...new Set(
-        statusRecords.map(
-          x => x.date
+      [
+        ...new Set(
+          statusRecords.map(
+            x => x.date
+          )
         )
-      )].sort();
+      ].sort();
 
 
     /*
-      Latest available date is excluded.
+      Latest available date
+      is excluded from daily view.
 
-      If latest = 01-09-2026:
+      Example:
+
+      Latest = 01-09-2026
 
       Day 1 = 31-08-2026
       Day 2 = 30-08-2026
@@ -1282,13 +1737,18 @@ async function loadStatus(){
 
     const latestAvailable =
       new Date(
-        dates[dates.length-1] +
+        dates[
+          dates.length - 1
+        ] +
         "T00:00:00"
       );
 
 
     const day1 =
-      new Date(latestAvailable);
+      new Date(
+        latestAvailable
+      );
+
 
     day1.setDate(
       day1.getDate() - 1
@@ -1296,17 +1756,14 @@ async function loadStatus(){
 
 
     const day2 =
-      new Date(latestAvailable);
+      new Date(
+        latestAvailable
+      );
+
 
     day2.setDate(
       day2.getDate() - 2
     );
-
-
-    statusLatestDate =
-      latestAvailable
-        .toISOString()
-        .slice(0,10);
 
 
     statusDay1 =
@@ -1321,24 +1778,41 @@ async function loadStatus(){
         .slice(0,10);
 
 
+    /*
+      IMPORTANT:
+
+      Month totals are based on
+      latest available dataset month.
+
+      Example:
+
+      latest = September 2026
+
+      Current = September
+      Previous = August
+    */
+
     statusCurrentMonth =
-      statusDay1.slice(0,7);
+      dates[
+        dates.length - 1
+      ].slice(0,7);
 
 
-    const pm =
+    const previousMonthDate =
       new Date(
-        statusDay1 +
-        "T00:00:00"
+        statusCurrentMonth +
+        "-01T00:00:00"
       );
 
 
-    pm.setMonth(
-      pm.getMonth() - 1
+    previousMonthDate.setMonth(
+      previousMonthDate.getMonth() - 1
     );
 
 
     statusPreviousMonth =
-      pm.toISOString()
+      previousMonthDate
+        .toISOString()
         .slice(0,7);
 
 
@@ -1346,7 +1820,8 @@ async function loadStatus(){
 
     renderStatus();
 
-  }catch(e){
+  }
+  catch(e){
 
     console.error(e);
 
@@ -1360,14 +1835,20 @@ async function loadStatus(){
 }
 
 
+/* =========================================================
+   SELLERS
+========================================================= */
+
 function populateSellers(){
 
   const sellers =
-    [...new Set(
-      statusRecords.map(
-        x => x.company
+    [
+      ...new Set(
+        statusRecords.map(
+          x => x.company
+        )
       )
-    )].sort(
+    ].sort(
       (a,b) =>
         a.localeCompare(b)
     );
@@ -1380,42 +1861,74 @@ function populateSellers(){
 
 
   select.innerHTML =
-    '<option value="ALL">All Sellers</option>' +
+    `<option value="ALL">
+      All Sellers
+    </option>` +
+
     sellers.map(
       s =>
-        `<option value="${esc(s)}">${esc(s)}</option>`
+        `<option value="${esc(s)}">
+          ${esc(s)}
+        </option>`
     ).join('');
 
 }
 
 
-function getFilteredRecords(){
+/* =========================================================
+   FILTER
+========================================================= */
 
-  const selectedSeller =
-    document.getElementById(
+function getSelectedStatus(){
+
+  return document
+    .getElementById(
+      'statusSelect'
+    )
+    .value;
+
+}
+
+
+function getSelectedSeller(){
+
+  return document
+    .getElementById(
       'sellerSelect'
-    ).value;
+    )
+    .value;
 
+}
+
+
+function filteredStatusRecords(){
 
   const selectedStatus =
-    document.getElementById(
-      'statusSelect'
-    ).value;
+    getSelectedStatus();
+
+
+  const selectedSeller =
+    getSelectedSeller();
 
 
   return statusRecords.filter(
     x => {
 
+      const statusOK =
+        x.status ===
+        selectedStatus;
+
+
       const sellerOK =
         selectedSeller === "ALL" ||
-        x.company === selectedSeller;
+        x.company ===
+        selectedSeller;
 
 
-      const statusOK =
-        x.status === selectedStatus;
-
-
-      return sellerOK && statusOK;
+      return (
+        statusOK &&
+        sellerOK
+      );
 
     }
   );
@@ -1423,58 +1936,29 @@ function getFilteredRecords(){
 }
 
 
-function countStatus(
-  records,
-  dateStart,
-  dateEnd
-){
-
-  return records.filter(
-    x => {
-
-      if(
-        dateStart &&
-        dateEnd
-      ){
-
-        return (
-          x.date >= dateStart &&
-          x.date <= dateEnd
-        );
-
-      }
-
-      return x.date === dateStart;
-
-    }
-  ).length;
-
-}
-
+/* =========================================================
+   RENDER STATUS
+========================================================= */
 
 function renderStatus(){
 
   const selectedStatus =
-    document.getElementById(
-      'statusSelect'
-    ).value;
+    getSelectedStatus();
 
 
   const selectedSeller =
-    document.getElementById(
-      'sellerSelect'
-    ).value;
+    getSelectedSeller();
 
 
   const filtered =
-    getFilteredRecords();
+    filteredStatusRecords();
 
 
-  /*
-    MONTH TOTALS
-  */
+  /* -------------------------------------------------------
+     TOP CARDS
+  ------------------------------------------------------- */
 
-  const currentMonthCount =
+  const monthCount =
     filtered.filter(
       x =>
         x.date.slice(0,7) ===
@@ -1490,21 +1974,19 @@ function renderStatus(){
     ).length;
 
 
-  /*
-    DAY TOTALS
-  */
-
   const day1Count =
     filtered.filter(
       x =>
-        x.date === statusDay1
+        x.date ===
+        statusDay1
     ).length;
 
 
   const day2Count =
     filtered.filter(
       x =>
-        x.date === statusDay2
+        x.date ===
+        statusDay2
     ).length;
 
 
@@ -1512,7 +1994,8 @@ function renderStatus(){
     'statusMonthLabel'
   ).textContent =
     monthName(
-      statusDay1
+      statusCurrentMonth +
+      "-01"
     );
 
 
@@ -1528,7 +2011,7 @@ function renderStatus(){
   document.getElementById(
     'statusMonthCount'
   ).textContent =
-    fmt(currentMonthCount);
+    fmt(monthCount);
 
 
   document.getElementById(
@@ -1540,13 +2023,17 @@ function renderStatus(){
   document.getElementById(
     'statusDay1Label'
   ).textContent =
-    formatDate(statusDay1);
+    formatDate(
+      statusDay1
+    );
 
 
   document.getElementById(
     'statusDay2Label'
   ).textContent =
-    formatDate(statusDay2);
+    formatDate(
+      statusDay2
+    );
 
 
   document.getElementById(
@@ -1560,6 +2047,20 @@ function renderStatus(){
   ).textContent =
     fmt(day2Count);
 
+
+  document.getElementById(
+    'statusMonthSmall'
+  ).textContent =
+    selectedStatus === "cancelled"
+    ? "Cancellation orders"
+    : selectedStatus === "delivered"
+    ? "Delivered orders"
+    : "RTO orders";
+
+
+  /* -------------------------------------------------------
+     HEADERS
+  ------------------------------------------------------- */
 
   document.getElementById(
     'statusDay1Head'
@@ -1576,7 +2077,10 @@ function renderStatus(){
   document.getElementById(
     'statusMonthHead'
   ).textContent =
-    monthName(statusDay1);
+    monthName(
+      statusCurrentMonth +
+      "-01"
+    );
 
 
   document.getElementById(
@@ -1588,21 +2092,57 @@ function renderStatus(){
     );
 
 
-  /*
-    DAILY TABLE
-  */
+  const percentageHead =
+    document.getElementById(
+      'percentageHead'
+    );
 
-  const sellers =
+
+  percentageHead.textContent =
+    selectedStatus === "cancelled"
+    ? "Cancellation %"
+    : selectedStatus === "delivered"
+    ? "Delivered %"
+    : "RTO %";
+
+
+  /* -------------------------------------------------------
+     SELLER LIST
+  ------------------------------------------------------- */
+
+  let sellers;
+
+
+  if(
     selectedSeller === "ALL"
-    ?
-      [...new Set(
-        statusRecords.map(
-          x => x.company
+  ){
+
+    sellers =
+      [
+        ...new Set(
+          statusRecords.map(
+            x => x.company
+          )
         )
-      )]
-    :
+      ];
+
+  }else{
+
+    sellers =
       [selectedSeller];
 
+  }
+
+
+  sellers.sort(
+    (a,b) =>
+      a.localeCompare(b)
+  );
+
+
+  /* -------------------------------------------------------
+     DAILY TABLE
+  ------------------------------------------------------- */
 
   const dailyBody =
     document.getElementById(
@@ -1611,25 +2151,26 @@ function renderStatus(){
 
 
   dailyBody.innerHTML =
-    sellers
-      .sort((a,b) =>
-        a.localeCompare(b)
-      )
-      .map(company => {
+    sellers.map(
+      company => {
 
         const day1 =
           filtered.filter(
             x =>
-              x.company === company &&
-              x.date === statusDay1
+              x.company ===
+              company &&
+              x.date ===
+              statusDay1
           ).length;
 
 
         const day2 =
           filtered.filter(
             x =>
-              x.company === company &&
-              x.date === statusDay2
+              x.company ===
+              company &&
+              x.date ===
+              statusDay2
           ).length;
 
 
@@ -1637,30 +2178,29 @@ function renderStatus(){
 
           <tr>
 
-            <td>${esc(company)}</td>
+            <td>
+              ${esc(company)}
+            </td>
 
-            <td>${fmt(day1)}</td>
+            <td>
+              ${fmt(day1)}
+            </td>
 
-            <td>${fmt(day2)}</td>
+            <td>
+              ${fmt(day2)}
+            </td>
 
           </tr>
 
         `;
 
-      })
-      .join('');
+      }
+    ).join('');
 
 
-  /*
-    MONTHLY TABLE
-
-    For Cancellation:
-      Cancelled / Total Orders * 100
-
-    For Delivered/RTO:
-      Status count / Total Orders * 100
-
-  */
+  /* -------------------------------------------------------
+     MONTHLY TABLE
+  ------------------------------------------------------- */
 
   const monthlyBody =
     document.getElementById(
@@ -1669,16 +2209,19 @@ function renderStatus(){
 
 
   monthlyBody.innerHTML =
-    sellers
-      .sort((a,b) =>
-        a.localeCompare(b)
-      )
-      .map(company => {
+    sellers.map(
+      company => {
+
+
+        /*
+          Selected status counts
+        */
 
         const currentStatus =
           filtered.filter(
             x =>
-              x.company === company &&
+              x.company ===
+              company &&
               x.date.slice(0,7) ===
               statusCurrentMonth
           ).length;
@@ -1687,44 +2230,116 @@ function renderStatus(){
         const previousStatus =
           filtered.filter(
             x =>
-              x.company === company &&
+              x.company ===
+              company &&
               x.date.slice(0,7) ===
               statusPreviousMonth
           ).length;
 
 
+        /*
+          TOTAL ORDERS
+
+          IMPORTANT:
+
+          We count ALL orders for
+          that seller, regardless
+          of FINAL_STATUS.
+
+          This is the denominator
+          for percentage.
+        */
+
         const totalCurrent =
           statusRecords.filter(
             x =>
-              x.company === company &&
+              x.company ===
+              company &&
               x.date.slice(0,7) ===
               statusCurrentMonth
           ).length;
 
 
+        const totalPrevious =
+          statusRecords.filter(
+            x =>
+              x.company ===
+              company &&
+              x.date.slice(0,7) ===
+              statusPreviousMonth
+          ).length;
+
+
+        /*
+          Current month percentage
+
+          Selected Status / Total Orders
+        */
+
         const percentage =
-          totalCurrent
+          totalCurrent > 0
           ?
             (
               currentStatus /
-              totalCurrent *
-              100
-            )
+              totalCurrent
+            ) * 100
           :
             0;
+
+
+        let percentClass =
+          "";
+
+
+        if(
+          selectedStatus ===
+          "cancelled"
+        ){
+
+          percentClass =
+            percentage >= 5
+            ? "bad"
+            : "good";
+
+        }
+        else if(
+          selectedStatus ===
+          "rto"
+        ){
+
+          percentClass =
+            percentage >= 5
+            ? "orange"
+            : "good";
+
+        }
+        else{
+
+          percentClass =
+            "good";
+
+        }
 
 
         return `
 
           <tr>
 
-            <td>${esc(company)}</td>
-
-            <td>${fmt(currentStatus)}</td>
-
-            <td>${fmt(previousStatus)}</td>
+            <td>
+              ${esc(company)}
+            </td>
 
             <td>
+              ${fmt(currentStatus)}
+            </td>
+
+            <td>
+              ${fmt(previousStatus)}
+            </td>
+
+            <td
+              class="percent ${percentClass}"
+            >
               ${percentage.toFixed(2)}%
             </td>
 
@@ -1732,80 +2347,110 @@ function renderStatus(){
 
         `;
 
-      })
-      .join('');
+      }
+    ).join('');
 
 }
 
 
-/* ============================================================
-   TAB SWITCHING
-============================================================ */
+/* =========================================================
+   TAB SWITCH
+========================================================= */
 
 document
-  .getElementById('ordersTab')
+  .getElementById(
+    'ordersTab'
+  )
   .addEventListener(
     'click',
     () => {
 
       document
-        .getElementById('ordersTab')
-        .classList.add('active');
+        .getElementById(
+          'ordersTab'
+        )
+        .classList
+        .add('active');
 
 
       document
-        .getElementById('statusTab')
-        .classList.remove('active');
+        .getElementById(
+          'statusTab'
+        )
+        .classList
+        .remove('active');
 
 
       document
-        .getElementById('ordersPage')
-        .classList.remove('hidden');
+        .getElementById(
+          'ordersPage'
+        )
+        .classList
+        .remove('hidden');
 
 
       document
-        .getElementById('statusPage')
-        .classList.add('hidden');
+        .getElementById(
+          'statusPage'
+        )
+        .classList
+        .add('hidden');
 
     }
   );
 
 
 document
-  .getElementById('statusTab')
+  .getElementById(
+    'statusTab'
+  )
   .addEventListener(
     'click',
     () => {
 
       document
-        .getElementById('statusTab')
-        .classList.add('active');
+        .getElementById(
+          'statusTab'
+        )
+        .classList
+        .add('active');
 
 
       document
-        .getElementById('ordersTab')
-        .classList.remove('active');
+        .getElementById(
+          'ordersTab'
+        )
+        .classList
+        .remove('active');
 
 
       document
-        .getElementById('statusPage')
-        .classList.remove('hidden');
+        .getElementById(
+          'statusPage'
+        )
+        .classList
+        .remove('hidden');
 
 
       document
-        .getElementById('ordersPage')
-        .classList.add('hidden');
+        .getElementById(
+          'ordersPage'
+        )
+        .classList
+        .add('hidden');
 
     }
   );
 
 
-/* ============================================================
+/* =========================================================
    EVENTS
-============================================================ */
+========================================================= */
 
 document
-  .getElementById('search')
+  .getElementById(
+    'search'
+  )
   .addEventListener(
     'input',
     renderOrders
@@ -1813,7 +2458,9 @@ document
 
 
 document
-  .getElementById('sort')
+  .getElementById(
+    'sort'
+  )
   .addEventListener(
     'change',
     renderOrders
@@ -1821,7 +2468,9 @@ document
 
 
 document
-  .getElementById('statusSelect')
+  .getElementById(
+    'statusSelect'
+  )
   .addEventListener(
     'change',
     renderStatus
@@ -1829,16 +2478,18 @@ document
 
 
 document
-  .getElementById('sellerSelect')
+  .getElementById(
+    'sellerSelect'
+  )
   .addEventListener(
     'change',
     renderStatus
   );
 
 
-/* ============================================================
-   LOAD
-============================================================ */
+/* =========================================================
+   START
+========================================================= */
 
 loadOrders();
 loadStatus();
