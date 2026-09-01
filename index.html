@@ -1,10 +1,8 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Total Order Dashboard</title>
 
 <style>
@@ -21,11 +19,7 @@
     --orange:#c2410c;
     --shadow:0 10px 30px rgba(31,41,55,.08);
 }
-
-*{
-    box-sizing:border-box;
-}
-
+*{box-sizing:border-box}
 body{
     margin:0;
     background:
@@ -34,269 +28,75 @@ body{
     font-family:Inter,Segoe UI,Arial,sans-serif;
     color:var(--text);
 }
-
-.container{
-    max-width:1450px;
-    margin:auto;
-    padding:28px;
-}
-
+.container{max-width:1450px;margin:auto;padding:28px}
 .header{
     background:linear-gradient(135deg,#172554,#315efb);
-    color:white;
-    border-radius:20px;
-    padding:25px 28px;
-    margin-bottom:20px;
-    box-shadow:var(--shadow);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    color:white;border-radius:20px;padding:25px 28px;margin-bottom:20px;
+    box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center
 }
-
-.header h1{
-    margin:0;
-    font-size:30px;
-}
-
-.header p{
-    margin:7px 0 0;
-    color:rgba(255,255,255,.75);
-    font-size:14px;
-}
-
-.badge{
-    padding:9px 14px;
-    border-radius:20px;
-    background:rgba(255,255,255,.15);
-    border:1px solid rgba(255,255,255,.25);
-    font-size:13px;
-}
-
-.tabs{
-    display:flex;
-    gap:9px;
-    flex-wrap:wrap;
-    margin-bottom:18px;
-}
-
+.header h1{margin:0;font-size:30px}
+.header p{margin:7px 0 0;color:rgba(255,255,255,.75);font-size:14px}
+.badge{padding:9px 14px;border-radius:20px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);font-size:13px}
+.tabs{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px}
 .tab{
-    border:1px solid var(--border);
-    background:white;
-    color:var(--muted);
-    padding:12px 20px;
-    border-radius:11px;
-    font-size:14px;
-    font-weight:700;
-    cursor:pointer;
-    transition:.2s;
+    border:1px solid var(--border);background:white;color:var(--muted);
+    padding:12px 20px;border-radius:11px;font-size:14px;font-weight:700;
+    cursor:pointer;transition:.2s
 }
-
-.tab:hover{
-    transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(31,41,55,.10);
-}
-
-.tab.active{
-    color:white;
-    border-color:transparent;
-    background:linear-gradient(135deg,var(--blue),var(--purple));
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-    margin-bottom:18px;
-}
-
+.tab:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(31,41,55,.10)}
+.tab.active{color:white;border-color:transparent;background:linear-gradient(135deg,var(--blue),var(--purple))}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:18px}
 .card{
-    position:relative;
-    overflow:hidden;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:17px;
-    padding:20px;
-    box-shadow:var(--shadow);
-    transition:.22s;
+    position:relative;overflow:hidden;background:var(--card);border:1px solid var(--border);
+    border-radius:17px;padding:20px;box-shadow:var(--shadow);transition:.22s
 }
-
-.card:hover{
-    transform:translateY(-5px);
-    box-shadow:0 18px 38px rgba(31,41,55,.13);
-}
-
+.card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(31,41,55,.13)}
 .card:before{
-    content:"";
-    position:absolute;
-    left:0;
-    top:0;
-    bottom:0;
-    width:5px;
-    background:linear-gradient(180deg,var(--blue),var(--purple));
+    content:"";position:absolute;left:0;top:0;bottom:0;width:5px;
+    background:linear-gradient(180deg,var(--blue),var(--purple))
 }
-
-.card-label{
-    color:var(--muted);
-    font-size:13px;
-    margin-bottom:8px;
-}
-
-.card-value{
-    font-size:28px;
-    font-weight:800;
-}
-
-.card-sub{
-    color:var(--muted);
-    font-size:12px;
-    margin-top:6px;
-}
-
+.card-label{color:var(--muted);font-size:13px;margin-bottom:8px}
+.card-value{font-size:28px;font-weight:800}
+.card-sub{color:var(--muted);font-size:12px;margin-top:6px}
 .panel{
-    background:white;
-    border:1px solid var(--border);
-    border-radius:17px;
-    padding:20px;
-    box-shadow:var(--shadow);
-    margin-bottom:18px;
+    background:white;border:1px solid var(--border);border-radius:17px;padding:20px;
+    box-shadow:var(--shadow);margin-bottom:18px
 }
-
-.panel-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
-    margin-bottom:16px;
-}
-
-.panel-header h2{
-    margin:0;
-    font-size:19px;
-}
-
-.controls{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-bottom:15px;
-}
-
+.panel-header{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:16px}
+.panel-header h2{margin:0;font-size:19px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px}
 input,select{
-    padding:11px 13px;
-    border:1px solid var(--border);
-    border-radius:10px;
-    background:white;
-    color:var(--text);
-    font-size:14px;
-    outline:none;
+    padding:11px 13px;border:1px solid var(--border);border-radius:10px;
+    background:white;color:var(--text);font-size:14px;outline:none
 }
-
-input{
-    min-width:280px;
-    flex:1;
-}
-
-input:focus,select:focus{
-    border-color:var(--blue);
-    box-shadow:0 0 0 3px rgba(49,94,251,.10);
-}
-
-.table-wrapper{
-    overflow:auto;
-    max-height:620px;
-    border:1px solid var(--border);
-    border-radius:12px;
-}
-
-table{
-    width:100%;
-    border-collapse:separate;
-    border-spacing:0;
-    min-width:750px;
-    font-size:14px;
-}
-
-th,td{
-    padding:13px 15px;
-    border-bottom:1px solid var(--border);
-    text-align:right;
-    white-space:nowrap;
-}
-
-th:first-child,td:first-child{
-    text-align:left;
-}
-
-thead th{
-    position:sticky;
-    top:0;
-    background:#f1f4fb;
-    color:#344054;
-    font-weight:700;
-    z-index:2;
-}
-
-tbody tr:hover td{
-    background:#f8faff;
-}
-
-.loading{
-    text-align:center;
-    padding:30px;
-    color:var(--muted);
-}
-
-.error{
-    text-align:center;
-    padding:30px;
-    color:var(--red);
-    font-weight:600;
-}
-
-.hidden{
-    display:none !important;
-}
-
-.footer{
-    color:var(--muted);
-    font-size:12px;
-    margin-top:12px;
-}
-
+input{min-width:280px;flex:1}
+input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(49,94,251,.10)}
+.table-wrapper{overflow:auto;max-height:620px;border:1px solid var(--border);border-radius:12px}
+table{width:100%;border-collapse:separate;border-spacing:0;min-width:780px;font-size:14px}
+th,td{padding:13px 15px;border-bottom:1px solid var(--border);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+thead th{position:sticky;top:0;background:#f1f4fb;color:#344054;font-weight:700;z-index:2}
+tbody tr{transition:.18s}
+tbody tr:hover td{background:#f8faff}
+.loading{text-align:center;padding:30px;color:var(--muted)}
+.error{text-align:center;padding:30px;color:var(--red);font-weight:600}
+.hidden{display:none!important}
+.footer{color:var(--muted);font-size:12px;margin-top:12px}
+.status-badge{display:inline-block;padding:5px 9px;border-radius:20px;font-size:12px;font-weight:700}
 @media(max-width:1000px){
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .header{
-        align-items:flex-start;
-        flex-direction:column;
-        gap:12px;
-    }
+    .cards{grid-template-columns:repeat(2,1fr)}
+    .header{align-items:flex-start;flex-direction:column;gap:12px}
 }
-
 @media(max-width:600px){
-    .container{
-        padding:14px;
-    }
-
-    .cards{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .card-value{
-        font-size:21px;
-    }
-
-    .header h1{
-        font-size:24px;
-    }
+    .container{padding:14px}
+    .cards{grid-template-columns:repeat(2,1fr)}
+    .card-value{font-size:21px}
+    .header h1{font-size:24px}
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
 <div class="header">
@@ -304,2481 +104,1004 @@ tbody tr:hover td{
         <h1>Total Order Dashboard</h1>
         <p id="dashboardRange">Loading data...</p>
     </div>
-
-    <div class="badge" id="lastUpdated">
-        Loading...
-    </div>
+    <div class="badge" id="lastUpdated">Loading...</div>
 </div>
-
 
 <div class="tabs">
-
-    <button class="tab active"
-            id="tabOrders"
-            onclick="switchTab('orders')">
-        📦 Total Orders
-    </button>
-
-    <button class="tab"
-            id="tabStatus"
-            onclick="switchTab('status')">
-        📊 Status Analysis
-    </button>
-
-    <button class="tab"
-            id="tabONDC"
-            onclick="switchTab('ondc')">
-        🚫 Without ONDC
-    </button>
-
+    <button class="tab active" id="tabOrders" onclick="switchTab('orders')">📦 Total Orders</button>
+    <button class="tab" id="tabStatus" onclick="switchTab('status')">📊 Status Analysis</button>
+    <button class="tab" id="tabONDC" onclick="switchTab('ondc')">🚫 Without ONDC</button>
 </div>
-
-
-<!-- =====================================================
-     TOTAL ORDERS
-     SOURCE = data.csv
-===================================================== -->
 
 <section id="ordersSection">
-
-<div class="cards">
-
-    <div class="card">
-        <div class="card-label" id="currentMonthLabel">
-            Current Month
+    <div class="cards">
+        <div class="card">
+            <div class="card-label" id="currentMonthLabel">Current Month</div>
+            <div class="card-value" id="currentMonthTotal">—</div>
+            <div class="card-sub">Total orders</div>
         </div>
-
-        <div class="card-value" id="currentMonthTotal">—</div>
-
-        <div class="card-sub">
-            Total orders
+        <div class="card">
+            <div class="card-label" id="previousMonthLabel">Previous Month</div>
+            <div class="card-value" id="previousMonthTotal">—</div>
+            <div class="card-sub">Total orders</div>
         </div>
-    </div>
-
-
-    <div class="card">
-        <div class="card-label" id="previousMonthLabel">
-            Previous Month
+        <div class="card">
+            <div class="card-label" id="latestDateLabel">Latest Date</div>
+            <div class="card-value" id="latestDateTotal">—</div>
+            <div class="card-sub">Daily orders</div>
         </div>
-
-        <div class="card-value" id="previousMonthTotal">—</div>
-
-        <div class="card-sub">
-            Total orders
+        <div class="card">
+            <div class="card-label" id="previousDateLabel">Previous Date</div>
+            <div class="card-value" id="previousDateTotal">—</div>
+            <div class="card-sub">Daily orders</div>
         </div>
     </div>
 
-
-    <div class="card">
-        <div class="card-label" id="latestDateLabel">
-            Latest Date
+    <div class="panel">
+        <div class="panel-header"><h2>Company-wise Order Summary</h2></div>
+        <div class="controls">
+            <input id="orderSearch" placeholder="Search seller...">
+            <select id="orderSort">
+                <option value="current">Sort: Current Month</option>
+                <option value="previous">Sort: Previous Month</option>
+                <option value="latest">Sort: Latest Date</option>
+                <option value="previousDate">Sort: Previous Date</option>
+                <option value="name">Sort: Seller Name</option>
+            </select>
         </div>
-
-        <div class="card-value" id="latestDateTotal">—</div>
-
-        <div class="card-sub">
-            Daily orders
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company Name</th>
+                        <th id="orderCurrentHead">Current Month</th>
+                        <th id="orderPreviousHead">Previous Month</th>
+                        <th id="orderLatestHead">Latest Date</th>
+                        <th id="orderPreviousDateHead">Previous Date</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersTableBody">
+                    <tr><td colspan="5" class="loading">Loading...</td></tr>
+                </tbody>
+            </table>
         </div>
     </div>
-
-
-    <div class="card">
-        <div class="card-label" id="previousDateLabel">
-            Previous Date
-        </div>
-
-        <div class="card-value" id="previousDateTotal">—</div>
-
-        <div class="card-sub">
-            Daily orders
-        </div>
-    </div>
-
-</div>
-
-
-<div class="panel">
-
-    <div class="panel-header">
-        <h2>Company-wise Order Summary</h2>
-    </div>
-
-    <div class="controls">
-
-        <input
-            id="orderSearch"
-            placeholder="Search seller..."
-        >
-
-        <select id="orderSort">
-
-            <option value="current">
-                Sort: Current Month
-            </option>
-
-            <option value="previous">
-                Sort: Previous Month
-            </option>
-
-            <option value="latest">
-                Sort: Latest Date
-            </option>
-
-            <option value="previousDate">
-                Sort: Previous Date
-            </option>
-
-            <option value="name">
-                Sort: Seller Name
-            </option>
-
-        </select>
-
-    </div>
-
-
-    <div class="table-wrapper">
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>Company Name</th>
-
-                    <th id="orderCurrentHead">
-                        Current Month
-                    </th>
-
-                    <th id="orderPreviousHead">
-                        Previous Month
-                    </th>
-
-                    <th id="orderLatestHead">
-                        Latest Date
-                    </th>
-
-                    <th id="orderPreviousDateHead">
-                        Previous Date
-                    </th>
-
-                </tr>
-
-            </thead>
-
-            <tbody id="ordersTableBody">
-
-                <tr>
-                    <td colspan="5" class="loading">
-                        Loading...
-                    </td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-</div>
-
 </section>
-
-
-<!-- =====================================================
-     STATUS ANALYSIS
-     SOURCE = Orders.csv
-===================================================== -->
 
 <section id="statusSection" class="hidden">
-
-<div class="panel">
-
-    <div class="panel-header">
-
-        <h2>Order Status Analysis</h2>
-
-        <span style="color:#667085;font-size:13px;">
-            Source: Orders.csv → FINAL_STATUS
-        </span>
-
+    <div class="panel">
+        <div class="panel-header">
+            <h2>Order Status Analysis</h2>
+            <span style="color:#667085;font-size:13px">Source: Orders.csv → FINAL_STATUS</span>
+        </div>
+        <div class="controls">
+            <select id="statusSelect">
+                <option value="Cancelled">Cancelled</option>
+                <option value="Delivered">Delivered</option>
+                <option value="RTO">RTO</option>
+            </select>
+            <select id="sellerSelect">
+                <option value="ALL">All Sellers</option>
+            </select>
+            <input id="statusSearch" placeholder="Search seller or ZOP ID...">
+        </div>
     </div>
 
-
-    <div class="controls">
-
-        <select id="statusSelect">
-
-            <option value="Cancelled">
-                Cancelled
-            </option>
-
-            <option value="Delivered">
-                Delivered
-            </option>
-
-            <option value="RTO">
-                RTO
-            </option>
-
-        </select>
-
-
-        <select id="sellerSelect">
-
-            <option value="ALL">
-                All Sellers
-            </option>
-
-        </select>
-
-
-        <input
-            id="statusSearch"
-            placeholder="Search seller or ZOP ID..."
-        >
-
+    <div class="cards">
+        <div class="card">
+            <div class="card-label" id="statusCardLabel">Cancelled</div>
+            <div class="card-value" id="selectedStatusTotal">—</div>
+            <div class="card-sub" id="selectedStatusSub">Current month</div>
+        </div>
+        <div class="card">
+            <div class="card-label" id="statusMonthLabel">Current Month</div>
+            <div class="card-value" id="statusMonthTotal">—</div>
+            <div class="card-sub">Total Orders</div>
+        </div>
+        <div class="card">
+            <div class="card-label" id="statusPercentageLabel">Cancellation %</div>
+            <div class="card-value" id="statusPercentage">—</div>
+            <div class="card-sub" id="statusPercentageSub">Selected Status ÷ Total Orders</div>
+        </div>
+        <div class="card">
+            <div class="card-label">Selected Seller</div>
+            <div class="card-value" id="selectedSellerCard" style="font-size:20px">All Sellers</div>
+            <div class="card-sub">Seller filter</div>
+        </div>
     </div>
 
-</div>
-
-
-<div class="cards">
-
-    <div class="card">
-
-        <div class="card-label" id="statusCardLabel">
-            Cancelled
+    <div class="panel">
+        <div class="panel-header"><h2 id="statusTableTitle">Seller-wise Cancellation</h2></div>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Seller</th>
+                        <th id="statusMonthOrdersHead">Current Month Total Orders</th>
+                        <th id="statusLatestDateHead">Latest Date</th>
+                        <th id="statusPreviousDateHead">Previous Date</th>
+                        <th id="statusPercentageHead">Cancellation %</th>
+                    </tr>
+                </thead>
+                <tbody id="statusTableBody">
+                    <tr><td colspan="5" class="loading">Loading...</td></tr>
+                </tbody>
+            </table>
         </div>
-
-        <div class="card-value" id="selectedStatusTotal">
-            —
-        </div>
-
-        <div class="card-sub" id="selectedStatusSub">
-            Current month
-        </div>
-
+        <div class="footer">Percentage = Selected Status Orders ÷ Current Month Total Orders × 100</div>
     </div>
-
-
-    <div class="card">
-
-        <div class="card-label" id="statusMonthLabel">
-            Current Month
-        </div>
-
-        <div class="card-value" id="statusMonthTotal">
-            —
-        </div>
-
-        <div class="card-sub">
-            Total Orders
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="card-label" id="statusPercentageLabel">
-            Cancellation %
-        </div>
-
-        <div class="card-value" id="statusPercentage">
-            —
-        </div>
-
-        <div class="card-sub" id="statusPercentageSub">
-            Selected Status ÷ Total Orders
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="card-label">
-            Selected Seller
-        </div>
-
-        <div class="card-value"
-             id="selectedSellerCard"
-             style="font-size:20px">
-            All Sellers
-        </div>
-
-        <div class="card-sub">
-            Seller filter
-        </div>
-
-    </div>
-
-</div>
-
-
-<div class="panel">
-
-    <div class="panel-header">
-
-        <h2 id="statusTableTitle">
-            Seller-wise Cancellation
-        </h2>
-
-    </div>
-
-
-    <div class="table-wrapper">
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>Seller</th>
-
-                    <th id="statusMonthOrdersHead">
-                        Current Month Total Orders
-                    </th>
-
-                    <th id="statusLatestDateHead">
-                        Latest Date
-                    </th>
-
-                    <th id="statusPreviousDateHead">
-                        Previous Date
-                    </th>
-
-                    <th id="statusPercentageHead">
-                        Cancellation %
-                    </th>
-
-                </tr>
-
-            </thead>
-
-
-            <tbody id="statusTableBody">
-
-                <tr>
-                    <td colspan="5" class="loading">
-                        Loading...
-                    </td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-
-    <div class="footer">
-
-        Percentage =
-        Selected Status Orders ÷
-        Current Month Total Orders × 100
-
-    </div>
-
-</div>
-
 </section>
-
-
-<!-- =====================================================
-     WITHOUT ONDC
-     SOURCE = Orders.csv
-===================================================== -->
 
 <section id="ondcSection" class="hidden">
-
-<div class="cards">
-
-    <div class="card">
-
-        <div class="card-label" id="ondcCurrentLabel">
-            Current Month
+    <div class="cards">
+        <div class="card">
+            <div class="card-label" id="ondcCurrentLabel">Current Month</div>
+            <div class="card-value" id="ondcCurrentTotal">—</div>
+            <div class="card-sub">Without ONDC</div>
         </div>
-
-        <div class="card-value" id="ondcCurrentTotal">
-            —
+        <div class="card">
+            <div class="card-label" id="ondcPreviousLabel">Previous Month</div>
+            <div class="card-value" id="ondcPreviousTotal">—</div>
+            <div class="card-sub">Without ONDC</div>
         </div>
-
-        <div class="card-sub">
-            Without ONDC
+        <div class="card">
+            <div class="card-label" id="ondcLatestLabel">Latest Date</div>
+            <div class="card-value" id="ondcLatestTotal">—</div>
+            <div class="card-sub">Without ONDC</div>
         </div>
-
+        <div class="card">
+            <div class="card-label" id="ondcPreviousDateLabel">Previous Date</div>
+            <div class="card-value" id="ondcPreviousDateTotal">—</div>
+            <div class="card-sub">Without ONDC</div>
+        </div>
     </div>
 
-
-    <div class="card">
-
-        <div class="card-label" id="ondcPreviousLabel">
-            Previous Month
+    <div class="panel">
+        <div class="panel-header">
+            <h2>Without ONDC Data</h2>
+            <span style="color:#667085;font-size:13px">Source: Orders.csv → PAYMENT_GATEWAY</span>
         </div>
-
-        <div class="card-value" id="ondcPreviousTotal">
-            —
+        <div class="controls">
+            <input id="ondcSearch" placeholder="Search seller...">
+            <select id="ondcSort">
+                <option value="current">Sort: Current Month</option>
+                <option value="previous">Sort: Previous Month</option>
+                <option value="latest">Sort: Latest Date</option>
+                <option value="previousDate">Sort: Previous Date</option>
+                <option value="name">Sort: Seller Name</option>
+            </select>
         </div>
-
-        <div class="card-sub">
-            Without ONDC
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Company Name</th>
+                        <th id="ondcCurrentHead">Current Month</th>
+                        <th id="ondcPreviousHead">Previous Month</th>
+                        <th id="ondcLatestHead">Latest Date</th>
+                        <th id="ondcPreviousDateHead">Previous Date</th>
+                    </tr>
+                </thead>
+                <tbody id="ondcTableBody">
+                    <tr><td colspan="5" class="loading">Loading...</td></tr>
+                </tbody>
+            </table>
         </div>
-
+        <div class="footer">
+            Blank PAYMENT_GATEWAY = ONDC → excluded.<br>
+            Non-blank PAYMENT_GATEWAY = Without ONDC → included.
+        </div>
     </div>
-
-
-    <div class="card">
-
-        <div class="card-label" id="ondcLatestLabel">
-            Latest Date
-        </div>
-
-        <div class="card-value" id="ondcLatestTotal">
-            —
-        </div>
-
-        <div class="card-sub">
-            Without ONDC
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <div class="card-label" id="ondcPreviousDateLabel">
-            Previous Date
-        </div>
-
-        <div class="card-value" id="ondcPreviousDateTotal">
-            —
-        </div>
-
-        <div class="card-sub">
-            Without ONDC
-        </div>
-
-    </div>
-
-</div>
-
-
-<div class="panel">
-
-    <div class="panel-header">
-        <h2>Without ONDC Data</h2>
-    </div>
-
-
-    <div class="controls">
-
-        <input
-            id="ondcSearch"
-            placeholder="Search seller..."
-        >
-
-        <select id="ondcSort">
-
-            <option value="current">
-                Sort: Current Month
-            </option>
-
-            <option value="previous">
-                Sort: Previous Month
-            </option>
-
-            <option value="latest">
-                Sort: Latest Date
-            </option>
-
-            <option value="previousDate">
-                Sort: Previous Date
-            </option>
-
-            <option value="name">
-                Sort: Seller Name
-            </option>
-
-        </select>
-
-    </div>
-
-
-    <div class="table-wrapper">
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>Company Name</th>
-
-                    <th id="ondcCurrentHead">
-                        Current Month
-                    </th>
-
-                    <th id="ondcPreviousHead">
-                        Previous Month
-                    </th>
-
-                    <th id="ondcLatestHead">
-                        Latest Date
-                    </th>
-
-                    <th id="ondcPreviousDateHead">
-                        Previous Date
-                    </th>
-
-                </tr>
-
-            </thead>
-
-
-            <tbody id="ondcTableBody">
-
-                <tr>
-                    <td colspan="5" class="loading">
-                        Loading...
-                    </td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-
-    <div class="footer">
-
-        Blank PAYMENT_GATEWAY =
-        ONDC → excluded.
-
-        Non-blank PAYMENT_GATEWAY =
-        Without ONDC → included.
-
-    </div>
-
-</div>
-
 </section>
 
 </div>
 
-
 <script>
+/*
+=========================================================
+ZOP TOTAL ORDER DASHBOARD - FINAL DATA SOURCES
 
-/* =====================================================
-   GLOBAL VARIABLES
-===================================================== */
+1) Total Orders     -> data.csv
+   Expected headers: date, COMPANY_NAME, orders
 
-let totalOrdersData = [];
+2) Status Analysis  -> Orders.csv
+   Uses: ORDER_CREATED_AT, ZOP_ID, COMPANY_NAME, FINAL_STATUS
 
-let ordersCSVData = [];
+3) Without ONDC    -> Orders.csv
+   Uses: ORDER_CREATED_AT, ZOP_ID, COMPANY_NAME, PAYMENT_GATEWAY
+
+Counting:
+- Total Orders uses the numeric "orders" value from data.csv.
+- Status / Without ONDC use 1 valid ZOP_ID row = 1 order.
+- No duplicate removal.
+- No distinct counting.
+=========================================================
+*/
+
+const TOTAL_DATA_FILE = "data.csv";
+const RAW_DATA_FILE = "orders.csv";
+
+let totalData = [];
+let allOrders = [];
+
+let totalCurrentMonth = "";
+let totalPreviousMonthKey = "";
+let totalLatestDate = "";
+let totalPreviousDateKey = "";
 
 let currentMonth = "";
-
 let previousMonthKey = "";
-
 let latestDate = "";
-
 let previousDateKey = "";
 
-let orderSummary = [];
+function $(id){ return document.getElementById(id); }
 
-let withoutONDC = [];
-
-let statusOrders = [];
-
-
-/* =====================================================
-   DOM HELPER
-===================================================== */
-
-function $(id){
-    return document.getElementById(id);
+function numberFormat(n){
+    return new Intl.NumberFormat("en-IN").format(Number(n) || 0);
 }
 
-
-/* =====================================================
-   NUMBER FORMAT
-===================================================== */
-
-function numberFormat(number){
-
-    return new Intl.NumberFormat("en-IN")
-        .format(Number(number) || 0);
-
+function percentage(n){
+    return (Number(n) || 0).toFixed(2) + "%";
 }
-
-
-/* =====================================================
-   PERCENTAGE
-===================================================== */
-
-function percentage(number){
-
-    return (Number(number) || 0).toFixed(2) + "%";
-
-}
-
-
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
 
 function escapeHTML(value){
-
-    return String(value ?? "")
-        .replace(/[&<>"']/g,function(character){
-
-            const map = {
-                "&":"&amp;",
-                "<":"&lt;",
-                ">":"&gt;",
-                '"':"&quot;",
-                "'":"&#039;"
-            };
-
-            return map[character];
-
-        });
-
+    return String(value ?? "").replace(/[&<>"']/g, c => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    }[c]));
 }
-
-
-/* =====================================================
-   MONTH NAME
-===================================================== */
 
 function monthName(monthKey){
-
-    if(!monthKey){
-        return "";
-    }
-
-    const parts = monthKey.split("-");
-
+    if(!monthKey) return "";
+    const [y,m] = monthKey.split("-").map(Number);
     const months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
+        "January","February","March","April","May","June",
+        "July","August","September","October","November","December"
     ];
-
-    return months[Number(parts[1])-1] + " " + parts[0];
-
+    return months[m-1] + " " + y;
 }
 
-
-/* =====================================================
-   PREVIOUS MONTH
-===================================================== */
-
 function getPreviousMonth(monthKey){
-
-    let [year,month] =
-        monthKey.split("-").map(Number);
-
+    if(!monthKey) return "";
+    let [year,month] = monthKey.split("-").map(Number);
     month--;
-
     if(month === 0){
         month = 12;
         year--;
     }
-
-    return year + "-" +
-        String(month).padStart(2,"0");
-
+    return year + "-" + String(month).padStart(2,"0");
 }
 
-
-/* =====================================================
-   DATE NORMALIZER
-===================================================== */
-
 function normalizeDate(value){
-
-    if(value === null || value === undefined){
-        return "";
-    }
+    if(value === null || value === undefined) return "";
 
     let s = String(value).trim();
+    if(!s) return "";
 
-    if(!s){
-        return "";
+    // YYYY-MM-DD / YYYY/MM/DD
+    let m = s.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})/);
+    if(m){
+        return `${m[1]}-${String(Number(m[2])).padStart(2,"0")}-${String(Number(m[3])).padStart(2,"0")}`;
     }
 
-
-    /* YYYY-MM-DD or YYYY/MM/DD */
-
-    let match = s.match(
-        /^(\d{4})[-/](\d{1,2})[-/](\d{1,2})/
-    );
-
-    if(match){
-
-        return match[1] + "-" +
-            String(Number(match[2])).padStart(2,"0") +
-            "-" +
-            String(Number(match[3])).padStart(2,"0");
-
+    // DD-MM-YYYY / DD/MM/YYYY
+    m = s.match(/^(\d{1,2})[-/](\d{1,2})[-/](\d{4})/);
+    if(m){
+        return `${m[3]}-${String(Number(m[2])).padStart(2,"0")}-${String(Number(m[1])).padStart(2,"0")}`;
     }
 
-
-    /* DD-MM-YYYY */
-
-    match = s.match(
-        /^(\d{1,2})[-/](\d{1,2})[-/](\d{4})/
-    );
-
-    if(match){
-
-        return match[3] + "-" +
-            String(Number(match[2])).padStart(2,"0") +
-            "-" +
-            String(Number(match[1])).padStart(2,"0");
-
-    }
-
-
-    /* Excel serial date */
-
+    // Excel serial date
     if(/^\d+(\.\d+)?$/.test(s)){
-
         const serial = Number(s);
-
         if(serial > 20000 && serial < 70000){
-
-            const excelDate =
-                new Date(Date.UTC(1899,11,30));
-
-            excelDate.setUTCDate(
-                excelDate.getUTCDate() + serial
-            );
-
-            return excelDate
-                .toISOString()
-                .slice(0,10);
-
+            const d = new Date(Date.UTC(1899,11,30));
+            d.setUTCDate(d.getUTCDate() + serial);
+            return d.toISOString().slice(0,10);
         }
-
     }
-
-
-    /* JavaScript date */
 
     const d = new Date(s);
-
     if(!isNaN(d.getTime())){
-
-        return d.getFullYear() + "-" +
-            String(d.getMonth()+1).padStart(2,"0") +
-            "-" +
-            String(d.getDate()).padStart(2,"0");
-
+        return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
     }
 
     return "";
-
 }
-
-
-/* =====================================================
-   DISPLAY DATE
-===================================================== */
 
 function displayDate(date){
-
-    if(!date){
-        return "";
-    }
-
-    const parts = date.split("-");
-
-    if(parts.length !== 3){
-        return date;
-    }
-
-    return parts[2] + "-" +
-        parts[1] + "-" +
-        parts[0];
-
+    if(!date) return "";
+    const p = date.split("-");
+    return p.length === 3 ? `${p[2]}-${p[1]}-${p[0]}` : date;
 }
 
-
-/* =====================================================
-   CSV PARSER
-   Handles first blank column in Orders.csv
-===================================================== */
-
+/*
+Robust CSV parser:
+- quoted commas
+- quoted line breaks
+- doubled quotes
+- BOM
+- first blank column in Orders.csv
+*/
 function parseCSV(text){
+    text = String(text || "").replace(/^\uFEFF/, "");
 
     const rows = [];
-
     let row = [];
-
     let cell = "";
-
     let inQuotes = false;
 
-
-    for(let i=0;i<text.length;i++){
-
+    for(let i=0; i<text.length; i++){
         const c = text[i];
-
         const next = text[i+1];
 
-
         if(c === '"' && inQuotes && next === '"'){
-
             cell += '"';
-
             i++;
-
             continue;
-
         }
-
 
         if(c === '"'){
-
             inQuotes = !inQuotes;
-
             continue;
-
         }
-
 
         if(c === "," && !inQuotes){
-
             row.push(cell);
-
             cell = "";
-
             continue;
-
         }
 
-
-        if(
-            (c === "\n" || c === "\r")
-            && !inQuotes
-        ){
-
-            if(c === "\r" && next === "\n"){
-                i++;
-            }
+        if((c === "\n" || c === "\r") && !inQuotes){
+            if(c === "\r" && next === "\n") i++;
 
             row.push(cell);
-
             cell = "";
 
-
-            if(
-                row.some(
-                    value =>
-                    String(value).trim() !== ""
-                )
-            ){
+            if(row.some(v => String(v).trim() !== "")){
                 rows.push(row);
             }
 
             row = [];
-
             continue;
-
         }
-
 
         cell += c;
-
     }
-
 
     if(cell.length || row.length){
-
         row.push(cell);
-
-        if(
-            row.some(
-                value =>
-                String(value).trim() !== ""
-            )
-        ){
+        if(row.some(v => String(v).trim() !== "")){
             rows.push(row);
         }
-
     }
 
+    if(!rows.length) return [];
 
-    if(!rows.length){
-        return [];
-    }
-
-
-    /*
-        IMPORTANT:
-        Orders.csv has a blank first header.
-
-        Example:
-
-        ,ORDER_CREATED_AT,ORDER_MONTH,...
-
-        Parser keeps it as an empty header,
-        which is completely fine.
-    */
-
-    const headers = rows
-        .shift()
-        .map(header => String(header).trim());
-
-
-    return rows.map(row => {
-
-        const object = {};
-
-        headers.forEach((header,index) => {
-
-            if(!header){
-                return;
-            }
-
-            object[header] =
-                String(row[index] ?? "").trim();
-
-        });
-
-        return object;
-
+    const headers = rows.shift().map((h,i) => {
+        const header = String(h ?? "").replace(/^\uFEFF/,"").trim();
+        return header || `__EMPTY_${i}`;
     });
 
+    return rows.map(r => {
+        const obj = {};
+        headers.forEach((h,i) => {
+            obj[h] = String(r[i] ?? "").trim();
+        });
+        return obj;
+    });
 }
-
-
-/* =====================================================
-   STATUS NORMALIZER
-   Reads FINAL_STATUS from Orders.csv
-===================================================== */
 
 function normalizeStatus(value){
+    const s = String(value || "").trim().toLowerCase();
 
-    const status =
-        String(value || "")
-        .trim()
-        .toLowerCase();
-
-
-    if(
-        status.includes("cancel")
-    ){
-        return "Cancelled";
-    }
-
-
-    if(
-        status.includes("deliver")
-    ){
-        return "Delivered";
-    }
-
-
-    if(
-        status.includes("rto")
-    ){
-        return "RTO";
-    }
-
+    if(s.includes("cancel")) return "Cancelled";
+    if(s.includes("deliver")) return "Delivered";
+    if(s.includes("rto")) return "RTO";
 
     return "";
-
 }
 
-
-/* =====================================================
-   LOAD DATA.CSV
-   ONLY FOR TOTAL ORDERS TAB
-===================================================== */
-
-async function loadDataCSV(){
-
-    const response =
-        await fetch(
-            "data.csv?v=" + Date.now(),
-            {
-                cache:"no-store"
-            }
-        );
-
-
-    if(!response.ok){
-
-        throw new Error(
-            "data.csv could not be loaded."
-        );
-
-    }
-
-
-    const text =
-        await response.text();
-
-
-    totalOrdersData =
-        parseCSV(text);
-
-
-    if(!totalOrdersData.length){
-
-        throw new Error(
-            "data.csv is empty."
-        );
-
-    }
-
-
-    /*
-        Expected data.csv:
-
-        date
-        COMPANY_NAME
-        orders
-
-        This is ONLY used by
-        Total Orders tab.
-    */
-
-    const first =
-        totalOrdersData[0];
-
-
-    if(
-        !("date" in first) ||
-        !("COMPANY_NAME" in first) ||
-        !("orders" in first)
-    ){
-
-        throw new Error(
-            "data.csv must contain: date, COMPANY_NAME, orders"
-        );
-
-    }
-
+function loadCSV(url){
+    return fetch(url + "?v=" + Date.now(), {
+        cache:"no-store"
+    }).then(response => {
+        if(!response.ok){
+            throw new Error(`${url} could not be loaded.`);
+        }
+        return response.text();
+    });
 }
 
+/* ======================================================
+   TOTAL ORDERS TAB
+   Source = data.csv
+   Header = date,COMPANY_NAME,orders
+====================================================== */
 
-/* =====================================================
-   LOAD ORDERS.CSV
-   USED BY STATUS + WITHOUT ONDC
-===================================================== */
+function prepareTotalData(rows){
+    const result = [];
 
-async function loadOrdersCSV(){
+    rows.forEach(row => {
+        const date = normalizeDate(row.date);
+        const company = String(row.COMPANY_NAME || "").trim();
 
-    const response =
-        await fetch(
-            "Orders.csv?v=" + Date.now(),
-            {
-                cache:"no-store"
-            }
+        if(!date || !company) return;
+
+        const orders = Number(
+            String(row.orders || "0").replace(/,/g,"").trim()
         );
 
+        if(!Number.isFinite(orders)) return;
 
-    if(!response.ok){
+        result.push({
+            date,
+            company,
+            orders
+        });
+    });
 
-        throw new Error(
-            "Orders.csv could not be loaded."
-        );
-
+    if(!result.length){
+        throw new Error("data.csv has no valid rows.");
     }
 
+    return result;
+}
 
-    const text =
-        await response.text();
+function determineTotalDates(){
+    const dates = [...new Set(totalData.map(r => r.date))].sort();
 
+    totalLatestDate = dates[dates.length - 1];
+    totalPreviousDateKey = dates.length >= 2 ? dates[dates.length - 2] : "";
+    totalCurrentMonth = totalLatestDate.slice(0,7);
+    totalPreviousMonthKey = getPreviousMonth(totalCurrentMonth);
+}
 
-    ordersCSVData =
-        parseCSV(text);
+function makeTotalSummary(rows){
+    const map = new Map();
 
+    rows.forEach(row => {
+        if(!map.has(row.company)){
+            map.set(row.company,{
+                company: row.company,
+                current: 0,
+                previous: 0,
+                latest: 0,
+                previousDate: 0
+            });
+        }
 
-    if(!ordersCSVData.length){
+        const item = map.get(row.company);
 
-        throw new Error(
-            "Orders.csv is empty."
-        );
+        if(row.date.slice(0,7) === totalCurrentMonth){
+            item.current += row.orders;
+        }
 
+        if(row.date.slice(0,7) === totalPreviousMonthKey){
+            item.previous += row.orders;
+        }
+
+        if(row.date === totalLatestDate){
+            item.latest += row.orders;
+        }
+
+        if(row.date === totalPreviousDateKey){
+            item.previousDate += row.orders;
+        }
+    });
+
+    return [...map.values()];
+}
+
+function renderTotalOrders(){
+    const summary = makeTotalSummary(totalData);
+
+    const currentTotal = summary.reduce((a,r)=>a+r.current,0);
+    const previousTotal = summary.reduce((a,r)=>a+r.previous,0);
+    const latestTotal = summary.reduce((a,r)=>a+r.latest,0);
+    const previousTotalDate = summary.reduce((a,r)=>a+r.previousDate,0);
+
+    $("currentMonthLabel").textContent = monthName(totalCurrentMonth);
+    $("previousMonthLabel").textContent = monthName(totalPreviousMonthKey);
+    $("latestDateLabel").textContent = displayDate(totalLatestDate);
+    $("previousDateLabel").textContent = displayDate(totalPreviousDateKey);
+
+    $("currentMonthTotal").textContent = numberFormat(currentTotal);
+    $("previousMonthTotal").textContent = numberFormat(previousTotal);
+    $("latestDateTotal").textContent = numberFormat(latestTotal);
+    $("previousDateTotal").textContent = numberFormat(previousTotalDate);
+
+    $("orderCurrentHead").textContent = monthName(totalCurrentMonth);
+    $("orderPreviousHead").textContent = monthName(totalPreviousMonthKey);
+    $("orderLatestHead").textContent = displayDate(totalLatestDate);
+    $("orderPreviousDateHead").textContent = displayDate(totalPreviousDateKey);
+
+    $("dashboardRange").textContent =
+        `${monthName(totalCurrentMonth)} • ${displayDate(totalLatestDate)} & ${displayDate(totalPreviousDateKey)}`;
+
+    $("lastUpdated").textContent =
+        `Latest dump date: ${displayDate(totalLatestDate)}`;
+
+    renderOrderTable(summary);
+}
+
+function renderOrderTable(summary = makeTotalSummary(totalData)){
+    const search = $("orderSearch").value.trim().toLowerCase();
+    const sort = $("orderSort").value;
+
+    let data = summary.filter(r =>
+        r.company.toLowerCase().includes(search)
+    );
+
+    data.sort((a,b) => {
+        if(sort === "name") return a.company.localeCompare(b.company);
+        return (b[sort] || 0) - (a[sort] || 0);
+    });
+
+    if(!data.length){
+        $("ordersTableBody").innerHTML =
+            `<tr><td colspan="5" class="loading">No data found.</td></tr>`;
+        return;
     }
 
+    $("ordersTableBody").innerHTML = data.map(r => `
+        <tr>
+            <td>${escapeHTML(r.company)}</td>
+            <td>${numberFormat(r.current)}</td>
+            <td>${numberFormat(r.previous)}</td>
+            <td>${numberFormat(r.latest)}</td>
+            <td>${numberFormat(r.previousDate)}</td>
+        </tr>
+    `).join("");
+}
 
-    const first =
-        ordersCSVData[0];
+/* ======================================================
+   RAW ORDERS
+   Source = Orders.csv
+====================================================== */
 
-
-    /*
-        ACTUAL REQUIRED HEADERS
-        FROM YOUR ORDERS.CSV
-    */
-
+function prepareRawOrders(rows){
     const required = [
-
         "ORDER_CREATED_AT",
         "ZOP_ID",
         "COMPANY_NAME",
-        "PAYMENT_GATEWAY",
-        "FINAL_STATUS"
-
+        "FINAL_STATUS",
+        "PAYMENT_GATEWAY"
     ];
 
-
-    const missing =
-        required.filter(
-            column =>
-            !(column in first)
-        );
-
+    const missing = required.filter(c => !(c in (rows[0] || {})));
 
     if(missing.length){
-
         throw new Error(
-            "Orders.csv missing columns: " +
-            missing.join(", ")
+            "orders.csv missing columns: " + missing.join(", ")
         );
-
     }
 
+    const result = [];
 
-    buildOrdersSource();
+    rows.forEach(row => {
+        const zopID = String(row.ZOP_ID || "").trim();
+        const seller = String(row.COMPANY_NAME || "").trim();
+        const date = normalizeDate(row.ORDER_CREATED_AT);
 
-}
+        if(!zopID || !seller || !date) return;
 
-
-/* =====================================================
-   BUILD ORDERS SOURCE
-===================================================== */
-
-function buildOrdersSource(){
-
-    statusOrders = [];
-
-
-    ordersCSVData.forEach(row => {
-
-        const zopID =
-            String(row.ZOP_ID || "").trim();
-
-        const seller =
-            String(row.COMPANY_NAME || "").trim();
-
-        const date =
-            normalizeDate(
-                row.ORDER_CREATED_AT
-            );
-
-        const gateway =
-            String(
-                row.PAYMENT_GATEWAY || ""
-            ).trim();
-
-        const status =
-            normalizeStatus(
-                row.FINAL_STATUS
-            );
-
-
-        /*
-            1 ROW = 1 ORDER
-
-            NO DISTINCT
-            NO DUPLICATE REMOVAL
-
-            This matches your
-            Orders.csv counting rule.
-        */
-
-        if(
-            !zopID ||
-            !seller ||
-            !date
-        ){
-            return;
-        }
-
-
-        statusOrders.push({
-
-            zopID:zopID,
-
-            seller:seller,
-
-            date:date,
-
-            gateway:gateway,
-
-            status:status
-
+        result.push({
+            zopID,
+            seller,
+            date,
+            status: normalizeStatus(row.FINAL_STATUS),
+            gateway: String(row.PAYMENT_GATEWAY || "").trim()
         });
-
     });
 
-
-    determineOrderDates();
-
-    buildWithoutONDC();
-
-}
-
-
-/* =====================================================
-   DETERMINE DATES FROM ORDERS.CSV
-===================================================== */
-
-function determineOrderDates(){
-
-    const dates =
-        [
-            ...new Set(
-                statusOrders.map(
-                    row => row.date
-                )
-            )
-        ]
-        .sort();
-
-
-    if(!dates.length){
-
-        throw new Error(
-            "No valid ORDER_CREATED_AT dates found in Orders.csv."
-        );
-
+    if(!result.length){
+        throw new Error("Orders.csv has no valid order rows.");
     }
 
-
-    latestDate =
-        dates[dates.length - 1];
-
-
-    previousDateKey =
-        dates.length >= 2
-        ? dates[dates.length - 2]
-        : "";
-
-
-    currentMonth =
-        latestDate.slice(0,7);
-
-
-    previousMonthKey =
-        getPreviousMonth(
-            currentMonth
-        );
-
+    return result;
 }
 
+function determineRawDates(){
+    const dates = [...new Set(allOrders.map(r => r.date))].sort();
 
-/* =====================================================
-   BUILD TOTAL ORDER SUMMARY
-   FROM data.csv
-===================================================== */
-
-function buildOrderSummaryFromData(){
-
-    const map = new Map();
-
-
-    totalOrdersData.forEach(row => {
-
-        const date =
-            normalizeDate(row.date);
-
-        const seller =
-            String(
-                row.COMPANY_NAME || ""
-            ).trim();
-
-        const orders =
-            Number(row.orders) || 0;
-
-
-        if(!date || !seller){
-            return;
-        }
-
-
-        if(!map.has(seller)){
-
-            map.set(
-                seller,
-                {
-                    company:seller,
-                    current:0,
-                    previous:0,
-                    latest:0,
-                    previousDate:0
-                }
-            );
-
-        }
-
-
-        const item =
-            map.get(seller);
-
-
-        if(
-            date.slice(0,7)
-            === currentMonth
-        ){
-            item.current += orders;
-        }
-
-
-        if(
-            date.slice(0,7)
-            === previousMonthKey
-        ){
-            item.previous += orders;
-        }
-
-
-        if(date === latestDate){
-            item.latest += orders;
-        }
-
-
-        if(date === previousDateKey){
-            item.previousDate += orders;
-        }
-
-    });
-
-
-    orderSummary =
-        [...map.values()];
-
+    latestDate = dates[dates.length - 1];
+    previousDateKey = dates.length >= 2 ? dates[dates.length - 2] : "";
+    currentMonth = latestDate.slice(0,7);
+    previousMonthKey = getPreviousMonth(currentMonth);
 }
 
-
-/* =====================================================
-   WITHOUT ONDC
-   SOURCE = Orders.csv
-===================================================== */
-
-function buildWithoutONDC(){
-
+function makeRawSummary(rows){
     const map = new Map();
 
-
-    statusOrders
-    .filter(
-        row =>
-        row.gateway !== ""
-    )
-    .forEach(row => {
-
+    rows.forEach(row => {
         if(!map.has(row.seller)){
-
-            map.set(
-                row.seller,
-                {
-                    company:row.seller,
-                    current:0,
-                    previous:0,
-                    latest:0,
-                    previousDate:0
-                }
-            );
-
+            map.set(row.seller,{
+                company: row.seller,
+                current: 0,
+                previous: 0,
+                latest: 0,
+                previousDate: 0
+            });
         }
 
+        const item = map.get(row.seller);
 
-        const item =
-            map.get(row.seller);
-
-
-        if(
-            row.date.slice(0,7)
-            === currentMonth
-        ){
-            item.current++;
-        }
-
-
-        if(
-            row.date.slice(0,7)
-            === previousMonthKey
-        ){
-            item.previous++;
-        }
-
-
-        if(row.date === latestDate){
-            item.latest++;
-        }
-
-
-        if(row.date === previousDateKey){
-            item.previousDate++;
-        }
-
+        if(row.date.slice(0,7) === currentMonth) item.current++;
+        if(row.date.slice(0,7) === previousMonthKey) item.previous++;
+        if(row.date === latestDate) item.latest++;
+        if(row.date === previousDateKey) item.previousDate++;
     });
 
-
-    withoutONDC =
-        [...map.values()];
-
+    return [...map.values()];
 }
-
-
-/* =====================================================
-   TOTAL ORDERS RENDER
-===================================================== */
-
-function renderTotalOrders(){
-
-    const currentTotal =
-        orderSummary.reduce(
-            (total,row) =>
-            total + row.current,
-            0
-        );
-
-
-    const previousTotal =
-        orderSummary.reduce(
-            (total,row) =>
-            total + row.previous,
-            0
-        );
-
-
-    const latestTotal =
-        orderSummary.reduce(
-            (total,row) =>
-            total + row.latest,
-            0
-        );
-
-
-    const previousTotalDate =
-        orderSummary.reduce(
-            (total,row) =>
-            total + row.previousDate,
-            0
-        );
-
-
-    $("currentMonthLabel").textContent =
-        monthName(currentMonth);
-
-
-    $("previousMonthLabel").textContent =
-        monthName(previousMonthKey);
-
-
-    $("currentMonthTotal").textContent =
-        numberFormat(currentTotal);
-
-
-    $("previousMonthTotal").textContent =
-        numberFormat(previousTotal);
-
-
-    $("latestDateLabel").textContent =
-        displayDate(latestDate);
-
-
-    $("previousDateLabel").textContent =
-        displayDate(previousDateKey);
-
-
-    $("latestDateTotal").textContent =
-        numberFormat(latestTotal);
-
-
-    $("previousDateTotal").textContent =
-        numberFormat(previousTotalDate);
-
-
-    $("orderCurrentHead").textContent =
-        monthName(currentMonth);
-
-
-    $("orderPreviousHead").textContent =
-        monthName(previousMonthKey);
-
-
-    $("orderLatestHead").textContent =
-        displayDate(latestDate);
-
-
-    $("orderPreviousDateHead").textContent =
-        displayDate(previousDateKey);
-
-
-    $("dashboardRange").textContent =
-        `${monthName(currentMonth)} •
-        ${displayDate(latestDate)} &
-        ${displayDate(previousDateKey)}`;
-
-
-    $("lastUpdated").textContent =
-        `Latest dump date: ${displayDate(latestDate)}`;
-
-
-    renderOrderTable();
-
-}
-
-
-/* =====================================================
-   TOTAL ORDER TABLE
-===================================================== */
-
-function renderOrderTable(){
-
-    const search =
-        $("orderSearch")
-        .value
-        .trim()
-        .toLowerCase();
-
-
-    const sort =
-        $("orderSort").value;
-
-
-    let data =
-        orderSummary.filter(
-            row =>
-            row.company
-            .toLowerCase()
-            .includes(search)
-        );
-
-
-    data.sort((a,b) => {
-
-        if(sort === "name"){
-
-            return a.company.localeCompare(
-                b.company
-            );
-
-        }
-
-
-        return (
-            (b[sort] || 0) -
-            (a[sort] || 0)
-        );
-
-    });
-
-
-    if(!data.length){
-
-        $("ordersTableBody").innerHTML =
-        `
-        <tr>
-            <td colspan="5" class="loading">
-                No data found.
-            </td>
-        </tr>
-        `;
-
-        return;
-
-    }
-
-
-    $("ordersTableBody").innerHTML =
-        data.map(row => `
-
-        <tr>
-
-            <td>
-                ${escapeHTML(row.company)}
-            </td>
-
-            <td>
-                ${numberFormat(row.current)}
-            </td>
-
-            <td>
-                ${numberFormat(row.previous)}
-            </td>
-
-            <td>
-                ${numberFormat(row.latest)}
-            </td>
-
-            <td>
-                ${numberFormat(row.previousDate)}
-            </td>
-
-        </tr>
-
-        `).join("");
-
-}
-
-
-/* =====================================================
-   SELLER DROPDOWN
-===================================================== */
 
 function populateSellerDropdown(){
-
-    const sellers =
-        [
-            ...new Set(
-                statusOrders.map(
-                    row => row.seller
-                )
-            )
-        ]
-        .sort(
-            (a,b) =>
-            a.localeCompare(b)
-        );
-
+    const sellers = [...new Set(allOrders.map(r => r.seller))]
+        .sort((a,b) => a.localeCompare(b));
 
     $("sellerSelect").innerHTML =
-        `
-        <option value="ALL">
-            All Sellers
-        </option>
-        ` +
-
-        sellers.map(
-            seller => `
-            <option value="${escapeHTML(seller)}">
-                ${escapeHTML(seller)}
-            </option>
-            `
+        `<option value="ALL">All Sellers</option>` +
+        sellers.map(s =>
+            `<option value="${escapeHTML(s)}">${escapeHTML(s)}</option>`
         ).join("");
-
 }
 
-
-/* =====================================================
+/* ======================================================
    STATUS ANALYSIS
-   SOURCE = Orders.csv
-===================================================== */
+   Source = Orders.csv / FINAL_STATUS
+====================================================== */
 
 function renderStatusAnalysis(){
+    const selectedStatus = $("statusSelect").value;
+    const selectedSeller = $("sellerSelect").value;
+    const search = $("statusSearch").value.trim().toLowerCase();
 
-    const selectedStatus =
-        $("statusSelect").value;
+    const filtered = allOrders.filter(row => {
+        const sellerMatch =
+            selectedSeller === "ALL" || row.seller === selectedSeller;
 
+        const searchMatch =
+            !search ||
+            row.seller.toLowerCase().includes(search) ||
+            row.zopID.toLowerCase().includes(search);
 
-    const selectedSeller =
-        $("sellerSelect").value;
+        return sellerMatch && searchMatch;
+    });
 
+    const currentStatusOrders = filtered.filter(row =>
+        row.date.slice(0,7) === currentMonth &&
+        row.status === selectedStatus
+    );
 
-    const search =
-        $("statusSearch")
-        .value
-        .trim()
-        .toLowerCase();
-
-
-    /*
-        Filter by seller/search
-    */
-
-    let filtered =
-        statusOrders.filter(row => {
-
-            const sellerMatch =
-                selectedSeller === "ALL"
-                ||
-                row.seller === selectedSeller;
-
-
-            const searchMatch =
-                !search
-                ||
-                row.seller
-                    .toLowerCase()
-                    .includes(search)
-                ||
-                row.zopID
-                    .toLowerCase()
-                    .includes(search);
-
-
-            return (
-                sellerMatch &&
-                searchMatch
-            );
-
-        });
-
-
-    /*
-        Selected status for current month
-    */
-
-    const currentStatusOrders =
-        filtered.filter(
-            row =>
-            row.date.slice(0,7)
-            === currentMonth
-            &&
-            row.status
-            === selectedStatus
-        );
-
-
-    /*
-        DENOMINATOR
-
-        IMPORTANT:
-
-        Status Analysis denominator
-        is TOTAL ORDERS from data.csv.
-
-        Therefore first tab and
-        status percentage use the
-        exact same Total Orders.
-    */
-
-    let denominator = 0;
-
-
-    if(selectedSeller === "ALL"){
-
-        denominator =
-            orderSummary.reduce(
-                (total,row) =>
-                total + row.current,
-                0
-            );
-
-    }
-    else{
-
-        const sellerSummary =
-            orderSummary.find(
-                row =>
-                row.company === selectedSeller
-            );
-
-
-        denominator =
-            sellerSummary
-            ? sellerSummary.current
-            : 0;
-
-    }
-
+    const denominator = filtered.filter(row =>
+        row.date.slice(0,7) === currentMonth
+    ).length;
 
     const statusPercentage =
         denominator > 0
+            ? (currentStatusOrders.length / denominator) * 100
+            : 0;
 
-        ?
+    $("statusCardLabel").textContent = selectedStatus;
+    $("selectedStatusTotal").textContent =
+        numberFormat(currentStatusOrders.length);
 
-        (
-            currentStatusOrders.length
-            /
-            denominator
-        ) * 100
-
-        :
-
-        0;
-
-
-    /*
-        CARDS
-    */
-
-    $("statusCardLabel")
-        .textContent =
-        selectedStatus;
-
-
-    $("selectedStatusTotal")
-        .textContent =
-        numberFormat(
-            currentStatusOrders.length
-        );
-
-
-    $("selectedStatusSub")
-        .textContent =
+    $("selectedStatusSub").textContent =
         `${selectedStatus} orders in ${monthName(currentMonth)}`;
 
-
-    $("statusMonthLabel")
-        .textContent =
+    $("statusMonthLabel").textContent =
         monthName(currentMonth);
 
-
-    $("statusMonthTotal")
-        .textContent =
+    $("statusMonthTotal").textContent =
         numberFormat(denominator);
 
-
-    $("statusPercentageLabel")
-        .textContent =
+    $("statusPercentageLabel").textContent =
         `${selectedStatus} %`;
 
-
-    $("statusPercentage")
-        .textContent =
+    $("statusPercentage").textContent =
         percentage(statusPercentage);
 
+    $("statusPercentageSub").textContent =
+        `${numberFormat(currentStatusOrders.length)} ÷ ${numberFormat(denominator)} × 100`;
 
-    $("statusPercentageSub")
-        .textContent =
-        `${numberFormat(currentStatusOrders.length)}
-        ÷
-        ${numberFormat(denominator)}
-        × 100`;
+    $("selectedSellerCard").textContent =
+        selectedSeller === "ALL" ? "All Sellers" : selectedSeller;
 
-
-    $("selectedSellerCard")
-        .textContent =
-        selectedSeller === "ALL"
-        ? "All Sellers"
-        : selectedSeller;
-
-
-    /*
-        HEADERS
-    */
-
-    $("statusTableTitle")
-        .textContent =
+    $("statusTableTitle").textContent =
         `Seller-wise ${selectedStatus}`;
 
-
-    $("statusMonthOrdersHead")
-        .textContent =
+    $("statusMonthOrdersHead").textContent =
         `${monthName(currentMonth)} Total Orders`;
 
-
-    $("statusLatestDateHead")
-        .textContent =
+    $("statusLatestDateHead").textContent =
         `${displayDate(latestDate)} ${selectedStatus}`;
 
-
-    $("statusPreviousDateHead")
-        .textContent =
+    $("statusPreviousDateHead").textContent =
         `${displayDate(previousDateKey)} ${selectedStatus}`;
 
-
-    $("statusPercentageHead")
-        .textContent =
+    $("statusPercentageHead").textContent =
         `${monthName(currentMonth)} ${selectedStatus} %`;
 
-
-    /*
-        SELLERS
-
-        Seller list comes from Orders.csv.
-    */
-
-    let sellers =
-        [
-            ...new Set(
-                statusOrders.map(
-                    row => row.seller
-                )
-            )
-        ];
-
-
-    sellers =
-        sellers.filter(seller => {
-
+    let sellers = [...new Set(allOrders.map(r => r.seller))]
+        .filter(seller => {
             const sellerMatch =
-                selectedSeller === "ALL"
-                ||
-                seller === selectedSeller;
-
+                selectedSeller === "ALL" || seller === selectedSeller;
 
             const searchMatch =
-                !search
-                ||
-                seller
-                    .toLowerCase()
-                    .includes(search);
+                !search || seller.toLowerCase().includes(search);
 
-
-            return (
-                sellerMatch &&
-                searchMatch
-            );
-
-        });
-
+            return sellerMatch && searchMatch;
+        })
+        .sort((a,b) => a.localeCompare(b));
 
     if(!sellers.length){
-
         $("statusTableBody").innerHTML =
-        `
-        <tr>
-            <td colspan="5" class="loading">
-                No data found.
-            </td>
-        </tr>
-        `;
-
+            `<tr><td colspan="5" class="loading">No data found.</td></tr>`;
         return;
-
     }
 
+    $("statusTableBody").innerHTML = sellers.map(seller => {
+        const sellerRows = allOrders.filter(r => r.seller === seller);
 
-    $("statusTableBody").innerHTML =
-        sellers.map(seller => {
+        const totalOrders = sellerRows.filter(r =>
+            r.date.slice(0,7) === currentMonth
+        ).length;
 
-            /*
-                Total Orders denominator
-                comes from data.csv.
-            */
+        const latestCount = sellerRows.filter(r =>
+            r.date === latestDate &&
+            r.status === selectedStatus
+        ).length;
 
-            const sellerSummary =
-                orderSummary.find(
-                    row =>
-                    row.company === seller
-                );
+        const previousCount = sellerRows.filter(r =>
+            r.date === previousDateKey &&
+            r.status === selectedStatus
+        ).length;
 
+        const monthStatus = sellerRows.filter(r =>
+            r.date.slice(0,7) === currentMonth &&
+            r.status === selectedStatus
+        ).length;
 
-            const totalOrders =
-                sellerSummary
-                ? sellerSummary.current
+        const sellerPercentage =
+            totalOrders > 0
+                ? (monthStatus / totalOrders) * 100
                 : 0;
 
-
-            /*
-                Latest date status
-            */
-
-            const latestCount =
-                statusOrders.filter(
-                    row =>
-                    row.seller === seller
-                    &&
-                    row.date === latestDate
-                    &&
-                    row.status === selectedStatus
-                ).length;
-
-
-            /*
-                Previous date status
-            */
-
-            const previousCount =
-                statusOrders.filter(
-                    row =>
-                    row.seller === seller
-                    &&
-                    row.date === previousDateKey
-                    &&
-                    row.status === selectedStatus
-                ).length;
-
-
-            /*
-                Current month selected status
-            */
-
-            const monthStatus =
-                statusOrders.filter(
-                    row =>
-                    row.seller === seller
-                    &&
-                    row.date.slice(0,7)
-                    === currentMonth
-                    &&
-                    row.status === selectedStatus
-                ).length;
-
-
-            const sellerPercentage =
-                totalOrders > 0
-
-                ?
-
-                (
-                    monthStatus
-                    /
-                    totalOrders
-                ) * 100
-
-                :
-
-                0;
-
-
-            return `
-
+        return `
             <tr>
-
-                <td>
-                    ${escapeHTML(seller)}
-                </td>
-
-                <td>
-                    ${numberFormat(totalOrders)}
-                </td>
-
-                <td>
-                    ${numberFormat(latestCount)}
-                </td>
-
-                <td>
-                    ${numberFormat(previousCount)}
-                </td>
-
-                <td>
-                    ${percentage(sellerPercentage)}
-                </td>
-
+                <td>${escapeHTML(seller)}</td>
+                <td>${numberFormat(totalOrders)}</td>
+                <td>${numberFormat(latestCount)}</td>
+                <td>${numberFormat(previousCount)}</td>
+                <td>${percentage(sellerPercentage)}</td>
             </tr>
-
-            `;
-
-        }).join("");
-
+        `;
+    }).join("");
 }
 
+/* ======================================================
+   WITHOUT ONDC
+   Source = Orders.csv / PAYMENT_GATEWAY
 
-/* =====================================================
-   WITHOUT ONDC RENDER
-===================================================== */
+   Blank PAYMENT_GATEWAY     = ONDC -> EXCLUDE
+   Non-blank PAYMENT_GATEWAY  = WITHOUT ONDC -> INCLUDE
+====================================================== */
+
+function getWithoutONDCOrders(){
+    return allOrders.filter(row => row.gateway !== "");
+}
 
 function renderWithoutONDC(){
+    const rows = getWithoutONDCOrders();
+    const summary = makeRawSummary(rows);
 
-    $("ondcCurrentLabel")
-        .textContent =
+    const current = summary.reduce((a,r) => a + r.current, 0);
+    const previous = summary.reduce((a,r) => a + r.previous, 0);
+    const latest = summary.reduce((a,r) => a + r.latest, 0);
+    const previousDate = summary.reduce((a,r) => a + r.previousDate, 0);
+
+    $("ondcCurrentLabel").textContent =
         monthName(currentMonth);
 
-
-    $("ondcPreviousLabel")
-        .textContent =
+    $("ondcPreviousLabel").textContent =
         monthName(previousMonthKey);
 
-
-    $("ondcLatestLabel")
-        .textContent =
+    $("ondcLatestLabel").textContent =
         displayDate(latestDate);
 
-
-    $("ondcPreviousDateLabel")
-        .textContent =
+    $("ondcPreviousDateLabel").textContent =
         displayDate(previousDateKey);
 
+    $("ondcCurrentTotal").textContent =
+        numberFormat(current);
 
-    $("ondcCurrentTotal")
-        .textContent =
-        numberFormat(
-            withoutONDC.reduce(
-                (total,row) =>
-                total + row.current,
-                0
-            )
-        );
+    $("ondcPreviousTotal").textContent =
+        numberFormat(previous);
 
+    $("ondcLatestTotal").textContent =
+        numberFormat(latest);
 
-    $("ondcPreviousTotal")
-        .textContent =
-        numberFormat(
-            withoutONDC.reduce(
-                (total,row) =>
-                total + row.previous,
-                0
-            )
-        );
+    $("ondcPreviousDateTotal").textContent =
+        numberFormat(previousDate);
 
-
-    $("ondcLatestTotal")
-        .textContent =
-        numberFormat(
-            withoutONDC.reduce(
-                (total,row) =>
-                total + row.latest,
-                0
-            )
-        );
-
-
-    $("ondcPreviousDateTotal")
-        .textContent =
-        numberFormat(
-            withoutONDC.reduce(
-                (total,row) =>
-                total + row.previousDate,
-                0
-            )
-        );
-
-
-    $("ondcCurrentHead")
-        .textContent =
+    $("ondcCurrentHead").textContent =
         monthName(currentMonth);
 
-
-    $("ondcPreviousHead")
-        .textContent =
+    $("ondcPreviousHead").textContent =
         monthName(previousMonthKey);
 
-
-    $("ondcLatestHead")
-        .textContent =
+    $("ondcLatestHead").textContent =
         displayDate(latestDate);
 
-
-    $("ondcPreviousDateHead")
-        .textContent =
+    $("ondcPreviousDateHead").textContent =
         displayDate(previousDateKey);
 
-
-    renderONDCtable();
-
+    renderONDCtable(summary);
 }
 
+function renderONDCtable(
+    summary = makeRawSummary(getWithoutONDCOrders())
+){
+    const search = $("ondcSearch").value.trim().toLowerCase();
+    const sort = $("ondcSort").value;
 
-/* =====================================================
-   WITHOUT ONDC TABLE
-===================================================== */
-
-function renderONDCtable(){
-
-    const search =
-        $("ondcSearch")
-        .value
-        .trim()
-        .toLowerCase();
-
-
-    const sort =
-        $("ondcSort").value;
-
-
-    let data =
-        withoutONDC.filter(
-            row =>
-            row.company
-                .toLowerCase()
-                .includes(search)
-        );
-
+    let data = summary.filter(r =>
+        r.company.toLowerCase().includes(search)
+    );
 
     data.sort((a,b) => {
-
         if(sort === "name"){
-
-            return a.company.localeCompare(
-                b.company
-            );
-
+            return a.company.localeCompare(b.company);
         }
-
-
-        return (
-            (b[sort] || 0)
-            -
-            (a[sort] || 0)
-        );
-
+        return (b[sort] || 0) - (a[sort] || 0);
     });
 
-
     if(!data.length){
-
         $("ondcTableBody").innerHTML =
-        `
-        <tr>
-            <td colspan="5" class="loading">
-                No data found.
-            </td>
-        </tr>
-        `;
-
+            `<tr><td colspan="5" class="loading">No data found.</td></tr>`;
         return;
-
     }
 
-
-    $("ondcTableBody").innerHTML =
-        data.map(row => `
-
+    $("ondcTableBody").innerHTML = data.map(r => `
         <tr>
-
-            <td>
-                ${escapeHTML(row.company)}
-            </td>
-
-            <td>
-                ${numberFormat(row.current)}
-            </td>
-
-            <td>
-                ${numberFormat(row.previous)}
-            </td>
-
-            <td>
-                ${numberFormat(row.latest)}
-            </td>
-
-            <td>
-                ${numberFormat(row.previousDate)}
-            </td>
-
+            <td>${escapeHTML(r.company)}</td>
+            <td>${numberFormat(r.current)}</td>
+            <td>${numberFormat(r.previous)}</td>
+            <td>${numberFormat(r.latest)}</td>
+            <td>${numberFormat(r.previousDate)}</td>
         </tr>
-
-        `).join("");
-
+    `).join("");
 }
 
+/* ======================================================
+   LOAD BOTH SOURCES
+====================================================== */
 
-/* =====================================================
-   RENDER EVERYTHING
-===================================================== */
+async function loadDashboard(){
+    try{
+        const [totalText, rawText] = await Promise.all([
+            loadCSV(TOTAL_DATA_FILE),
+            loadCSV(RAW_DATA_FILE)
+        ]);
 
-function renderAll(){
+        const totalRows = parseCSV(totalText);
+        const rawRows = parseCSV(rawText);
 
-    /*
-        Total Orders
-        comes from data.csv
-    */
+        if(!totalRows.length){
+            throw new Error("data.csv is empty.");
+        }
 
-    buildOrderSummaryFromData();
+        if(!rawRows.length){
+            throw new Error("orders.csv is empty.");
+        }
 
-    renderTotalOrders();
+        // Verify the exact source headers.
+        const totalRequired = ["date","COMPANY_NAME","orders"];
+        const totalMissing = totalRequired.filter(
+            c => !(c in totalRows[0])
+        );
 
+        if(totalMissing.length){
+            throw new Error(
+                "data.csv missing columns: " + totalMissing.join(", ")
+            );
+        }
 
-    /*
-        Status + Without ONDC
-        come from Orders.csv
-    */
+        totalData = prepareTotalData(totalRows);
+        allOrders = prepareRawOrders(rawRows);
 
-    populateSellerDropdown();
+        determineTotalDates();
+        determineRawDates();
 
-    renderStatusAnalysis();
+        renderTotalOrders();
+        populateSellerDropdown();
+        renderStatusAnalysis();
+        renderWithoutONDC();
 
-    renderWithoutONDC();
-
+    }catch(error){
+        console.error(error);
+        showError(error.message);
+    }
 }
-
-
-/* =====================================================
-   ERROR
-===================================================== */
 
 function showError(message){
-
-    console.error(message);
-
-
-    $("dashboardRange")
-        .textContent =
+    $("dashboardRange").textContent =
         "Unable to load dashboard data";
 
-
-    $("lastUpdated")
-        .textContent =
+    $("lastUpdated").textContent =
         "Data error";
 
-
     $("ordersTableBody").innerHTML =
-    `
-    <tr>
-        <td colspan="5" class="error">
-            ${escapeHTML(message)}
-        </td>
-    </tr>
-    `;
-
+        `<tr><td colspan="5" class="error">${escapeHTML(message)}</td></tr>`;
 
     $("statusTableBody").innerHTML =
-    `
-    <tr>
-        <td colspan="5" class="error">
-            ${escapeHTML(message)}
-        </td>
-    </tr>
-    `;
-
+        `<tr><td colspan="5" class="error">${escapeHTML(message)}</td></tr>`;
 
     $("ondcTableBody").innerHTML =
-    `
-    <tr>
-        <td colspan="5" class="error">
-            ${escapeHTML(message)}
-        </td>
-    </tr>
-    `;
-
+        `<tr><td colspan="5" class="error">${escapeHTML(message)}</td></tr>`;
 }
-
-
-/* =====================================================
-   TAB SWITCH
-===================================================== */
 
 function switchTab(tab){
+    $("ordersSection").classList.toggle(
+        "hidden", tab !== "orders"
+    );
 
-    $("ordersSection")
-        .classList
-        .toggle(
-            "hidden",
-            tab !== "orders"
-        );
+    $("statusSection").classList.toggle(
+        "hidden", tab !== "status"
+    );
 
+    $("ondcSection").classList.toggle(
+        "hidden", tab !== "ondc"
+    );
 
-    $("statusSection")
-        .classList
-        .toggle(
-            "hidden",
-            tab !== "status"
-        );
+    $("tabOrders").classList.toggle(
+        "active", tab === "orders"
+    );
 
+    $("tabStatus").classList.toggle(
+        "active", tab === "status"
+    );
 
-    $("ondcSection")
-        .classList
-        .toggle(
-            "hidden",
-            tab !== "ondc"
-        );
-
-
-    $("tabOrders")
-        .classList
-        .toggle(
-            "active",
-            tab === "orders"
-        );
-
-
-    $("tabStatus")
-        .classList
-        .toggle(
-            "active",
-            tab === "status"
-        );
-
-
-    $("tabONDC")
-        .classList
-        .toggle(
-            "active",
-            tab === "ondc"
-        );
-
+    $("tabONDC").classList.toggle(
+        "active", tab === "ondc"
+    );
 }
 
+$("orderSearch").addEventListener(
+    "input",
+    () => renderOrderTable()
+);
 
-/* =====================================================
-   EVENTS
-===================================================== */
+$("orderSort").addEventListener(
+    "change",
+    () => renderOrderTable()
+);
 
-$("orderSearch")
-    .addEventListener(
-        "input",
-        renderOrderTable
-    );
+$("statusSelect").addEventListener(
+    "change",
+    renderStatusAnalysis
+);
 
+$("sellerSelect").addEventListener(
+    "change",
+    renderStatusAnalysis
+);
 
-$("orderSort")
-    .addEventListener(
-        "change",
-        renderOrderTable
-    );
+$("statusSearch").addEventListener(
+    "input",
+    renderStatusAnalysis
+);
 
+$("ondcSearch").addEventListener(
+    "input",
+    () => renderONDCtable()
+);
 
-$("statusSelect")
-    .addEventListener(
-        "change",
-        renderStatusAnalysis
-    );
+$("ondcSort").addEventListener(
+    "change",
+    () => renderONDCtable()
+);
 
-
-$("sellerSelect")
-    .addEventListener(
-        "change",
-        renderStatusAnalysis
-    );
-
-
-$("statusSearch")
-    .addEventListener(
-        "input",
-        renderStatusAnalysis
-    );
-
-
-$("ondcSearch")
-    .addEventListener(
-        "input",
-        renderONDCtable
-    );
-
-
-$("ondcSort")
-    .addEventListener(
-        "change",
-        renderONDCtable
-    );
-
-
-/* =====================================================
-   START
-===================================================== */
-
-async function startDashboard(){
-
-    try{
-
-        /*
-            Load BOTH files.
-
-            data.csv
-            → Total Orders
-
-            Orders.csv
-            → Status Analysis
-            → Without ONDC
-        */
-
-        await loadDataCSV();
-
-        await loadOrdersCSV();
-
-        renderAll();
-
-    }
-    catch(error){
-
-        showError(error.message);
-
-    }
-
-}
-
-
-startDashboard();
-
+loadDashboard();
 </script>
-
 </body>
 </html>
-```
