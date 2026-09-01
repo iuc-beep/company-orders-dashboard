@@ -7,59 +7,106 @@
 
 <style>
 :root{
-  --bg:#f5f7fb;
+  --bg:#f4f7fc;
   --card:#ffffff;
-  --text:#182230;
+  --text:#172033;
   --muted:#667085;
-  --border:#e5e7eb;
+  --border:#e4e9f2;
   --accent:#315efb;
   --accent2:#7c3aed;
-  --shadow:0 8px 28px rgba(16,24,40,.07);
+  --blue-soft:#eef3ff;
+  --shadow:0 8px 28px rgba(15,23,42,.07);
+  --shadow-hover:0 18px 42px rgba(49,94,251,.16);
 }
 
 *{
   box-sizing:border-box;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   margin:0;
   background:
-    radial-gradient(circle at top right,rgba(49,94,251,.08),transparent 32%),
-    linear-gradient(135deg,#f8faff 0%,#f1f4fa 100%);
+    radial-gradient(circle at 85% 5%,rgba(124,58,237,.09),transparent 25%),
+    radial-gradient(circle at 10% 25%,rgba(49,94,251,.07),transparent 28%),
+    linear-gradient(135deg,#f9fbff 0%,#f1f4fa 100%);
   font-family:Inter,Segoe UI,Arial,sans-serif;
   color:var(--text);
+  min-height:100vh;
 }
 
 .wrap{
   max-width:1500px;
   margin:0 auto;
-  padding:28px;
+  padding:30px;
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 
 header{
+  position:relative;
+  overflow:hidden;
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:20px;
   margin-bottom:22px;
-  padding:28px 30px;
-  background:linear-gradient(
-    135deg,
-    #172554 0%,
-    #315efb 60%,
-    #6941c6 100%
-  );
-  border-radius:20px;
+  padding:30px 32px;
+  background:
+    linear-gradient(
+      135deg,
+      #172554 0%,
+      #315efb 58%,
+      #6941c6 100%
+    );
+  border-radius:22px;
   color:#fff;
-  box-shadow:0 12px 35px rgba(49,94,251,.20);
+  box-shadow:
+    0 16px 40px rgba(49,94,251,.20);
+  isolation:isolate;
+}
+
+header:before{
+  content:"";
+  position:absolute;
+  width:360px;
+  height:360px;
+  right:-120px;
+  top:-190px;
+  border-radius:50%;
+  background:rgba(255,255,255,.09);
+  z-index:-1;
+  animation:floatGlow 6s ease-in-out infinite;
+}
+
+header:after{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  left:45%;
+  bottom:-150px;
+  border-radius:50%;
+  background:rgba(255,255,255,.06);
+  z-index:-1;
+}
+
+@keyframes floatGlow{
+  0%,100%{
+    transform:translate(0,0) scale(1);
+  }
+  50%{
+    transform:translate(-15px,12px) scale(1.05);
+  }
 }
 
 h1{
-  margin:0 0 7px;
-  font-size:30px;
-  letter-spacing:-.6px;
+  margin:0 0 8px;
+  font-size:31px;
+  letter-spacing:-.7px;
   font-weight:800;
 }
 
@@ -69,32 +116,49 @@ h1{
 }
 
 .badge{
-  background:rgba(255,255,255,.14);
+  position:relative;
+  z-index:2;
+  background:rgba(255,255,255,.13);
   color:#fff;
-  border:1px solid rgba(255,255,255,.24);
-  padding:10px 15px;
+  border:1px solid rgba(255,255,255,.25);
+  padding:11px 16px;
   border-radius:999px;
   font-size:13px;
   font-weight:700;
+  backdrop-filter:blur(10px);
+  transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
 }
 
-/* CARDS */
+.badge:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.19);
+  box-shadow:0 8px 22px rgba(0,0,0,.12);
+}
+
+/* ================= CARDS ================= */
 
 .cards{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:16px;
-  margin-bottom:20px;
+  gap:17px;
+  margin-bottom:21px;
 }
 
 .card{
-  background:var(--card);
+  background:rgba(255,255,255,.96);
   border:1px solid var(--border);
-  border-radius:17px;
-  padding:21px;
+  border-radius:18px;
+  padding:22px;
   box-shadow:var(--shadow);
   position:relative;
   overflow:hidden;
+  transition:
+    transform .25s cubic-bezier(.2,.8,.2,1),
+    box-shadow .25s ease,
+    border-color .25s ease;
 }
 
 .card:before{
@@ -109,6 +173,36 @@ h1{
     var(--accent),
     var(--accent2)
   );
+  transition:width .25s ease;
+}
+
+.card:after{
+  content:"";
+  position:absolute;
+  width:110px;
+  height:110px;
+  right:-55px;
+  top:-55px;
+  border-radius:50%;
+  background:rgba(49,94,251,.06);
+  transition:
+    transform .3s ease,
+    background .3s ease;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  box-shadow:var(--shadow-hover);
+  border-color:#cbd6f8;
+}
+
+.card:hover:before{
+  width:7px;
+}
+
+.card:hover:after{
+  transform:scale(1.45);
+  background:rgba(49,94,251,.09);
 }
 
 .card:nth-child(2):before{
@@ -139,29 +233,46 @@ h1{
   font-size:13px;
   color:var(--muted);
   margin-bottom:9px;
-  font-weight:600;
+  font-weight:650;
+  transition:color .2s ease;
+}
+
+.card:hover .label{
+  color:#475467;
 }
 
 .value{
-  font-size:30px;
+  font-size:31px;
   font-weight:850;
-  letter-spacing:-.7px;
+  letter-spacing:-.8px;
+  position:relative;
+  z-index:2;
 }
 
 .small{
   font-size:12px;
   color:var(--muted);
   margin-top:7px;
+  position:relative;
+  z-index:2;
 }
 
-/* PANEL */
+/* ================= PANEL ================= */
 
 .panel{
-  background:var(--card);
+  background:rgba(255,255,255,.97);
   border:1px solid var(--border);
-  border-radius:18px;
-  padding:20px;
+  border-radius:19px;
+  padding:21px;
   box-shadow:var(--shadow);
+  transition:
+    box-shadow .3s ease,
+    border-color .3s ease;
+}
+
+.panel:hover{
+  box-shadow:0 14px 36px rgba(16,24,40,.09);
+  border-color:#d9e0ed;
 }
 
 .panel-title{
@@ -169,15 +280,20 @@ h1{
   justify-content:space-between;
   align-items:center;
   gap:15px;
-  margin-bottom:16px;
+  margin-bottom:17px;
 }
 
 .panel-title h2{
   margin:0;
   font-size:19px;
+  letter-spacing:-.2px;
 }
 
-/* CONTROLS */
+.panel-title .sub{
+  color:var(--muted);
+}
+
+/* ================= CONTROLS ================= */
 
 .controls{
   display:flex;
@@ -195,6 +311,10 @@ select{
   font:inherit;
   color:var(--text);
   outline:none;
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease,
+    transform .2s ease;
 }
 
 input{
@@ -202,19 +322,32 @@ input{
   flex:1;
 }
 
+input::placeholder{
+  color:#98a2b3;
+}
+
+input:hover,
+select:hover{
+  border-color:#c9d2e3;
+}
+
 input:focus,
 select:focus{
   border-color:var(--accent);
-  box-shadow:0 0 0 4px rgba(49,94,251,.09);
+  box-shadow:
+    0 0 0 4px rgba(49,94,251,.09),
+    0 5px 15px rgba(49,94,251,.06);
+  transform:translateY(-1px);
 }
 
-/* TABLE */
+/* ================= TABLE ================= */
 
 .table-wrap{
   overflow:auto;
   max-height:620px;
   border:1px solid var(--border);
   border-radius:14px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.5);
 }
 
 table{
@@ -245,7 +378,7 @@ td:first-child{
 thead th{
   position:sticky;
   top:0;
-  background:#f7f8fc;
+  background:#f6f8fc;
   z-index:2;
   color:#344054;
   font-weight:750;
@@ -255,19 +388,48 @@ thead th:first-child{
   z-index:3;
 }
 
+/* ROW HOVER EFFECT */
+
+tbody tr{
+  position:relative;
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease;
+}
+
+tbody tr td{
+  transition:
+    background .18s ease,
+    color .18s ease,
+    box-shadow .18s ease;
+}
+
 tbody tr:hover td{
-  background:#f5f8ff;
+  background:#f3f7ff;
 }
 
 tbody tr:hover td:first-child{
-  background:#f5f8ff;
+  background:#edf3ff;
+  color:#2447c8;
+  font-weight:750;
+}
+
+tbody tr:hover td:not(:first-child){
+  color:#172554;
+  box-shadow:
+    inset 0 1px 0 rgba(49,94,251,.06),
+    inset 0 -1px 0 rgba(49,94,251,.06);
+}
+
+tbody tr:hover{
+  transform:translateX(2px);
 }
 
 tbody td:first-child{
   font-weight:600;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 
 .footer{
   padding:16px 2px 2px;
@@ -276,7 +438,11 @@ tbody td:first-child{
   line-height:1.6;
 }
 
-/* RESPONSIVE */
+.footer strong{
+  color:#475467;
+}
+
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:1000px){
 
@@ -314,6 +480,10 @@ tbody td:first-child{
     font-size:24px;
   }
 
+  .panel{
+    padding:14px;
+  }
+
   input{
     min-width:100%;
   }
@@ -330,101 +500,50 @@ tbody td:first-child{
 
 <div>
 <h1>Total Order Dashboard</h1>
-
-<div class="sub" id="range">
-Loading data…
+<div class="sub" id="range">Loading data…</div>
 </div>
 
-</div>
-
-<div class="badge" id="updated">
-Loading…
-</div>
+<div class="badge" id="updated">Loading…</div>
 
 </header>
 
 
-<!-- SUMMARY CARDS -->
-
 <section class="cards">
 
 <div class="card">
-
-<div class="label" id="m1label">
-Current Month
+<div class="label" id="m1label">Current Month</div>
+<div class="value" id="m1">—</div>
+<div class="small" id="m1small"></div>
 </div>
-
-<div class="value" id="m1">
-—
-</div>
-
-<div class="small" id="m1small">
-</div>
-
-</div>
-
 
 <div class="card">
-
-<div class="label" id="m2label">
-Previous Month
+<div class="label" id="m2label">Previous Month</div>
+<div class="value" id="m2">—</div>
+<div class="small" id="m2small"></div>
 </div>
-
-<div class="value" id="m2">
-—
-</div>
-
-<div class="small" id="m2small">
-</div>
-
-</div>
-
 
 <div class="card">
-
-<div class="label" id="d1label">
-Latest Date
+<div class="label" id="d1label">Latest Date</div>
+<div class="value" id="d1">—</div>
+<div class="small" id="d1small"></div>
 </div>
-
-<div class="value" id="d1">
-—
-</div>
-
-<div class="small" id="d1small">
-</div>
-
-</div>
-
 
 <div class="card">
-
-<div class="label" id="d2label">
-Previous Date
-</div>
-
-<div class="value" id="d2">
-—
-</div>
-
-<div class="small" id="d2small">
-</div>
-
+<div class="label" id="d2label">Previous Date</div>
+<div class="value" id="d2">—</div>
+<div class="small" id="d2small"></div>
 </div>
 
 </section>
 
 
-<!-- TABLE -->
-
 <section class="panel">
 
 <div class="panel-title">
 
-<h2>
-Company-wise Order Summary
-</h2>
+<h2>Company-wise Order Summary</h2>
 
-<div class="sub" style="color:#667085">
+<div class="sub">
 Daily data + monthly totals
 </div>
 
@@ -526,10 +645,6 @@ the change to GitHub to refresh the dashboard.
 
 <script>
 
-/* =========================
-   CSV READER
-========================= */
-
 function parseCSV(text){
 
   const rows=[];
@@ -604,10 +719,6 @@ function parseCSV(text){
 }
 
 
-/* =========================
-   FORMATTERS
-========================= */
-
 const fmt=n=>
   new Intl.NumberFormat('en-IN').format(n);
 
@@ -637,17 +748,9 @@ const shortDate=d=>
   );
 
 
-/* =========================
-   GLOBAL DATA
-========================= */
-
 let records=[];
 let agg=[];
 
-
-/* =========================
-   LOAD DATA
-========================= */
 
 async function load(){
 
@@ -686,10 +789,6 @@ async function load(){
     );
 
 
-  /* =========================
-     FIND LATEST TWO DATES
-  ========================= */
-
   const dates=
     [...new Set(
       records.map(x=>x.date)
@@ -713,20 +812,9 @@ async function load(){
     dates[dates.length-2];
 
 
-  /* =========================
-     CURRENT MONTH
-     = MONTH OF LATEST DATE
-  ========================= */
-
   const currentMonth=
     latest.slice(0,7);
 
-
-  /* =========================
-     PREVIOUS MONTH
-     = CALENDAR MONTH BEFORE
-       CURRENT MONTH
-  ========================= */
 
   const latestDateObj=
     new Date(
@@ -750,10 +838,6 @@ async function load(){
       previousMonthObj.getMonth()+1
     ).padStart(2,"0");
 
-
-  /* =========================
-     COMPANIES
-  ========================= */
 
   const companies=
     [
@@ -789,17 +873,11 @@ async function load(){
   }
 
 
-  /* =========================
-     AGGREGATE
-  ========================= */
-
   for(const x of records){
 
     const item=
       map.get(x.company);
 
-
-    /* CURRENT MONTH TOTAL */
 
     if(
       x.date.slice(0,7)
@@ -812,8 +890,6 @@ async function load(){
     }
 
 
-    /* PREVIOUS MONTH TOTAL */
-
     if(
       x.date.slice(0,7)
       ===
@@ -825,8 +901,6 @@ async function load(){
     }
 
 
-    /* LATEST DATE */
-
     if(
       x.date
       ===
@@ -837,8 +911,6 @@ async function load(){
 
     }
 
-
-    /* PREVIOUS DATE */
 
     if(
       x.date
@@ -856,10 +928,6 @@ async function load(){
   agg=
     [...map.values()];
 
-
-  /* =========================
-     TOTALS
-  ========================= */
 
   const totalCurrent=
     agg.reduce(
@@ -888,10 +956,6 @@ async function load(){
       0
     );
 
-
-  /* =========================
-     UPDATE CARDS
-  ========================= */
 
   document
     .getElementById('m1label')
@@ -967,10 +1031,6 @@ async function load(){
       "One day before latest date";
 
 
-  /* =========================
-     UPDATE TABLE HEADERS
-  ========================= */
-
   document
     .getElementById('currentHead')
     .textContent=
@@ -997,10 +1057,6 @@ async function load(){
       shortDate(previousDate);
 
 
-  /* =========================
-     HEADER INFO
-  ========================= */
-
   document
     .getElementById('range')
     .textContent=
@@ -1017,10 +1073,6 @@ async function load(){
 
 }
 
-
-/* =========================
-   RENDER TABLE
-========================= */
 
 function render(){
 
@@ -1105,10 +1157,6 @@ function render(){
 }
 
 
-/* =========================
-   ESCAPE HTML
-========================= */
-
 function esc(s){
 
   return s.replace(
@@ -1127,10 +1175,6 @@ function esc(s){
 }
 
 
-/* =========================
-   SEARCH + SORT
-========================= */
-
 document
   .getElementById('search')
   .addEventListener(
@@ -1146,10 +1190,6 @@ document
     render
   );
 
-
-/* =========================
-   START
-========================= */
 
 load().catch(e=>{
 
