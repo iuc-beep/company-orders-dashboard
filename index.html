@@ -8,7 +8,6 @@
 <title>Total Order Dashboard</title>
 
 <style>
-
 :root{
     --bg:#f4f7fb;
     --card:#ffffff;
@@ -30,12 +29,8 @@
 body{
     margin:0;
     background:
-        radial-gradient(circle at top right,
-            rgba(49,94,251,.10),
-            transparent 32%),
-        linear-gradient(135deg,
-            #f8faff 0%,
-            #eef3ff 100%);
+        radial-gradient(circle at top right,rgba(49,94,251,.10),transparent 32%),
+        linear-gradient(135deg,#f8faff 0%,#eef3ff 100%);
     font-family:Inter,Segoe UI,Arial,sans-serif;
     color:var(--text);
 }
@@ -46,8 +41,6 @@ body{
     padding:28px;
 }
 
-/* HEADER */
-
 .header{
     background:linear-gradient(135deg,#172554,#315efb);
     color:white;
@@ -55,7 +48,6 @@ body{
     padding:25px 28px;
     margin-bottom:20px;
     box-shadow:var(--shadow);
-
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -79,8 +71,6 @@ body{
     border:1px solid rgba(255,255,255,.25);
     font-size:13px;
 }
-
-/* TABS */
 
 .tabs{
     display:flex;
@@ -111,8 +101,6 @@ body{
     border-color:transparent;
     background:linear-gradient(135deg,var(--blue),var(--purple));
 }
-
-/* CARDS */
 
 .cards{
     display:grid;
@@ -164,8 +152,6 @@ body{
     margin-top:6px;
 }
 
-/* PANEL */
-
 .panel{
     background:white;
     border:1px solid var(--border);
@@ -188,8 +174,6 @@ body{
     font-size:19px;
 }
 
-/* CONTROLS */
-
 .controls{
     display:flex;
     gap:10px;
@@ -197,8 +181,7 @@ body{
     margin-bottom:15px;
 }
 
-input,
-select{
+input,select{
     padding:11px 13px;
     border:1px solid var(--border);
     border-radius:10px;
@@ -213,13 +196,10 @@ input{
     flex:1;
 }
 
-input:focus,
-select:focus{
+input:focus,select:focus{
     border-color:var(--blue);
     box-shadow:0 0 0 3px rgba(49,94,251,.10);
 }
-
-/* TABLE */
 
 .table-wrapper{
     overflow:auto;
@@ -236,16 +216,14 @@ table{
     font-size:14px;
 }
 
-th,
-td{
+th,td{
     padding:13px 15px;
     border-bottom:1px solid var(--border);
     text-align:right;
     white-space:nowrap;
 }
 
-th:first-child,
-td:first-child{
+th:first-child,td:first-child{
     text-align:left;
 }
 
@@ -286,7 +264,6 @@ tbody tr:hover td{
 }
 
 @media(max-width:1000px){
-
     .cards{
         grid-template-columns:repeat(2,1fr);
     }
@@ -299,7 +276,6 @@ tbody tr:hover td{
 }
 
 @media(max-width:600px){
-
     .container{
         padding:14px;
     }
@@ -316,7 +292,6 @@ tbody tr:hover td{
         font-size:24px;
     }
 }
-
 </style>
 </head>
 
@@ -324,48 +299,36 @@ tbody tr:hover td{
 
 <div class="container">
 
-<!-- HEADER -->
-
 <div class="header">
-
     <div>
         <h1>Total Order Dashboard</h1>
-
-        <p id="dashboardRange">
-            Loading data...
-        </p>
+        <p id="dashboardRange">Loading data...</p>
     </div>
 
     <div class="badge" id="lastUpdated">
         Loading...
     </div>
-
 </div>
 
 
-<!-- TABS -->
-
 <div class="tabs">
 
-    <button
-        class="tab active"
-        id="tabOrders"
-        onclick="switchTab('orders')">
+    <button class="tab active"
+            id="tabOrders"
+            onclick="switchTab('orders')">
         📦 Total Orders
     </button>
 
-    <button
-        class="tab"
-        id="tabStatus"
-        onclick="switchTab('status')">
+    <button class="tab"
+            id="tabStatus"
+            onclick="switchTab('status')">
         📊 Status Analysis
     </button>
 
-    <button
-        class="tab"
-        id="tabONDC"
-        onclick="switchTab('ondc')">
-        🚫 Without ONDC Data
+    <button class="tab"
+            id="tabONDC"
+            onclick="switchTab('ondc')">
+        🚫 Without ONDC
     </button>
 
 </div>
@@ -373,6 +336,7 @@ tbody tr:hover td{
 
 <!-- =====================================================
      TOTAL ORDERS
+     SOURCE = data.csv
 ===================================================== -->
 
 <section id="ordersSection">
@@ -380,70 +344,54 @@ tbody tr:hover td{
 <div class="cards">
 
     <div class="card">
-
         <div class="card-label" id="currentMonthLabel">
             Current Month
         </div>
 
-        <div class="card-value" id="currentMonthTotal">
-            —
-        </div>
+        <div class="card-value" id="currentMonthTotal">—</div>
 
         <div class="card-sub">
             Total orders
         </div>
-
     </div>
 
 
     <div class="card">
-
         <div class="card-label" id="previousMonthLabel">
             Previous Month
         </div>
 
-        <div class="card-value" id="previousMonthTotal">
-            —
-        </div>
+        <div class="card-value" id="previousMonthTotal">—</div>
 
         <div class="card-sub">
             Total orders
         </div>
-
     </div>
 
 
     <div class="card">
-
         <div class="card-label" id="latestDateLabel">
             Latest Date
         </div>
 
-        <div class="card-value" id="latestDateTotal">
-            —
-        </div>
+        <div class="card-value" id="latestDateTotal">—</div>
 
         <div class="card-sub">
             Daily orders
         </div>
-
     </div>
 
 
     <div class="card">
-
         <div class="card-label" id="previousDateLabel">
             Previous Date
         </div>
 
-        <div class="card-value" id="previousDateTotal">
-            —
-        </div>
+        <div class="card-value" id="previousDateTotal">—</div>
 
         <div class="card-sub">
             Daily orders
         </div>
-
     </div>
 
 </div>
@@ -452,13 +400,8 @@ tbody tr:hover td{
 <div class="panel">
 
     <div class="panel-header">
-
-        <h2>
-            Company-wise Order Summary
-        </h2>
-
+        <h2>Company-wise Order Summary</h2>
     </div>
-
 
     <div class="controls">
 
@@ -545,6 +488,7 @@ tbody tr:hover td{
 
 <!-- =====================================================
      STATUS ANALYSIS
+     SOURCE = Orders.csv
 ===================================================== -->
 
 <section id="statusSection" class="hidden">
@@ -553,12 +497,10 @@ tbody tr:hover td{
 
     <div class="panel-header">
 
-        <h2>
-            Order Status Analysis
-        </h2>
+        <h2>Order Status Analysis</h2>
 
         <span style="color:#667085;font-size:13px;">
-            Source: FINAL_STATUS
+            Source: Orders.csv → FINAL_STATUS
         </span>
 
     </div>
@@ -661,10 +603,9 @@ tbody tr:hover td{
             Selected Seller
         </div>
 
-        <div
-            class="card-value"
-            id="selectedSellerCard"
-            style="font-size:20px">
+        <div class="card-value"
+             id="selectedSellerCard"
+             style="font-size:20px">
             All Sellers
         </div>
 
@@ -722,11 +663,9 @@ tbody tr:hover td{
             <tbody id="statusTableBody">
 
                 <tr>
-
                     <td colspan="5" class="loading">
                         Loading...
                     </td>
-
                 </tr>
 
             </tbody>
@@ -751,6 +690,7 @@ tbody tr:hover td{
 
 <!-- =====================================================
      WITHOUT ONDC
+     SOURCE = Orders.csv
 ===================================================== -->
 
 <section id="ondcSection" class="hidden">
@@ -830,11 +770,7 @@ tbody tr:hover td{
 <div class="panel">
 
     <div class="panel-header">
-
-        <h2>
-            Without ONDC Data
-        </h2>
-
+        <h2>Without ONDC Data</h2>
     </div>
 
 
@@ -844,7 +780,6 @@ tbody tr:hover td{
             id="ondcSearch"
             placeholder="Search seller..."
         >
-
 
         <select id="ondcSort">
 
@@ -907,11 +842,9 @@ tbody tr:hover td{
             <tbody id="ondcTableBody">
 
                 <tr>
-
                     <td colspan="5" class="loading">
                         Loading...
                     </td>
-
                 </tr>
 
             </tbody>
@@ -923,9 +856,11 @@ tbody tr:hover td{
 
     <div class="footer">
 
-        Blank PAYMENT_GATEWAY = ONDC → excluded.
-        <br>
-        Non-blank PAYMENT_GATEWAY = Without ONDC → included.
+        Blank PAYMENT_GATEWAY =
+        ONDC → excluded.
+
+        Non-blank PAYMENT_GATEWAY =
+        Without ONDC → included.
 
     </div>
 
@@ -942,7 +877,9 @@ tbody tr:hover td{
    GLOBAL VARIABLES
 ===================================================== */
 
-let allOrders = [];
+let totalOrdersData = [];
+
+let ordersCSVData = [];
 
 let currentMonth = "";
 
@@ -952,9 +889,15 @@ let latestDate = "";
 
 let previousDateKey = "";
 
+let orderSummary = [];
+
+let withoutONDC = [];
+
+let statusOrders = [];
+
 
 /* =====================================================
-   DOM
+   DOM HELPER
 ===================================================== */
 
 function $(id){
@@ -963,7 +906,7 @@ function $(id){
 
 
 /* =====================================================
-   NUMBER
+   NUMBER FORMAT
 ===================================================== */
 
 function numberFormat(number){
@@ -1015,7 +958,9 @@ function escapeHTML(value){
 
 function monthName(monthKey){
 
-    if(!monthKey) return "";
+    if(!monthKey){
+        return "";
+    }
 
     const parts = monthKey.split("-");
 
@@ -1067,18 +1012,18 @@ function getPreviousMonth(monthKey){
 
 function normalizeDate(value){
 
-    if(value === null || value === undefined)
+    if(value === null || value === undefined){
         return "";
+    }
 
     let s = String(value).trim();
 
-    if(!s) return "";
+    if(!s){
+        return "";
+    }
 
 
-    /*
-        YYYY-MM-DD
-        YYYY-MM-DD HH:mm:ss
-    */
+    /* YYYY-MM-DD or YYYY/MM/DD */
 
     let match = s.match(
         /^(\d{4})[-/](\d{1,2})[-/](\d{1,2})/
@@ -1094,9 +1039,7 @@ function normalizeDate(value){
     }
 
 
-    /*
-        DD-MM-YYYY
-    */
+    /* DD-MM-YYYY */
 
     match = s.match(
         /^(\d{1,2})[-/](\d{1,2})[-/](\d{4})/
@@ -1112,9 +1055,7 @@ function normalizeDate(value){
     }
 
 
-    /*
-        Excel serial
-    */
+    /* Excel serial date */
 
     if(/^\d+(\.\d+)?$/.test(s)){
 
@@ -1122,9 +1063,8 @@ function normalizeDate(value){
 
         if(serial > 20000 && serial < 70000){
 
-            const excelDate = new Date(
-                Date.UTC(1899,11,30)
-            );
+            const excelDate =
+                new Date(Date.UTC(1899,11,30));
 
             excelDate.setUTCDate(
                 excelDate.getUTCDate() + serial
@@ -1139,6 +1079,19 @@ function normalizeDate(value){
     }
 
 
+    /* JavaScript date */
+
+    const d = new Date(s);
+
+    if(!isNaN(d.getTime())){
+
+        return d.getFullYear() + "-" +
+            String(d.getMonth()+1).padStart(2,"0") +
+            "-" +
+            String(d.getDate()).padStart(2,"0");
+
+    }
+
     return "";
 
 }
@@ -1150,12 +1103,15 @@ function normalizeDate(value){
 
 function displayDate(date){
 
-    if(!date) return "";
+    if(!date){
+        return "";
+    }
 
     const parts = date.split("-");
 
-    if(parts.length !== 3)
+    if(parts.length !== 3){
         return date;
+    }
 
     return parts[2] + "-" +
         parts[1] + "-" +
@@ -1166,6 +1122,7 @@ function displayDate(date){
 
 /* =====================================================
    CSV PARSER
+   Handles first blank column in Orders.csv
 ===================================================== */
 
 function parseCSV(text){
@@ -1186,14 +1143,12 @@ function parseCSV(text){
         const next = text[i+1];
 
 
-        if(
-            c === '"' &&
-            inQuotes &&
-            next === '"'
-        ){
+        if(c === '"' && inQuotes && next === '"'){
 
             cell += '"';
+
             i++;
+
             continue;
 
         }
@@ -1202,6 +1157,7 @@ function parseCSV(text){
         if(c === '"'){
 
             inQuotes = !inQuotes;
+
             continue;
 
         }
@@ -1210,33 +1166,38 @@ function parseCSV(text){
         if(c === "," && !inQuotes){
 
             row.push(cell);
+
             cell = "";
+
             continue;
 
         }
 
 
         if(
-            (c === "\n" || c === "\r") &&
-            !inQuotes
+            (c === "\n" || c === "\r")
+            && !inQuotes
         ){
 
-            if(c === "\r" && next === "\n")
+            if(c === "\r" && next === "\n"){
                 i++;
+            }
 
             row.push(cell);
+
+            cell = "";
+
 
             if(
                 row.some(
                     value =>
-                        String(value).trim() !== ""
+                    String(value).trim() !== ""
                 )
             ){
                 rows.push(row);
             }
 
             row = [];
-            cell = "";
 
             continue;
 
@@ -1255,7 +1216,7 @@ function parseCSV(text){
         if(
             row.some(
                 value =>
-                    String(value).trim() !== ""
+                String(value).trim() !== ""
             )
         ){
             rows.push(row);
@@ -1264,14 +1225,26 @@ function parseCSV(text){
     }
 
 
-    if(!rows.length)
+    if(!rows.length){
         return [];
+    }
 
 
-    const headers = rows.shift()
-        .map(header =>
-            String(header).trim()
-        );
+    /*
+        IMPORTANT:
+        Orders.csv has a blank first header.
+
+        Example:
+
+        ,ORDER_CREATED_AT,ORDER_MONTH,...
+
+        Parser keeps it as an empty header,
+        which is completely fine.
+    */
+
+    const headers = rows
+        .shift()
+        .map(header => String(header).trim());
 
 
     return rows.map(row => {
@@ -1279,6 +1252,10 @@ function parseCSV(text){
         const object = {};
 
         headers.forEach((header,index) => {
+
+            if(!header){
+                return;
+            }
 
             object[header] =
                 String(row[index] ?? "").trim();
@@ -1294,6 +1271,7 @@ function parseCSV(text){
 
 /* =====================================================
    STATUS NORMALIZER
+   Reads FINAL_STATUS from Orders.csv
 ===================================================== */
 
 function normalizeStatus(value){
@@ -1304,16 +1282,25 @@ function normalizeStatus(value){
         .toLowerCase();
 
 
-    if(status.includes("cancel"))
+    if(
+        status.includes("cancel")
+    ){
         return "Cancelled";
+    }
 
 
-    if(status.includes("deliver"))
+    if(
+        status.includes("deliver")
+    ){
         return "Delivered";
+    }
 
 
-    if(status.includes("rto"))
+    if(
+        status.includes("rto")
+    ){
         return "RTO";
+    }
 
 
     return "";
@@ -1323,77 +1310,70 @@ function normalizeStatus(value){
 
 /* =====================================================
    LOAD DATA.CSV
+   ONLY FOR TOTAL ORDERS TAB
 ===================================================== */
 
-async function loadOrders(){
+async function loadDataCSV(){
 
-    try{
-
-        const response =
-            await fetch(
-                "data.csv?v=" + Date.now(),
-                {
-                    cache:"no-store"
-                }
-            );
+    const response =
+        await fetch(
+            "data.csv?v=" + Date.now(),
+            {
+                cache:"no-store"
+            }
+        );
 
 
-        if(!response.ok){
+    if(!response.ok){
 
-            throw new Error(
-                "data.csv could not be loaded."
-            );
-
-        }
-
-
-        const text =
-            await response.text();
-
-
-        allOrders =
-            parseCSV(text);
-
-
-        if(!allOrders.length){
-
-            throw new Error(
-                "data.csv is empty."
-            );
-
-        }
-
-
-        /*
-            IMPORTANT:
-
-            data.csv generated by your BAT file
-            has:
-
-            date
-            COMPANY_NAME
-            orders
-
-            Therefore this dashboard supports
-            the generated summary format.
-
-            For Status Analysis and Without ONDC,
-            we also support the raw Orders.csv
-            format if that data is supplied.
-        */
-
-
-        determineDates();
-
-
-        renderAll();
+        throw new Error(
+            "data.csv could not be loaded."
+        );
 
     }
-    catch(error){
 
-        console.error(error);
 
-        showError(error.message);
+    const text =
+        await response.text();
+
+
+    totalOrdersData =
+        parseCSV(text);
+
+
+    if(!totalOrdersData.length){
+
+        throw new Error(
+            "data.csv is empty."
+        );
+
+    }
+
+
+    /*
+        Expected data.csv:
+
+        date
+        COMPANY_NAME
+        orders
+
+        This is ONLY used by
+        Total Orders tab.
+    */
+
+    const first =
+        totalOrdersData[0];
+
+
+    if(
+        !("date" in first) ||
+        !("COMPANY_NAME" in first) ||
+        !("orders" in first)
+    ){
+
+        throw new Error(
+            "data.csv must contain: date, COMPANY_NAME, orders"
+        );
 
     }
 
@@ -1401,22 +1381,177 @@ async function loadOrders(){
 
 
 /* =====================================================
-   DETERMINE DATES
+   LOAD ORDERS.CSV
+   USED BY STATUS + WITHOUT ONDC
 ===================================================== */
 
-function determineDates(){
+async function loadOrdersCSV(){
+
+    const response =
+        await fetch(
+            "Orders.csv?v=" + Date.now(),
+            {
+                cache:"no-store"
+            }
+        );
+
+
+    if(!response.ok){
+
+        throw new Error(
+            "Orders.csv could not be loaded."
+        );
+
+    }
+
+
+    const text =
+        await response.text();
+
+
+    ordersCSVData =
+        parseCSV(text);
+
+
+    if(!ordersCSVData.length){
+
+        throw new Error(
+            "Orders.csv is empty."
+        );
+
+    }
+
+
+    const first =
+        ordersCSVData[0];
+
+
+    /*
+        ACTUAL REQUIRED HEADERS
+        FROM YOUR ORDERS.CSV
+    */
+
+    const required = [
+
+        "ORDER_CREATED_AT",
+        "ZOP_ID",
+        "COMPANY_NAME",
+        "PAYMENT_GATEWAY",
+        "FINAL_STATUS"
+
+    ];
+
+
+    const missing =
+        required.filter(
+            column =>
+            !(column in first)
+        );
+
+
+    if(missing.length){
+
+        throw new Error(
+            "Orders.csv missing columns: " +
+            missing.join(", ")
+        );
+
+    }
+
+
+    buildOrdersSource();
+
+}
+
+
+/* =====================================================
+   BUILD ORDERS SOURCE
+===================================================== */
+
+function buildOrdersSource(){
+
+    statusOrders = [];
+
+
+    ordersCSVData.forEach(row => {
+
+        const zopID =
+            String(row.ZOP_ID || "").trim();
+
+        const seller =
+            String(row.COMPANY_NAME || "").trim();
+
+        const date =
+            normalizeDate(
+                row.ORDER_CREATED_AT
+            );
+
+        const gateway =
+            String(
+                row.PAYMENT_GATEWAY || ""
+            ).trim();
+
+        const status =
+            normalizeStatus(
+                row.FINAL_STATUS
+            );
+
+
+        /*
+            1 ROW = 1 ORDER
+
+            NO DISTINCT
+            NO DUPLICATE REMOVAL
+
+            This matches your
+            Orders.csv counting rule.
+        */
+
+        if(
+            !zopID ||
+            !seller ||
+            !date
+        ){
+            return;
+        }
+
+
+        statusOrders.push({
+
+            zopID:zopID,
+
+            seller:seller,
+
+            date:date,
+
+            gateway:gateway,
+
+            status:status
+
+        });
+
+    });
+
+
+    determineOrderDates();
+
+    buildWithoutONDC();
+
+}
+
+
+/* =====================================================
+   DETERMINE DATES FROM ORDERS.CSV
+===================================================== */
+
+function determineOrderDates(){
 
     const dates =
         [
             ...new Set(
-                allOrders
-                .map(row =>
-                    normalizeDate(
-                        row.date ||
-                        row.ORDER_CREATED_AT
-                    )
+                statusOrders.map(
+                    row => row.date
                 )
-                .filter(Boolean)
             )
         ]
         .sort();
@@ -1425,7 +1560,7 @@ function determineDates(){
     if(!dates.length){
 
         throw new Error(
-            "No valid dates found in data.csv."
+            "No valid ORDER_CREATED_AT dates found in Orders.csv."
         );
 
     }
@@ -1446,77 +1581,40 @@ function determineDates(){
 
 
     previousMonthKey =
-        getPreviousMonth(currentMonth);
-
-}
-
-
-/* =====================================================
-   GET SELLER
-===================================================== */
-
-function getSeller(row){
-
-    return String(
-        row.COMPANY_NAME ||
-        row.company ||
-        ""
-    ).trim();
-
-}
-
-
-/* =====================================================
-   GET ORDER COUNT
-===================================================== */
-
-function getOrderCount(row){
-
-    const value =
-        row.orders ??
-        row.ORDER_COUNT ??
-        row.count ??
-        0;
-
-    const number =
-        Number(
-            String(value)
-            .replace(/,/g,"")
+        getPreviousMonth(
+            currentMonth
         );
 
-    return isNaN(number) ? 0 : number;
-
 }
 
 
 /* =====================================================
-   BUILD TOTAL SUMMARY
+   BUILD TOTAL ORDER SUMMARY
+   FROM data.csv
 ===================================================== */
 
-function buildOrderSummary(){
+function buildOrderSummaryFromData(){
 
     const map = new Map();
 
 
-    allOrders.forEach(row => {
-
-        const seller =
-            getSeller(row);
-
+    totalOrdersData.forEach(row => {
 
         const date =
-            normalizeDate(
-                row.date ||
-                row.ORDER_CREATED_AT
-            );
+            normalizeDate(row.date);
+
+        const seller =
+            String(
+                row.COMPANY_NAME || ""
+            ).trim();
+
+        const orders =
+            Number(row.orders) || 0;
 
 
-        const count =
-            getOrderCount(row);
-
-
-        if(!seller || !date)
+        if(!date || !seller){
             return;
+        }
 
 
         if(!map.has(seller)){
@@ -1539,153 +1637,217 @@ function buildOrderSummary(){
             map.get(seller);
 
 
-        if(date.slice(0,7) === currentMonth)
-            item.current += count;
+        if(
+            date.slice(0,7)
+            === currentMonth
+        ){
+            item.current += orders;
+        }
 
 
-        if(date.slice(0,7) === previousMonthKey)
-            item.previous += count;
+        if(
+            date.slice(0,7)
+            === previousMonthKey
+        ){
+            item.previous += orders;
+        }
 
 
-        if(date === latestDate)
-            item.latest += count;
+        if(date === latestDate){
+            item.latest += orders;
+        }
 
 
-        if(date === previousDateKey)
-            item.previousDate += count;
+        if(date === previousDateKey){
+            item.previousDate += orders;
+        }
 
     });
 
 
-    return [...map.values()];
+    orderSummary =
+        [...map.values()];
 
 }
 
 
 /* =====================================================
-   TOTAL ORDERS
+   WITHOUT ONDC
+   SOURCE = Orders.csv
+===================================================== */
+
+function buildWithoutONDC(){
+
+    const map = new Map();
+
+
+    statusOrders
+    .filter(
+        row =>
+        row.gateway !== ""
+    )
+    .forEach(row => {
+
+        if(!map.has(row.seller)){
+
+            map.set(
+                row.seller,
+                {
+                    company:row.seller,
+                    current:0,
+                    previous:0,
+                    latest:0,
+                    previousDate:0
+                }
+            );
+
+        }
+
+
+        const item =
+            map.get(row.seller);
+
+
+        if(
+            row.date.slice(0,7)
+            === currentMonth
+        ){
+            item.current++;
+        }
+
+
+        if(
+            row.date.slice(0,7)
+            === previousMonthKey
+        ){
+            item.previous++;
+        }
+
+
+        if(row.date === latestDate){
+            item.latest++;
+        }
+
+
+        if(row.date === previousDateKey){
+            item.previousDate++;
+        }
+
+    });
+
+
+    withoutONDC =
+        [...map.values()];
+
+}
+
+
+/* =====================================================
+   TOTAL ORDERS RENDER
 ===================================================== */
 
 function renderTotalOrders(){
 
-    const summary =
-        buildOrderSummary();
-
-
     const currentTotal =
-        summary.reduce(
+        orderSummary.reduce(
             (total,row) =>
-                total + row.current,
+            total + row.current,
             0
         );
 
 
     const previousTotal =
-        summary.reduce(
+        orderSummary.reduce(
             (total,row) =>
-                total + row.previous,
+            total + row.previous,
             0
         );
 
 
     const latestTotal =
-        summary.reduce(
+        orderSummary.reduce(
             (total,row) =>
-                total + row.latest,
+            total + row.latest,
             0
         );
 
 
-    const previousDateTotal =
-        summary.reduce(
+    const previousTotalDate =
+        orderSummary.reduce(
             (total,row) =>
-                total + row.previousDate,
+            total + row.previousDate,
             0
         );
 
 
-    $("currentMonthLabel")
-        .textContent =
+    $("currentMonthLabel").textContent =
         monthName(currentMonth);
 
 
-    $("previousMonthLabel")
-        .textContent =
+    $("previousMonthLabel").textContent =
         monthName(previousMonthKey);
 
 
-    $("currentMonthTotal")
-        .textContent =
+    $("currentMonthTotal").textContent =
         numberFormat(currentTotal);
 
 
-    $("previousMonthTotal")
-        .textContent =
+    $("previousMonthTotal").textContent =
         numberFormat(previousTotal);
 
 
-    $("latestDateLabel")
-        .textContent =
+    $("latestDateLabel").textContent =
         displayDate(latestDate);
 
 
-    $("previousDateLabel")
-        .textContent =
+    $("previousDateLabel").textContent =
         displayDate(previousDateKey);
 
 
-    $("latestDateTotal")
-        .textContent =
+    $("latestDateTotal").textContent =
         numberFormat(latestTotal);
 
 
-    $("previousDateTotal")
-        .textContent =
-        numberFormat(previousDateTotal);
+    $("previousDateTotal").textContent =
+        numberFormat(previousTotalDate);
 
 
-    $("orderCurrentHead")
-        .textContent =
+    $("orderCurrentHead").textContent =
         monthName(currentMonth);
 
 
-    $("orderPreviousHead")
-        .textContent =
+    $("orderPreviousHead").textContent =
         monthName(previousMonthKey);
 
 
-    $("orderLatestHead")
-        .textContent =
+    $("orderLatestHead").textContent =
         displayDate(latestDate);
 
 
-    $("orderPreviousDateHead")
-        .textContent =
+    $("orderPreviousDateHead").textContent =
         displayDate(previousDateKey);
 
 
-    $("dashboardRange")
-        .textContent =
+    $("dashboardRange").textContent =
         `${monthName(currentMonth)} •
         ${displayDate(latestDate)} &
         ${displayDate(previousDateKey)}`;
 
 
-    $("lastUpdated")
-        .textContent =
+    $("lastUpdated").textContent =
         `Latest dump date: ${displayDate(latestDate)}`;
 
 
-    renderOrderTable(summary);
+    renderOrderTable();
 
 }
 
 
 /* =====================================================
-   ORDER TABLE
+   TOTAL ORDER TABLE
 ===================================================== */
 
-function renderOrderTable(summary){
+function renderOrderTable(){
 
     const search =
         $("orderSearch")
@@ -1695,12 +1857,12 @@ function renderOrderTable(summary){
 
 
     const sort =
-        $("orderSort")
-        .value;
+        $("orderSort").value;
 
 
     let data =
-        summary.filter(row =>
+        orderSummary.filter(
+            row =>
             row.company
             .toLowerCase()
             .includes(search)
@@ -1711,77 +1873,65 @@ function renderOrderTable(summary){
 
         if(sort === "name"){
 
-            return a.company
-                .localeCompare(b.company);
+            return a.company.localeCompare(
+                b.company
+            );
 
         }
 
-        return (b[sort] || 0) -
-            (a[sort] || 0);
+
+        return (
+            (b[sort] || 0) -
+            (a[sort] || 0)
+        );
 
     });
 
 
     if(!data.length){
 
-        $("ordersTableBody")
-            .innerHTML =
-            `
-            <tr>
-                <td colspan="5" class="loading">
-                    No data found.
-                </td>
-            </tr>
-            `;
+        $("ordersTableBody").innerHTML =
+        `
+        <tr>
+            <td colspan="5" class="loading">
+                No data found.
+            </td>
+        </tr>
+        `;
 
         return;
 
     }
 
 
-    $("ordersTableBody")
-        .innerHTML =
-
+    $("ordersTableBody").innerHTML =
         data.map(row => `
 
-            <tr>
+        <tr>
 
-                <td>
-                    ${escapeHTML(row.company)}
-                </td>
+            <td>
+                ${escapeHTML(row.company)}
+            </td>
 
-                <td>
-                    ${numberFormat(row.current)}
-                </td>
+            <td>
+                ${numberFormat(row.current)}
+            </td>
 
-                <td>
-                    ${numberFormat(row.previous)}
-                </td>
+            <td>
+                ${numberFormat(row.previous)}
+            </td>
 
-                <td>
-                    ${numberFormat(row.latest)}
-                </td>
+            <td>
+                ${numberFormat(row.latest)}
+            </td>
 
-                <td>
-                    ${numberFormat(row.previousDate)}
-                </td>
+            <td>
+                ${numberFormat(row.previousDate)}
+            </td>
 
-            </tr>
+        </tr>
 
         `).join("");
-
-}
-
-
-/* =====================================================
-   STATUS DATA CHECK
-===================================================== */
-
-function hasStatusData(){
-
-    return allOrders.some(row =>
-        row.FINAL_STATUS !== undefined
-    );
 
 }
 
@@ -1795,78 +1945,41 @@ function populateSellerDropdown(){
     const sellers =
         [
             ...new Set(
-                allOrders
-                .map(getSeller)
-                .filter(Boolean)
+                statusOrders.map(
+                    row => row.seller
+                )
             )
         ]
-        .sort((a,b) =>
+        .sort(
+            (a,b) =>
             a.localeCompare(b)
         );
 
 
-    $("sellerSelect")
-        .innerHTML =
-
+    $("sellerSelect").innerHTML =
         `
         <option value="ALL">
             All Sellers
         </option>
         ` +
 
-        sellers.map(seller => `
-
+        sellers.map(
+            seller => `
             <option value="${escapeHTML(seller)}">
                 ${escapeHTML(seller)}
             </option>
-
-        `).join("");
+            `
+        ).join("");
 
 }
 
 
 /* =====================================================
    STATUS ANALYSIS
+   SOURCE = Orders.csv
 ===================================================== */
 
 function renderStatusAnalysis(){
-
-    /*
-        If data.csv is the compact
-        date,COMPANY_NAME,orders format,
-        FINAL_STATUS does not exist.
-
-        In that case show clear message.
-    */
-
-    if(!hasStatusData()){
-
-        $("selectedStatusTotal")
-            .textContent = "—";
-
-        $("statusMonthTotal")
-            .textContent = "—";
-
-        $("statusPercentage")
-            .textContent = "—";
-
-        $("statusTableBody")
-            .innerHTML =
-            `
-            <tr>
-                <td colspan="5" class="loading">
-                    Status data is not present in data.csv.
-                    <br><br>
-                    Please generate data.csv with
-                    FINAL_STATUS data for Status Analysis.
-                </td>
-            </tr>
-            `;
-
-        return;
-
-    }
-
 
     const selectedStatus =
         $("statusSelect").value;
@@ -1883,56 +1996,66 @@ function renderStatusAnalysis(){
         .toLowerCase();
 
 
-    let filteredOrders =
-        allOrders.filter(row => {
+    /*
+        Filter by seller/search
+    */
 
-            const seller =
-                getSeller(row);
-
+    let filtered =
+        statusOrders.filter(row => {
 
             const sellerMatch =
-                selectedSeller === "ALL" ||
-                seller === selectedSeller;
+                selectedSeller === "ALL"
+                ||
+                row.seller === selectedSeller;
 
 
             const searchMatch =
-                !search ||
-                seller.toLowerCase().includes(search) ||
-                String(
-                    row.ZOP_ID || ""
-                )
-                .toLowerCase()
-                .includes(search);
-
-
-            return sellerMatch && searchMatch;
-
-        });
-
-
-    const currentStatusOrders =
-        filteredOrders.filter(row => {
-
-            const date =
-                normalizeDate(
-                    row.ORDER_CREATED_AT ||
-                    row.date
-                );
+                !search
+                ||
+                row.seller
+                    .toLowerCase()
+                    .includes(search)
+                ||
+                row.zopID
+                    .toLowerCase()
+                    .includes(search);
 
 
             return (
-                date.slice(0,7) === currentMonth &&
-                normalizeStatus(
-                    row.FINAL_STATUS
-                ) === selectedStatus
+                sellerMatch &&
+                searchMatch
             );
 
         });
 
 
-    const summary =
-        buildOrderSummary();
+    /*
+        Selected status for current month
+    */
 
+    const currentStatusOrders =
+        filtered.filter(
+            row =>
+            row.date.slice(0,7)
+            === currentMonth
+            &&
+            row.status
+            === selectedStatus
+        );
+
+
+    /*
+        DENOMINATOR
+
+        IMPORTANT:
+
+        Status Analysis denominator
+        is TOTAL ORDERS from data.csv.
+
+        Therefore first tab and
+        status percentage use the
+        exact same Total Orders.
+    */
 
     let denominator = 0;
 
@@ -1940,9 +2063,9 @@ function renderStatusAnalysis(){
     if(selectedSeller === "ALL"){
 
         denominator =
-            summary.reduce(
+            orderSummary.reduce(
                 (total,row) =>
-                    total + row.current,
+                total + row.current,
                 0
             );
 
@@ -1950,9 +2073,9 @@ function renderStatusAnalysis(){
     else{
 
         const sellerSummary =
-            summary.find(
+            orderSummary.find(
                 row =>
-                    row.company === selectedSeller
+                row.company === selectedSeller
             );
 
 
@@ -1966,14 +2089,23 @@ function renderStatusAnalysis(){
 
     const statusPercentage =
         denominator > 0
+
         ?
+
         (
-            currentStatusOrders.length /
+            currentStatusOrders.length
+            /
             denominator
         ) * 100
+
         :
+
         0;
 
+
+    /*
+        CARDS
+    */
 
     $("statusCardLabel")
         .textContent =
@@ -2015,7 +2147,9 @@ function renderStatusAnalysis(){
     $("statusPercentageSub")
         .textContent =
         `${numberFormat(currentStatusOrders.length)}
-        ÷ ${numberFormat(denominator)} × 100`;
+        ÷
+        ${numberFormat(denominator)}
+        × 100`;
 
 
     $("selectedSellerCard")
@@ -2024,6 +2158,10 @@ function renderStatusAnalysis(){
         ? "All Sellers"
         : selectedSeller;
 
+
+    /*
+        HEADERS
+    */
 
     $("statusTableTitle")
         .textContent =
@@ -2050,38 +2188,75 @@ function renderStatusAnalysis(){
         `${monthName(currentMonth)} ${selectedStatus} %`;
 
 
+    /*
+        SELLERS
+
+        Seller list comes from Orders.csv.
+    */
+
     let sellers =
-        summary.map(row => row.company);
+        [
+            ...new Set(
+                statusOrders.map(
+                    row => row.seller
+                )
+            )
+        ];
 
 
     sellers =
         sellers.filter(seller => {
 
             const sellerMatch =
-                selectedSeller === "ALL" ||
+                selectedSeller === "ALL"
+                ||
                 seller === selectedSeller;
 
 
             const searchMatch =
-                !search ||
-                seller.toLowerCase()
-                .includes(search);
+                !search
+                ||
+                seller
+                    .toLowerCase()
+                    .includes(search);
 
 
-            return sellerMatch && searchMatch;
+            return (
+                sellerMatch &&
+                searchMatch
+            );
 
         });
 
 
-    $("statusTableBody")
-        .innerHTML =
+    if(!sellers.length){
 
+        $("statusTableBody").innerHTML =
+        `
+        <tr>
+            <td colspan="5" class="loading">
+                No data found.
+            </td>
+        </tr>
+        `;
+
+        return;
+
+    }
+
+
+    $("statusTableBody").innerHTML =
         sellers.map(seller => {
 
+            /*
+                Total Orders denominator
+                comes from data.csv.
+            */
+
             const sellerSummary =
-                summary.find(
+                orderSummary.find(
                     row =>
-                        row.company === seller
+                    row.company === seller
                 );
 
 
@@ -2091,106 +2266,93 @@ function renderStatusAnalysis(){
                 : 0;
 
 
-            const sellerOrders =
-                allOrders.filter(row => {
+            /*
+                Latest date status
+            */
 
-                    const date =
-                        normalizeDate(
-                            row.ORDER_CREATED_AT ||
-                            row.date
-                        );
-
-                    return (
-                        getSeller(row) === seller &&
-                        date.slice(0,7) === currentMonth
-                    );
-
-                });
-
-
-            const monthStatus =
-                sellerOrders.filter(row =>
-                    normalizeStatus(
-                        row.FINAL_STATUS
-                    ) === selectedStatus
+            const latestCount =
+                statusOrders.filter(
+                    row =>
+                    row.seller === seller
+                    &&
+                    row.date === latestDate
+                    &&
+                    row.status === selectedStatus
                 ).length;
 
 
-            const latestCount =
-                sellerOrders.filter(row => {
-
-                    const date =
-                        normalizeDate(
-                            row.ORDER_CREATED_AT ||
-                            row.date
-                        );
-
-                    return (
-                        date === latestDate &&
-                        normalizeStatus(
-                            row.FINAL_STATUS
-                        ) === selectedStatus
-                    );
-
-                }).length;
-
+            /*
+                Previous date status
+            */
 
             const previousCount =
-                allOrders.filter(row => {
+                statusOrders.filter(
+                    row =>
+                    row.seller === seller
+                    &&
+                    row.date === previousDateKey
+                    &&
+                    row.status === selectedStatus
+                ).length;
 
-                    const date =
-                        normalizeDate(
-                            row.ORDER_CREATED_AT ||
-                            row.date
-                        );
 
-                    return (
-                        getSeller(row) === seller &&
-                        date === previousDateKey &&
-                        normalizeStatus(
-                            row.FINAL_STATUS
-                        ) === selectedStatus
-                    );
+            /*
+                Current month selected status
+            */
 
-                }).length;
+            const monthStatus =
+                statusOrders.filter(
+                    row =>
+                    row.seller === seller
+                    &&
+                    row.date.slice(0,7)
+                    === currentMonth
+                    &&
+                    row.status === selectedStatus
+                ).length;
 
 
             const sellerPercentage =
                 totalOrders > 0
+
                 ?
+
                 (
-                    monthStatus /
+                    monthStatus
+                    /
                     totalOrders
                 ) * 100
+
                 :
+
                 0;
 
 
             return `
 
-                <tr>
+            <tr>
 
-                    <td>
-                        ${escapeHTML(seller)}
-                    </td>
+                <td>
+                    ${escapeHTML(seller)}
+                </td>
 
-                    <td>
-                        ${numberFormat(totalOrders)}
-                    </td>
+                <td>
+                    ${numberFormat(totalOrders)}
+                </td>
 
-                    <td>
-                        ${numberFormat(latestCount)}
-                    </td>
+                <td>
+                    ${numberFormat(latestCount)}
+                </td>
 
-                    <td>
-                        ${numberFormat(previousCount)}
-                    </td>
+                <td>
+                    ${numberFormat(previousCount)}
+                </td>
 
-                    <td>
-                        ${percentage(sellerPercentage)}
-                    </td>
+                <td>
+                    ${percentage(sellerPercentage)}
+                </td>
 
-                </tr>
+            </tr>
 
             `;
 
@@ -2200,122 +2362,10 @@ function renderStatusAnalysis(){
 
 
 /* =====================================================
-   WITHOUT ONDC
+   WITHOUT ONDC RENDER
 ===================================================== */
 
 function renderWithoutONDC(){
-
-    /*
-        Without ONDC requires PAYMENT_GATEWAY.
-    */
-
-    if(
-        !allOrders.some(
-            row =>
-                row.PAYMENT_GATEWAY !== undefined
-        )
-    ){
-
-        $("ondcCurrentTotal")
-            .textContent = "—";
-
-        $("ondcPreviousTotal")
-            .textContent = "—";
-
-        $("ondcLatestTotal")
-            .textContent = "—";
-
-        $("ondcPreviousDateTotal")
-            .textContent = "—";
-
-        $("ondcTableBody")
-            .innerHTML =
-            `
-            <tr>
-                <td colspan="5" class="loading">
-                    PAYMENT_GATEWAY data is not present in data.csv.
-                </td>
-            </tr>
-            `;
-
-        return;
-
-    }
-
-
-    const rows =
-        allOrders.filter(row =>
-            String(
-                row.PAYMENT_GATEWAY || ""
-            ).trim() !== ""
-        );
-
-
-    const map = new Map();
-
-
-    rows.forEach(row => {
-
-        const seller =
-            getSeller(row);
-
-
-        const date =
-            normalizeDate(
-                row.ORDER_CREATED_AT ||
-                row.date
-            );
-
-
-        if(!seller || !date)
-            return;
-
-
-        const count =
-            getOrderCount(row);
-
-
-        if(!map.has(seller)){
-
-            map.set(
-                seller,
-                {
-                    company:seller,
-                    current:0,
-                    previous:0,
-                    latest:0,
-                    previousDate:0
-                }
-            );
-
-        }
-
-
-        const item =
-            map.get(seller);
-
-
-        if(date.slice(0,7) === currentMonth)
-            item.current += count;
-
-
-        if(date.slice(0,7) === previousMonthKey)
-            item.previous += count;
-
-
-        if(date === latestDate)
-            item.latest += count;
-
-
-        if(date === previousDateKey)
-            item.previousDate += count;
-
-    });
-
-
-    const data =
-        [...map.values()];
-
 
     $("ondcCurrentLabel")
         .textContent =
@@ -2340,9 +2390,9 @@ function renderWithoutONDC(){
     $("ondcCurrentTotal")
         .textContent =
         numberFormat(
-            data.reduce(
+            withoutONDC.reduce(
                 (total,row) =>
-                    total + row.current,
+                total + row.current,
                 0
             )
         );
@@ -2351,9 +2401,9 @@ function renderWithoutONDC(){
     $("ondcPreviousTotal")
         .textContent =
         numberFormat(
-            data.reduce(
+            withoutONDC.reduce(
                 (total,row) =>
-                    total + row.previous,
+                total + row.previous,
                 0
             )
         );
@@ -2362,9 +2412,9 @@ function renderWithoutONDC(){
     $("ondcLatestTotal")
         .textContent =
         numberFormat(
-            data.reduce(
+            withoutONDC.reduce(
                 (total,row) =>
-                    total + row.latest,
+                total + row.latest,
                 0
             )
         );
@@ -2373,9 +2423,9 @@ function renderWithoutONDC(){
     $("ondcPreviousDateTotal")
         .textContent =
         numberFormat(
-            data.reduce(
+            withoutONDC.reduce(
                 (total,row) =>
-                    total + row.previousDate,
+                total + row.previousDate,
                 0
             )
         );
@@ -2401,16 +2451,16 @@ function renderWithoutONDC(){
         displayDate(previousDateKey);
 
 
-    renderONDCtable(data);
+    renderONDCtable();
 
 }
 
 
 /* =====================================================
-   ONDC TABLE
+   WITHOUT ONDC TABLE
 ===================================================== */
 
-function renderONDCtable(data){
+function renderONDCtable(){
 
     const search =
         $("ondcSearch")
@@ -2420,78 +2470,80 @@ function renderONDCtable(data){
 
 
     const sort =
-        $("ondcSort")
-        .value;
+        $("ondcSort").value;
 
 
-    let filtered =
-        data.filter(row =>
+    let data =
+        withoutONDC.filter(
+            row =>
             row.company
-            .toLowerCase()
-            .includes(search)
+                .toLowerCase()
+                .includes(search)
         );
 
 
-    filtered.sort((a,b) => {
+    data.sort((a,b) => {
 
         if(sort === "name"){
 
-            return a.company
-                .localeCompare(b.company);
+            return a.company.localeCompare(
+                b.company
+            );
 
         }
 
-        return (b[sort] || 0) -
-            (a[sort] || 0);
+
+        return (
+            (b[sort] || 0)
+            -
+            (a[sort] || 0)
+        );
 
     });
 
 
-    if(!filtered.length){
+    if(!data.length){
 
-        $("ondcTableBody")
-            .innerHTML =
-            `
-            <tr>
-                <td colspan="5" class="loading">
-                    No data found.
-                </td>
-            </tr>
-            `;
+        $("ondcTableBody").innerHTML =
+        `
+        <tr>
+            <td colspan="5" class="loading">
+                No data found.
+            </td>
+        </tr>
+        `;
 
         return;
 
     }
 
 
-    $("ondcTableBody")
-        .innerHTML =
+    $("ondcTableBody").innerHTML =
+        data.map(row => `
 
-        filtered.map(row => `
+        <tr>
 
-            <tr>
+            <td>
+                ${escapeHTML(row.company)}
+            </td>
 
-                <td>
-                    ${escapeHTML(row.company)}
-                </td>
+            <td>
+                ${numberFormat(row.current)}
+            </td>
 
-                <td>
-                    ${numberFormat(row.current)}
-                </td>
+            <td>
+                ${numberFormat(row.previous)}
+            </td>
 
-                <td>
-                    ${numberFormat(row.previous)}
-                </td>
+            <td>
+                ${numberFormat(row.latest)}
+            </td>
 
-                <td>
-                    ${numberFormat(row.latest)}
-                </td>
+            <td>
+                ${numberFormat(row.previousDate)}
+            </td>
 
-                <td>
-                    ${numberFormat(row.previousDate)}
-                </td>
-
-            </tr>
+        </tr>
 
         `).join("");
 
@@ -2499,12 +2551,25 @@ function renderONDCtable(data){
 
 
 /* =====================================================
-   RENDER ALL
+   RENDER EVERYTHING
 ===================================================== */
 
 function renderAll(){
 
+    /*
+        Total Orders
+        comes from data.csv
+    */
+
+    buildOrderSummaryFromData();
+
     renderTotalOrders();
+
+
+    /*
+        Status + Without ONDC
+        come from Orders.csv
+    */
 
     populateSellerDropdown();
 
@@ -2521,6 +2586,9 @@ function renderAll(){
 
 function showError(message){
 
+    console.error(message);
+
+
     $("dashboardRange")
         .textContent =
         "Unable to load dashboard data";
@@ -2531,37 +2599,34 @@ function showError(message){
         "Data error";
 
 
-    $("ordersTableBody")
-        .innerHTML =
-        `
-        <tr>
-            <td colspan="5" class="error">
-                ${escapeHTML(message)}
-            </td>
-        </tr>
-        `;
+    $("ordersTableBody").innerHTML =
+    `
+    <tr>
+        <td colspan="5" class="error">
+            ${escapeHTML(message)}
+        </td>
+    </tr>
+    `;
 
 
-    $("statusTableBody")
-        .innerHTML =
-        `
-        <tr>
-            <td colspan="5" class="error">
-                ${escapeHTML(message)}
-            </td>
-        </tr>
-        `;
+    $("statusTableBody").innerHTML =
+    `
+    <tr>
+        <td colspan="5" class="error">
+            ${escapeHTML(message)}
+        </td>
+    </tr>
+    `;
 
 
-    $("ondcTableBody")
-        .innerHTML =
-        `
-        <tr>
-            <td colspan="5" class="error">
-                ${escapeHTML(message)}
-            </td>
-        </tr>
-        `;
+    $("ondcTableBody").innerHTML =
+    `
+    <tr>
+        <td colspan="5" class="error">
+            ${escapeHTML(message)}
+        </td>
+    </tr>
+    `;
 
 }
 
@@ -2629,26 +2694,14 @@ function switchTab(tab){
 $("orderSearch")
     .addEventListener(
         "input",
-        () => {
-
-            renderOrderTable(
-                buildOrderSummary()
-            );
-
-        }
+        renderOrderTable
     );
 
 
 $("orderSort")
     .addEventListener(
         "change",
-        () => {
-
-            renderOrderTable(
-                buildOrderSummary()
-            );
-
-        }
+        renderOrderTable
     );
 
 
@@ -2676,27 +2729,14 @@ $("statusSearch")
 $("ondcSearch")
     .addEventListener(
         "input",
-        () => {
-
-            /*
-                Re-render ONDC section
-                with current data.
-            */
-
-            renderWithoutONDC();
-
-        }
+        renderONDCtable
     );
 
 
 $("ondcSort")
     .addEventListener(
         "change",
-        () => {
-
-            renderWithoutONDC();
-
-        }
+        renderONDCtable
     );
 
 
@@ -2704,7 +2744,38 @@ $("ondcSort")
    START
 ===================================================== */
 
-loadOrders();
+async function startDashboard(){
+
+    try{
+
+        /*
+            Load BOTH files.
+
+            data.csv
+            → Total Orders
+
+            Orders.csv
+            → Status Analysis
+            → Without ONDC
+        */
+
+        await loadDataCSV();
+
+        await loadOrdersCSV();
+
+        renderAll();
+
+    }
+    catch(error){
+
+        showError(error.message);
+
+    }
+
+}
+
+
+startDashboard();
 
 </script>
 
