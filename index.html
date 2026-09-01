@@ -3,12 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Total Order Dashboard</title>
 
 <style>
+
 :root{
   --bg:#f4f7fb;
-  --card:#fff;
+  --card:#ffffff;
   --text:#172033;
   --muted:#667085;
   --border:#e5eaf2;
@@ -20,14 +22,31 @@
   --shadow:0 10px 30px rgba(31,41,55,.07);
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
+
   background:
-    radial-gradient(circle at top right,rgba(49,94,251,.08),transparent 32%),
-    linear-gradient(135deg,#f8faff 0%,#eef3ff 100%);
-  font-family:Inter,Segoe UI,Arial,sans-serif;
+    radial-gradient(
+      circle at top right,
+      rgba(49,94,251,.08),
+      transparent 32%
+    ),
+    linear-gradient(
+      135deg,
+      #f8faff 0%,
+      #eef3ff 100%
+    );
+
+  font-family:
+    Inter,
+    Segoe UI,
+    Arial,
+    sans-serif;
+
   color:var(--text);
 }
 
@@ -37,24 +56,42 @@ body{
   padding:30px;
 }
 
-/* HEADER */
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 header{
+
   display:flex;
   justify-content:space-between;
   align-items:flex-end;
+
   gap:20px;
+
   margin-bottom:20px;
+
   padding:24px 26px;
-  background:linear-gradient(135deg,#172554,#315efb);
+
+  background:
+    linear-gradient(
+      135deg,
+      #172554,
+      #315efb
+    );
+
   border-radius:18px;
+
   color:white;
+
   box-shadow:var(--shadow);
 }
 
 h1{
   margin:0 0 7px;
+
   font-size:30px;
+
   letter-spacing:-.4px;
 }
 
@@ -64,261 +101,423 @@ h1{
 }
 
 .badge{
-  background:rgba(255,255,255,.14);
-  border:1px solid rgba(255,255,255,.22);
+
+  background:
+    rgba(255,255,255,.14);
+
+  border:
+    1px solid
+    rgba(255,255,255,.22);
+
   padding:9px 13px;
+
   border-radius:999px;
+
   font-size:13px;
+
   font-weight:650;
 }
 
-/* TABS */
+
+/* =====================================================
+   TABS
+===================================================== */
 
 .tabs{
+
   display:flex;
+
   gap:8px;
+
   margin-bottom:18px;
 }
 
 .tab{
-  border:1px solid var(--border);
+
+  border:
+    1px solid
+    var(--border);
+
   background:white;
+
   color:var(--muted);
+
   padding:11px 18px;
+
   border-radius:10px;
+
   cursor:pointer;
+
   font-weight:700;
+
   transition:.2s;
 }
 
 .tab:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(31,41,55,.08);
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 8px 20px
+    rgba(31,41,55,.08);
 }
 
 .tab.active{
+
   color:white;
+
   border-color:transparent;
-  background:linear-gradient(135deg,#315efb,#7c3aed);
+
+  background:
+    linear-gradient(
+      135deg,
+      #315efb,
+      #7c3aed
+    );
 }
 
-/* CARDS */
+
+/* =====================================================
+   CARDS
+===================================================== */
 
 .cards{
+
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
+
   gap:15px;
+
   margin-bottom:18px;
 }
 
 .card{
-  background:var(--card);
-  border:1px solid var(--border);
+
+  background:
+    var(--card);
+
+  border:
+    1px solid
+    var(--border);
+
   border-radius:16px;
+
   padding:19px;
-  box-shadow:var(--shadow);
+
+  box-shadow:
+    var(--shadow);
+
   position:relative;
+
   overflow:hidden;
+
   transition:.2s;
 }
 
 .card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 16px 35px rgba(31,41,55,.12);
+
+  transform:
+    translateY(-4px);
+
+  box-shadow:
+    0 16px 35px
+    rgba(31,41,55,.12);
 }
 
 .card:before{
+
   content:"";
+
   position:absolute;
+
   left:0;
   top:0;
+
   width:5px;
   height:100%;
-  background:linear-gradient(180deg,var(--accent),var(--accent2));
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--accent),
+      var(--accent2)
+    );
 }
 
 .label{
+
   font-size:13px;
+
   color:var(--muted);
+
   margin-bottom:8px;
 }
 
 .value{
+
   font-size:28px;
+
   font-weight:800;
 }
 
 .small{
+
   font-size:12px;
+
   color:var(--muted);
+
   margin-top:6px;
 }
 
-/* PANEL */
+
+/* =====================================================
+   PANEL
+===================================================== */
 
 .panel{
+
   background:white;
-  border:1px solid var(--border);
+
+  border:
+    1px solid
+    var(--border);
+
   border-radius:16px;
+
   padding:19px;
-  box-shadow:var(--shadow);
+
+  box-shadow:
+    var(--shadow);
+
   margin-bottom:18px;
 }
 
 .panel-title{
+
   display:flex;
+
   justify-content:space-between;
+
   align-items:center;
+
   gap:15px;
+
   margin-bottom:15px;
 }
 
 .panel-title h2{
+
   margin:0;
+
   font-size:18px;
 }
 
-/* CONTROLS */
+
+/* =====================================================
+   CONTROLS
+===================================================== */
 
 .controls{
+
   display:flex;
+
   gap:10px;
+
   flex-wrap:wrap;
+
   margin-bottom:15px;
 }
 
-input,select{
-  border:1px solid var(--border);
+input,
+select{
+
+  border:
+    1px solid
+    var(--border);
+
   border-radius:10px;
+
   padding:10px 12px;
+
   background:white;
+
   font:inherit;
+
   color:var(--text);
+
   outline:none;
 }
 
 input{
+
   min-width:280px;
+
   flex:1;
 }
 
 input:focus,
 select:focus{
-  border-color:var(--accent);
-  box-shadow:0 0 0 3px rgba(49,94,251,.1);
+
+  border-color:
+    var(--accent);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(49,94,251,.1);
 }
 
-/* TABLE */
+
+/* =====================================================
+   TABLE
+===================================================== */
 
 .table-wrap{
+
   overflow:auto;
+
   max-height:620px;
-  border:1px solid var(--border);
+
+  border:
+    1px solid
+    var(--border);
+
   border-radius:12px;
 }
 
 table{
-  border-collapse:separate;
+
+  border-collapse:
+    separate;
+
   border-spacing:0;
+
   width:100%;
-  min-width:850px;
+
+  min-width:750px;
+
   font-size:14px;
 }
 
-th,td{
+th,
+td{
+
   padding:13px 14px;
-  border-bottom:1px solid var(--border);
+
+  border-bottom:
+    1px solid
+    var(--border);
+
   text-align:right;
+
   white-space:nowrap;
 }
 
 th:first-child,
 td:first-child{
+
   text-align:left;
+
   position:sticky;
+
   left:0;
+
   background:white;
+
   z-index:1;
 }
 
 thead th{
+
   position:sticky;
+
   top:0;
+
   background:#f1f4fb;
+
   z-index:2;
+
   color:#344054;
+
   font-weight:700;
 }
 
 thead th:first-child{
+
   z-index:3;
 }
 
 tbody tr{
+
   transition:.18s;
 }
 
 tbody tr:hover td{
+
   background:#f8faff;
 }
 
 tbody tr:hover td:first-child{
+
   background:#f8faff;
 }
 
-.status-cancelled{
-  color:var(--red);
-  font-weight:700;
-}
-
-.status-delivered{
-  color:var(--green);
-  font-weight:700;
-}
-
-.status-rto{
-  color:var(--orange);
-  font-weight:700;
-}
-
 .loading{
+
   text-align:center;
+
   padding:30px;
+
   color:var(--muted);
 }
 
 .footer{
-  padding:16px 2px 2px;
+
+  padding:
+    16px
+    2px
+    2px;
+
   color:var(--muted);
+
   font-size:12px;
 }
-
-/* HIDDEN */
 
 .hidden{
   display:none;
 }
 
-/* RESPONSIVE */
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
 
 @media(max-width:1000px){
+
   .cards{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
   header{
+
     align-items:flex-start;
+
     flex-direction:column;
   }
 }
 
 @media(max-width:560px){
+
   .wrap{
     padding:14px;
   }
 
   .cards{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+      1fr 1fr;
   }
 
   .value{
@@ -333,25 +532,51 @@ tbody tr:hover td:first-child{
     overflow:auto;
   }
 }
+
 </style>
 </head>
+
 
 <body>
 
 <div class="wrap">
 
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header>
+
   <div>
-    <h1>Total Order Dashboard</h1>
-    <div class="sub" id="range">Loading data…</div>
+
+    <h1>
+      Total Order Dashboard
+    </h1>
+
+    <div
+      class="sub"
+      id="range">
+
+      Loading data…
+
+    </div>
+
   </div>
 
-  <div class="badge" id="updated">Loading…</div>
+  <div
+    class="badge"
+    id="updated">
+
+    Loading…
+
+  </div>
+
 </header>
 
 
 <!-- =====================================================
-     TABS
+     MAIN TABS
 ===================================================== -->
 
 <div class="tabs">
@@ -360,148 +585,265 @@ tbody tr:hover td:first-child{
     class="tab active"
     id="ordersTab"
     onclick="showTab('orders')">
+
     📦 Total Orders
+
   </button>
+
 
   <button
     class="tab"
     id="statusTab"
     onclick="showTab('status')">
+
     📊 Status Analysis
+
   </button>
 
 </div>
 
 
+
 <!-- =====================================================
-     TOTAL ORDERS TAB
+     TOTAL ORDERS SECTION
 ===================================================== -->
 
-<section id="ordersSection">
+<section
+  id="ordersSection">
 
 
-<div class="cards">
-
-  <div class="card">
-    <div class="label" id="m1label">Current Month</div>
-    <div class="value" id="m1">—</div>
-    <div class="small">Total orders</div>
-  </div>
-
-  <div class="card">
-    <div class="label" id="m2label">Previous Month</div>
-    <div class="value" id="m2">—</div>
-    <div class="small">Total orders</div>
-  </div>
-
-  <div class="card">
-    <div class="label" id="d1label">Latest Date</div>
-    <div class="value" id="d1">—</div>
-    <div class="small">Daily orders</div>
-  </div>
-
-  <div class="card">
-    <div class="label" id="d2label">Previous Date</div>
-    <div class="value" id="d2">—</div>
-    <div class="small">Daily orders</div>
-  </div>
-
-</div>
+  <div class="cards">
 
 
-<section class="panel">
+    <div class="card">
 
-  <div class="panel-title">
-    <h2>Company-wise Order Summary</h2>
-    <div class="sub" style="color:#667085">
-      Latest two completed dates
+      <div
+        class="label"
+        id="m1label">
+
+        Current Month
+
+      </div>
+
+      <div
+        class="value"
+        id="m1">
+
+        —
+
+      </div>
+
+      <div class="small">
+
+        Total orders
+
+      </div>
+
     </div>
+
+
+    <div class="card">
+
+      <div
+        class="label"
+        id="m2label">
+
+        Previous Month
+
+      </div>
+
+      <div
+        class="value"
+        id="m2">
+
+        —
+
+      </div>
+
+      <div class="small">
+
+        Total orders
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div
+        class="label"
+        id="d1label">
+
+        Latest Date
+
+      </div>
+
+      <div
+        class="value"
+        id="d1">
+
+        —
+
+      </div>
+
+      <div class="small">
+
+        Daily orders
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div
+        class="label"
+        id="d2label">
+
+        Previous Date
+
+      </div>
+
+      <div
+        class="value"
+        id="d2">
+
+        —
+
+      </div>
+
+      <div class="small">
+
+        Daily orders
+
+      </div>
+
+    </div>
+
+
   </div>
 
-  <div class="controls">
 
-    <input
-      id="search"
-      placeholder="Search company name…">
-
-    <select id="sort">
-
-      <option value="current">
-        Sort: current month
-      </option>
-
-      <option value="previous">
-        Sort: previous month
-      </option>
-
-      <option value="latest">
-        Sort: latest date
-      </option>
-
-      <option value="prevdate">
-        Sort: previous date
-      </option>
-
-      <option value="name">
-        Sort: company name
-      </option>
-
-    </select>
-
-  </div>
+  <section class="panel">
 
 
-  <div class="table-wrap">
+    <div class="panel-title">
 
-    <table>
+      <h2>
+        Company-wise Order Summary
+      </h2>
 
-      <thead>
+      <div
+        class="sub"
+        style="color:#667085">
 
-        <tr>
+        Latest two completed dates
 
-          <th>Company Name</th>
+      </div>
 
-          <th id="currentHead">
-            Current Month
-          </th>
+    </div>
 
-          <th id="previousHead">
-            Previous Month
-          </th>
 
-          <th id="latestHead">
-            Latest Date
-          </th>
+    <div class="controls">
 
-          <th id="prevHead">
-            Previous Date
-          </th>
 
-        </tr>
+      <input
+        id="search"
+        placeholder="Search company name…">
 
-      </thead>
 
-      <tbody id="body">
+      <select id="sort">
 
-        <tr>
-          <td colspan="5" class="loading">
-            Loading data…
-          </td>
-        </tr>
+        <option value="current">
+          Sort: current month
+        </option>
 
-      </tbody>
+        <option value="previous">
+          Sort: previous month
+        </option>
 
-    </table>
+        <option value="latest">
+          Sort: latest date
+        </option>
 
-  </div>
+        <option value="prevdate">
+          Sort: previous date
+        </option>
+
+        <option value="name">
+          Sort: company name
+        </option>
+
+      </select>
+
+
+    </div>
+
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Company Name
+            </th>
+
+            <th id="currentHead">
+              Current Month
+            </th>
+
+            <th id="previousHead">
+              Previous Month
+            </th>
+
+            <th id="latestHead">
+              Latest Date
+            </th>
+
+            <th id="prevHead">
+              Previous Date
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="body">
+
+          <tr>
+
+            <td
+              colspan="5"
+              class="loading">
+
+              Loading data…
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+  </section>
 
 </section>
 
-</section>
 
 
 <!-- =====================================================
-     STATUS ANALYSIS TAB
+     STATUS ANALYSIS SECTION
 ===================================================== -->
 
 <section
@@ -509,271 +851,292 @@ tbody tr:hover td:first-child{
   class="hidden">
 
 
-<div class="cards">
+  <!-- STATUS FILTERS -->
 
-  <div class="card">
+  <section class="panel">
 
-    <div class="label">
-      Selected Status
+
+    <div class="panel-title">
+
+      <h2>
+        Status Analysis
+      </h2>
+
+      <div
+        class="sub"
+        style="color:#667085">
+
+        FINAL_STATUS based analysis
+
+      </div>
+
     </div>
 
-    <div
-      class="value"
-      id="statusTotal">
-      —
+
+    <div class="controls">
+
+
+      <select id="sellerSelect">
+
+        <option value="ALL">
+          All Sellers
+        </option>
+
+      </select>
+
+
+      <select id="statusSelect">
+
+        <option value="Cancelled">
+          Cancelled
+        </option>
+
+        <option value="Delivered">
+          Delivered
+        </option>
+
+        <option value="RTO">
+          RTO
+        </option>
+
+      </select>
+
+
+      <input
+        id="statusSearch"
+        placeholder="Search seller / ZOP ID…">
+
+
     </div>
 
-    <div
-      class="small"
-      id="statusTotalLabel">
-      Orders
+
+  </section>
+
+
+
+  <!-- DYNAMIC STATUS CARDS -->
+
+  <div class="cards">
+
+
+    <div class="card">
+
+      <div
+        class="label"
+        id="selectedStatusLabel">
+
+        Selected Status
+
+      </div>
+
+      <div
+        class="value"
+        id="statusTotal">
+
+        —
+
+      </div>
+
+      <div
+        class="small"
+        id="statusTotalLabel">
+
+        Orders
+
+      </div>
+
     </div>
 
-  </div>
 
+    <div class="card">
 
-  <div class="card">
+      <div class="label">
 
-    <div class="label">
-      Current Month
+        Current Month
+
+      </div>
+
+      <div
+        class="value"
+        id="statusMonth">
+
+        —
+
+      </div>
+
+      <div
+        class="small"
+        id="statusMonthLabel">
+
+        —
+
+      </div>
+
     </div>
 
-    <div
-      class="value"
-      id="statusMonth">
-      —
+
+    <div class="card">
+
+      <div
+        class="label"
+        id="statusPercentageLabel">
+
+        Cancellation %
+
+      </div>
+
+      <div
+        class="value"
+        id="cancelPercent">
+
+        —
+
+      </div>
+
+      <div
+        class="small"
+        id="statusPercentageDescription">
+
+        Selected status ÷ total orders
+
+      </div>
+
     </div>
 
-    <div
-      class="small"
-      id="statusMonthLabel">
-      —
-    </div>
 
-  </div>
+    <div class="card">
 
+      <div class="label">
 
-  <div class="card">
+        Selected Seller
 
-    <div class="label">
-      Cancellation %
-    </div>
+      </div>
 
-    <div
-      class="value"
-      id="cancelPercent">
-      —
-    </div>
+      <div
+        class="value"
+        id="selectedSeller"
+        style="font-size:20px">
 
-    <div class="small">
-      Cancelled ÷ Total Orders
-    </div>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="label">
-      Selected Seller
-    </div>
-
-    <div
-      class="value"
-      id="selectedSeller">
-      All
-    </div>
-
-    <div class="small">
-      Seller filter
-    </div>
-
-  </div>
-
-</div>
-
-
-<section class="panel">
-
-  <div class="panel-title">
-
-    <h2>
-      Seller Status Analysis
-    </h2>
-
-    <div
-      class="sub"
-      style="color:#667085">
-      Based on orders.csv → FINAL_STATUS
-    </div>
-
-  </div>
-
-
-  <div class="controls">
-
-    <select
-      id="sellerSelect">
-
-      <option value="ALL">
         All Sellers
-      </option>
 
-    </select>
+      </div>
 
+      <div class="small">
 
-    <select
-      id="statusSelect">
+        Seller filter
 
-      <option value="Cancelled">
-        Cancelled
-      </option>
+      </div>
 
-      <option value="Delivered">
-        Delivered
-      </option>
+    </div>
 
-      <option value="RTO">
-        RTO
-      </option>
-
-    </select>
-
-
-    <input
-      id="statusSearch"
-      placeholder="Search order / seller…">
 
   </div>
 
 
-  <!-- STATUS MONTH SUMMARY -->
 
-  <div
-    class="table-wrap"
-    style="margin-bottom:18px">
+  <!-- SELLER TABLE -->
 
-    <table>
-
-      <thead>
-
-        <tr>
-
-          <th>Month</th>
-
-          <th>Total Orders</th>
-
-          <th>Cancelled</th>
-
-          <th>Delivered</th>
-
-          <th>RTO</th>
-
-          <th>Cancellation %</th>
-
-        </tr>
-
-      </thead>
-
-      <tbody
-        id="monthStatusBody">
-
-      </tbody>
-
-    </table>
-
-  </div>
+  <section class="panel">
 
 
-  <!-- DAY WISE -->
+    <div class="panel-title">
 
-  <div
-    class="table-wrap"
-    style="margin-bottom:18px">
+      <h2 id="sellerTableTitle">
 
-    <table>
+        Seller-wise Cancellation
 
-      <thead>
+      </h2>
 
-        <tr>
+      <div
+        class="sub"
+        id="sellerTableSubtitle"
+        style="color:#667085">
 
-          <th>Date</th>
+        Current month
 
-          <th>Seller</th>
+      </div>
 
-          <th>Status</th>
-
-          <th>Order Count</th>
-
-        </tr>
-
-      </thead>
-
-      <tbody
-        id="dayStatusBody">
-
-      </tbody>
-
-    </table>
-
-  </div>
+    </div>
 
 
-  <!-- DETAILS -->
+    <div class="table-wrap">
 
-  <div class="table-wrap">
-
-    <table>
-
-      <thead>
-
-        <tr>
-
-          <th>Order ID</th>
-
-          <th>Seller</th>
-
-          <th>Order Date</th>
-
-          <th>Final Status</th>
-
-          <th>Cancel Reason</th>
-
-        </tr>
-
-      </thead>
-
-      <tbody
-        id="detailsBody">
-
-      </tbody>
-
-    </table>
-
-  </div>
+      <table>
 
 
-  <div class="footer">
+        <thead>
 
-    Status is determined using the
-    <b>FINAL_STATUS</b> column from
-    <b>orders.csv</b>.
+          <tr>
 
-  </div>
+            <th>
+              Company Name
+            </th>
+
+            <th id="statusDate1Head">
+              Latest Date
+            </th>
+
+            <th id="statusDate2Head">
+              Previous Date
+            </th>
+
+            <th id="statusPercentageHead">
+              Current Month %
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="statusSellerBody">
+
+          <tr>
+
+            <td
+              colspan="4"
+              class="loading">
+
+              Loading…
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+
+      </table>
+
+    </div>
+
+
+    <div class="footer">
+
+      Percentage =
+      selected status orders ÷ total current-month
+      orders × 100.
+
+    </div>
+
+
+  </section>
+
 
 </section>
 
-</section>
+
 
 </div>
+
 
 
 <script>
 
 
-/* =========================================================
-   GENERAL HELPERS
-========================================================= */
+/* =====================================================
+   BASIC HELPERS
+===================================================== */
 
 function fmt(number){
 
@@ -804,6 +1167,10 @@ function esc(value){
 
 
 function formatDate(date){
+
+  if(!date){
+    return "";
+  }
 
   const p =
     date.split("-");
@@ -843,7 +1210,7 @@ function monthName(key){
 
   return (
     names[
-      Number(p[1]) - 1
+      Number(p[1])-1
     ] +
     " " +
     p[0]
@@ -852,10 +1219,6 @@ function monthName(key){
 }
 
 
-/* =========================================================
-   PREVIOUS MONTH
-========================================================= */
-
 function previousMonth(key){
 
   const p =
@@ -863,17 +1226,21 @@ function previousMonth(key){
       .split("-")
       .map(Number);
 
-  let year = p[0];
-  let month = p[1];
+  let year =
+    p[0];
 
-  month--;
+  let month =
+    p[1] - 1;
+
 
   if(month === 0){
 
     month = 12;
+
     year--;
 
   }
+
 
   return (
     year +
@@ -885,103 +1252,52 @@ function previousMonth(key){
 }
 
 
-/* =========================================================
-   PREVIOUS DATE
-========================================================= */
-
 function previousDate(
   dateString,
   days
 ){
 
-  let [
-    year,
-    month,
-    day
-  ] =
-    dateString
-      .split("-")
-      .map(Number);
+  const date =
+    new Date(
+      dateString +
+      "T00:00:00"
+    );
 
 
-  while(days > 0){
-
-    day--;
-
-    if(day === 0){
-
-      month--;
-
-      if(month === 0){
-
-        month = 12;
-        year--;
-
-      }
-
-
-      const monthDays = [
-
-        31,
-
-        (
-          year % 4 === 0 &&
-          (
-            year % 100 !== 0 ||
-            year % 400 === 0
-          )
-        )
-          ? 29
-          : 28,
-
-        31,
-        30,
-        31,
-        30,
-        31,
-        31,
-        30,
-        31,
-        30,
-        31
-
-      ];
-
-      day =
-        monthDays[
-          month - 1
-        ];
-
-    }
-
-    days--;
-
-  }
+  date.setDate(
+    date.getDate() - days
+  );
 
 
   return (
 
-    year +
+    date.getFullYear() +
     "-" +
-    String(month).padStart(2,"0") +
+    String(
+      date.getMonth()+1
+    ).padStart(2,"0") +
     "-" +
-    String(day).padStart(2,"0")
+    String(
+      date.getDate()
+    ).padStart(2,"0")
 
   );
 
 }
 
 
-/* =========================================================
+/* =====================================================
    CSV PARSER
-========================================================= */
+===================================================== */
 
 function parseCSV(text){
 
   const rows = [];
 
   let row = [];
+
   let cell = "";
+
   let quote = false;
 
 
@@ -1030,7 +1346,7 @@ function parseCSV(text){
 
       row.push(cell);
 
-      cell="";
+      cell = "";
 
       continue;
 
@@ -1057,7 +1373,7 @@ function parseCSV(text){
 
       row.push(cell);
 
-      cell="";
+      cell = "";
 
 
       if(
@@ -1071,7 +1387,7 @@ function parseCSV(text){
       }
 
 
-      row=[];
+      row = [];
 
       continue;
 
@@ -1131,18 +1447,14 @@ function parseCSV(text){
 }
 
 
-/* =========================================================
-   ORDER DATA
-========================================================= */
+/* =====================================================
+   TOTAL ORDERS
+===================================================== */
 
 let orderRecords = [];
 
 let orderAggregate = [];
 
-
-/* =========================================================
-   LOAD TOTAL ORDERS
-========================================================= */
 
 async function loadOrders(){
 
@@ -1202,9 +1514,13 @@ async function loadOrders(){
 
 
         return {
+
           date,
+
           company,
+
           orders
+
         };
 
       })
@@ -1230,36 +1546,22 @@ async function loadOrders(){
   if(dates.length < 2){
 
     throw new Error(
-      "Need at least two dates"
+      "Not enough dates"
     );
 
   }
 
 
-  /*
-  IMPORTANT:
-
-  If latest CSV date = 01-09-2026
-
-  current month = September
-
-  previous month = August
-
-  latest completed day = 31-08-2026
-
-  previous day = 30-08-2026
-  */
-
-
   const latestAvailable =
     dates[
-      dates.length - 1
+      dates.length-1
     ];
 
 
   const currentMonth =
     latestAvailable.slice(
-      0,7
+      0,
+      7
     );
 
 
@@ -1325,7 +1627,9 @@ async function loadOrders(){
         );
 
 
-      if(!item) return;
+      if(!item){
+        return;
+      }
 
 
       if(
@@ -1501,7 +1805,7 @@ async function loadOrders(){
     "range"
   ).textContent =
 
-    `${monthName(currentMonth)} + ${monthName(prevMonth)} • ${formatDate(latestDay)} & ${formatDate(previousDay)} • ${fmt(orderAggregate.length)} companies`;
+    `${monthName(currentMonth)} + ${monthName(prevMonth)} • ${formatDate(latestDay)} & ${formatDate(previousDay)}`;
 
 
   document.getElementById(
@@ -1516,9 +1820,9 @@ async function loadOrders(){
 }
 
 
-/* =========================================================
-   RENDER ORDERS
-========================================================= */
+/* =====================================================
+   ORDER TABLE
+===================================================== */
 
 function renderOrders(){
 
@@ -1559,6 +1863,7 @@ function renderOrders(){
           );
 
       }
+
 
       return (
         (b[sort] || 0) -
@@ -1610,39 +1915,43 @@ function renderOrders(){
       :
 
       `
+
       <tr>
+
         <td
           colspan="5"
           class="loading">
+
           No companies found.
+
         </td>
+
       </tr>
+
       `;
 
 }
 
 
-/* =========================================================
+/* =====================================================
    STATUS DATA
-========================================================= */
+===================================================== */
 
 let statusRecords = [];
 
 let latestStatusDate = "";
 
 
-/* =========================================================
-   NORMALIZE STATUS
-========================================================= */
+/* =====================================================
+   STATUS NORMALIZER
+===================================================== */
 
 function normalizeStatus(value){
 
   const s =
-    String(
-      value || ""
-    )
-    .trim()
-    .toLowerCase();
+    String(value || "")
+      .trim()
+      .toLowerCase();
 
 
   if(
@@ -1650,16 +1959,6 @@ function normalizeStatus(value){
   ){
 
     return "Cancelled";
-
-  }
-
-
-  if(
-    s.includes("deliver") &&
-    !s.includes("rto")
-  ){
-
-    return "Delivered";
 
   }
 
@@ -1673,14 +1972,148 @@ function normalizeStatus(value){
   }
 
 
+  if(
+    s.includes("deliver")
+  ){
+
+    return "Delivered";
+
+  }
+
+
   return "";
 
 }
 
 
-/* =========================================================
-   LOAD STATUS DATA
-========================================================= */
+/* =====================================================
+   ORDER DATE
+===================================================== */
+
+function normalizeOrderDate(value){
+
+  const raw =
+    String(value || "")
+      .trim();
+
+
+  if(!raw){
+    return "";
+  }
+
+
+  /*
+    YYYY-MM-DD
+  */
+
+  let match =
+    raw.match(
+      /^(\d{4})[-/](\d{1,2})[-/](\d{1,2})/
+    );
+
+
+  if(match){
+
+    return (
+
+      match[1] +
+      "-" +
+      String(match[2])
+        .padStart(2,"0") +
+      "-" +
+      String(match[3])
+        .padStart(2,"0")
+
+    );
+
+  }
+
+
+  /*
+    DD-MM-YYYY
+  */
+
+  match =
+    raw.match(
+      /^(\d{1,2})[-/](\d{1,2})[-/](\d{4})/
+    );
+
+
+  if(match){
+
+    return (
+
+      match[3] +
+      "-" +
+      String(match[2])
+        .padStart(2,"0") +
+      "-" +
+      String(match[1])
+        .padStart(2,"0")
+
+    );
+
+  }
+
+
+  /*
+    DD MM YYYY
+  */
+
+  match =
+    raw.match(
+      /^(\d{1,2})\s+(\d{1,2})\s+(\d{4})/
+    );
+
+
+  if(match){
+
+    return (
+
+      match[3] +
+      "-" +
+      String(match[2])
+        .padStart(2,"0") +
+      "-" +
+      String(match[1])
+        .padStart(2,"0")
+
+    );
+
+  }
+
+
+  const parsed =
+    new Date(raw);
+
+
+  if(!isNaN(parsed)){
+
+    return (
+
+      parsed.getFullYear() +
+      "-" +
+      String(
+        parsed.getMonth()+1
+      ).padStart(2,"0") +
+      "-" +
+      String(
+        parsed.getDate()
+      ).padStart(2,"0")
+
+    );
+
+  }
+
+
+  return "";
+
+}
+
+
+/* =====================================================
+   LOAD ORDERS.CSV
+===================================================== */
 
 async function loadStatus(){
 
@@ -1717,52 +2150,10 @@ async function loadStatus(){
       rows
         .map(row => {
 
-          /*
-          ORDER_CREATED_AT is used
-          for the order date.
-          */
-
-          let rawDate =
-            String(
-              row.ORDER_CREATED_AT ||
-              ""
-            ).trim();
-
-
-          /*
-          Convert common formats
-          to YYYY-MM-DD.
-          */
-
-          let date = "";
-
-
-          const iso =
-            rawDate.match(
-              /^(\d{4})-(\d{2})-(\d{2})/
+          const date =
+            normalizeOrderDate(
+              row.ORDER_CREATED_AT
             );
-
-
-          if(iso){
-
-            date =
-              `${iso[1]}-${iso[2]}-${iso[3]}`;
-
-          }
-
-
-          const dmy =
-            rawDate.match(
-              /^(\d{2})[-/](\d{2})[-/](\d{4})/
-            );
-
-
-          if(!date && dmy){
-
-            date =
-              `${dmy[3]}-${dmy[2]}-${dmy[1]}`;
-
-          }
 
 
           const seller =
@@ -1778,6 +2169,18 @@ async function loadStatus(){
             );
 
 
+          /*
+            ZOP_ID is the preferred
+            order identifier.
+          */
+
+          const zopId =
+            String(
+              row.ZOP_ID ||
+              ""
+            ).trim();
+
+
           return {
 
             date,
@@ -1786,15 +2189,7 @@ async function loadStatus(){
 
             status,
 
-            orderId:
-              row.ZOP_ORDER_ID ||
-              row.ZOP_ID ||
-              row.SELLER_ORDER_ID ||
-              "",
-
-            cancelReason:
-              row.CANCEL_REASON ||
-              ""
+            zopId
 
           };
 
@@ -1809,7 +2204,7 @@ async function loadStatus(){
     if(!statusRecords.length){
 
       throw new Error(
-        "No valid status records found"
+        "No valid status records"
       );
 
     }
@@ -1828,7 +2223,7 @@ async function loadStatus(){
 
     latestStatusDate =
       dates[
-        dates.length - 1
+        dates.length-1
       ];
 
 
@@ -1844,17 +2239,18 @@ async function loadStatus(){
       error
     );
 
+
     document.getElementById(
-      "monthStatusBody"
+      "statusSellerBody"
     ).innerHTML = `
 
       <tr>
 
         <td
-          colspan="6"
+          colspan="4"
           class="loading">
 
-          Could not load orders.csv.
+          Unable to load orders.csv
 
         </td>
 
@@ -1867,9 +2263,9 @@ async function loadStatus(){
 }
 
 
-/* =========================================================
-   SELLER DROPDOWN
-========================================================= */
+/* =====================================================
+   SELLERS
+===================================================== */
 
 function populateSellers(){
 
@@ -1900,105 +2296,31 @@ function populateSellers(){
     </option>` +
 
     sellers.map(
-      seller =>
-        `
+      seller => `
+
         <option
           value="${esc(seller)}">
+
           ${esc(seller)}
+
         </option>
-        `
+
+      `
     ).join("");
 
 }
 
 
-/* =========================================================
-   STATUS FILTER
-========================================================= */
-
-function getFilteredStatusRecords(){
-
-  const seller =
-    document.getElementById(
-      "sellerSelect"
-    ).value;
-
-
-  const status =
-    document.getElementById(
-      "statusSelect"
-    ).value;
-
-
-  const query =
-    document.getElementById(
-      "statusSearch"
-    ).value
-    .toLowerCase();
-
-
-  return statusRecords.filter(
-    row => {
-
-      if(
-        seller !== "ALL" &&
-        row.seller !== seller
-      ){
-
-        return false;
-
-      }
-
-
-      if(
-        status &&
-        row.status !== status
-      ){
-
-        return false;
-
-      }
-
-
-      if(query){
-
-        const text = (
-
-          row.orderId +
-          " " +
-          row.seller +
-          " " +
-          row.status +
-          " " +
-          row.cancelReason
-
-        ).toLowerCase();
-
-
-        if(
-          !text.includes(query)
-        ){
-
-          return false;
-
-        }
-
-      }
-
-
-      return true;
-
-    }
-  );
-
-}
-
-
-/* =========================================================
+/* =====================================================
    STATUS RENDER
-========================================================= */
+===================================================== */
 
 function renderStatus(){
+
+  if(!statusRecords.length){
+    return;
+  }
+
 
   const seller =
     document.getElementById(
@@ -2012,32 +2334,182 @@ function renderStatus(){
     ).value;
 
 
-  const allFiltered =
-    statusRecords.filter(
-      row =>
-        seller === "ALL" ||
-        row.seller === seller
+  const search =
+    document.getElementById(
+      "statusSearch"
+    ).value
+    .trim()
+    .toLowerCase();
+
+
+  /*
+    Current month is based on
+    latest date in orders.csv.
+  */
+
+  const currentMonth =
+    latestStatusDate.slice(
+      0,
+      7
     );
 
 
-  const selected =
-    allFiltered.filter(
+  /*
+    Latest two dates BEFORE
+    the latest available date.
+
+    Example:
+
+    latest = 06 Sept
+
+    date1 = 05 Sept
+    date2 = 04 Sept
+  */
+
+  const date1 =
+    previousDate(
+      latestStatusDate,
+      1
+    );
+
+
+  const date2 =
+    previousDate(
+      latestStatusDate,
+      2
+    );
+
+
+  /*
+  =======================================================
+  BASE SELLER DATA
+  =======================================================
+  */
+
+  let sellerData =
+    statusRecords.filter(
+      row =>
+
+        seller === "ALL" ||
+        row.seller === seller
+
+    );
+
+
+  /*
+  =======================================================
+  SEARCH
+  =======================================================
+
+  Search can find:
+
+  - Seller
+  - ZOP_ID
+
+  But ZOP_ID will NOT appear
+  as a table column.
+  */
+
+  if(search){
+
+    sellerData =
+      sellerData.filter(
+        row =>
+
+          row.seller
+            .toLowerCase()
+            .includes(search)
+
+          ||
+
+          row.zopId
+            .toLowerCase()
+            .includes(search)
+
+      );
+
+  }
+
+
+  /*
+  =======================================================
+  TOP CARDS
+  =======================================================
+  */
+
+
+  /*
+    Current month ALL orders.
+
+    This is denominator.
+  */
+
+  const currentMonthAll =
+    sellerData.filter(
+      row =>
+        row.date.slice(0,7) ===
+        currentMonth
+    );
+
+
+  /*
+    Current month selected
+    status.
+  */
+
+  const currentMonthSelected =
+    currentMonthAll.filter(
       row =>
         row.status ===
         selectedStatus
     );
 
 
-  /* -----------------------------------------------
-     TOTAL STATUS
-  ------------------------------------------------ */
+  const selectedTotal =
+    currentMonthSelected.length;
+
+
+  const totalOrders =
+    currentMonthAll.length;
+
+
+  /*
+    Percentage.
+
+    Cancelled / Total
+    Delivered / Total
+    RTO / Total
+  */
+
+  const percentage =
+    totalOrders > 0
+
+      ?
+
+      (
+        selectedTotal /
+        totalOrders
+      ) * 100
+
+      :
+
+      0;
+
+
+  /*
+    Card 1
+  */
+
+  document.getElementById(
+    "selectedStatusLabel"
+  ).textContent =
+    selectedStatus;
+
 
   document.getElementById(
     "statusTotal"
   ).textContent =
-    fmt(
-      selected.length
-    );
+    fmt(selectedTotal);
 
 
   document.getElementById(
@@ -2047,438 +2519,390 @@ function renderStatus(){
     " orders";
 
 
-  document.getElementById(
-    "selectedSeller"
-  ).textContent =
-    seller === "ALL"
-      ? "All"
-      : seller;
-
-
-  /* -----------------------------------------------
-     MONTH DATA
-  ------------------------------------------------ */
-
-  const months = [
-
-    ...new Set(
-      allFiltered.map(
-        r =>
-          r.date.slice(0,7)
-      )
-    )
-
-  ].sort().reverse();
-
-
-  const latestMonth =
-    latestStatusDate.slice(
-      0,7
-    );
-
-
-  const previousMonthKey =
-    previousMonth(
-      latestMonth
-    );
-
-
-  const displayMonths = [
-
-    latestMonth,
-    previousMonthKey
-
-  ];
-
-
-  let latestMonthSelected = 0;
-
-
-  displayMonths.forEach(
-    month => {
-
-      latestMonthSelected +=
-        selected.filter(
-          r =>
-            r.date.slice(0,7) ===
-            month
-        ).length;
-
-    }
-  );
-
+  /*
+    Card 2
+  */
 
   document.getElementById(
     "statusMonth"
   ).textContent =
-    fmt(
-      selected.filter(
-        r =>
-          r.date.slice(0,7) ===
-          latestMonth
-      ).length
-    );
+    fmt(selectedTotal);
 
 
   document.getElementById(
     "statusMonthLabel"
   ).textContent =
-    monthName(
-      latestMonth
-    );
+    monthName(currentMonth);
 
 
-  /* -----------------------------------------------
-     CANCELLATION %
-  ------------------------------------------------ */
+  /*
+    Card 3
 
-  const latestMonthAll =
-    allFiltered.filter(
-      r =>
-        r.date.slice(0,7) ===
-        latestMonth
-    );
+    THIS IS DYNAMIC.
+  */
 
-
-  const latestMonthCancelled =
-    latestMonthAll.filter(
-      r =>
-        r.status ===
-        "Cancelled"
-    ).length;
-
-
-  const cancellationPercent =
-    latestMonthAll.length
-      ? (
-          latestMonthCancelled /
-          latestMonthAll.length
-        ) * 100
-      : 0;
+  document.getElementById(
+    "statusPercentageLabel"
+  ).textContent =
+    selectedStatus +
+    " %";
 
 
   document.getElementById(
     "cancelPercent"
   ).textContent =
-    cancellationPercent
-      .toFixed(1) +
+    percentage.toFixed(2) +
     "%";
 
 
-  /* -----------------------------------------------
-     MONTH TABLE
-  ------------------------------------------------ */
+  document.getElementById(
+    "statusPercentageDescription"
+  ).textContent =
+
+    `${fmt(selectedTotal)} ${selectedStatus.toLowerCase()} ÷ ${fmt(totalOrders)} total orders`;
+
+
+  /*
+    Card 4
+  */
 
   document.getElementById(
-    "monthStatusBody"
-  ).innerHTML =
+    "selectedSeller"
+  ).textContent =
 
-    displayMonths.map(
-      month => {
+    seller === "ALL"
 
-        const rows =
-          allFiltered.filter(
-            r =>
-              r.date.slice(0,7) ===
-              month
-          );
+      ? "All Sellers"
+
+      : seller;
 
 
-        const total =
-          rows.length;
+  /*
+  =======================================================
+  TABLE HEADERS
+  =======================================================
+  */
 
-
-        const cancelled =
-          rows.filter(
-            r =>
-              r.status ===
-              "Cancelled"
-          ).length;
-
-
-        const delivered =
-          rows.filter(
-            r =>
-              r.status ===
-              "Delivered"
-          ).length;
-
-
-        const rto =
-          rows.filter(
-            r =>
-              r.status ===
-              "RTO"
-          ).length;
-
-
-        const cancellation =
-          total
-            ? (
-                cancelled /
-                total
-              ) * 100
-            : 0;
-
-
-        return `
-
-          <tr>
-
-            <td>
-              ${monthName(month)}
-            </td>
-
-            <td>
-              ${fmt(total)}
-            </td>
-
-            <td class="status-cancelled">
-              ${fmt(cancelled)}
-            </td>
-
-            <td class="status-delivered">
-              ${fmt(delivered)}
-            </td>
-
-            <td class="status-rto">
-              ${fmt(rto)}
-            </td>
-
-            <td>
-              ${cancellation.toFixed(1)}%
-            </td>
-
-          </tr>
-
-        `;
-
-      }
-    ).join("");
-
-
-  /* -----------------------------------------------
-     DAY-WISE
-
-     Based on latest available date:
-
-     Latest date - 1
-     Latest date - 2
-  ------------------------------------------------ */
-
-  const day1 =
-    previousDate(
-      latestStatusDate,
-      1
-    );
-
-
-  const day2 =
-    previousDate(
-      latestStatusDate,
-      2
-    );
-
-
-  const dayRows = [
-
-    day1,
-    day2
-
-  ];
+  document.getElementById(
+    "statusDate1Head"
+  ).textContent =
+    formatDate(date1);
 
 
   document.getElementById(
-    "dayStatusBody"
-  ).innerHTML =
+    "statusDate2Head"
+  ).textContent =
+    formatDate(date2);
 
-    dayRows.map(
-      date => {
 
-        const rows =
-          selected.filter(
-            r =>
-              r.date === date
+  document.getElementById(
+    "statusPercentageHead"
+  ).textContent =
+
+    monthName(currentMonth) +
+    " " +
+    selectedStatus +
+    " %";
+
+
+  document.getElementById(
+    "sellerTableTitle"
+  ).textContent =
+
+    `Seller-wise ${selectedStatus}`;
+
+
+  document.getElementById(
+    "sellerTableSubtitle"
+  ).textContent =
+
+    `${monthName(currentMonth)} • ${formatDate(date1)} & ${formatDate(date2)}`;
+
+
+  /*
+  =======================================================
+  SELLER LIST
+  =======================================================
+  */
+
+  let sellerList;
+
+
+  if(seller !== "ALL"){
+
+    sellerList = [
+      seller
+    ];
+
+  }
+
+  else{
+
+    sellerList = [
+
+      ...new Set(
+        sellerData.map(
+          row => row.seller
+        )
+      )
+
+    ].sort(
+      (a,b) =>
+        a.localeCompare(b)
+    );
+
+  }
+
+
+  /*
+  =======================================================
+  TABLE ROWS
+  =======================================================
+  */
+
+  const rows =
+    sellerList.map(
+      sellerName => {
+
+
+        /*
+          Get ALL records for seller.
+
+          This is important because
+          percentage denominator must
+          include ALL statuses.
+        */
+
+        const sellerAll =
+          statusRecords.filter(
+            row =>
+              row.seller ===
+              sellerName
           );
 
 
-        return `
+        /*
+          If searching ZOP ID,
+          only show the seller who
+          has that ZOP ID.
+        */
 
-          <tr>
+        if(search){
 
-            <td>
-              ${formatDate(date)}
-            </td>
+          const found =
+            sellerAll.some(
+              row =>
 
-            <td>
-              ${seller === "ALL"
-                ? "All Sellers"
-                : esc(seller)}
-            </td>
+                row.seller
+                  .toLowerCase()
+                  .includes(search)
 
-            <td>
-              ${esc(selectedStatus)}
-            </td>
+                ||
 
-            <td>
-              ${fmt(rows.length)}
-            </td>
+                row.zopId
+                  .toLowerCase()
+                  .includes(search)
 
-          </tr>
-
-        `;
-
-      }
-    ).join("");
+            );
 
 
-  /* -----------------------------------------------
-     DETAILS
-  ------------------------------------------------ */
+          if(!found){
 
-  const detailRows =
-    selected
-      .filter(
-        row => {
-
-          if(!document
-            .getElementById(
-              "statusSearch"
-            )
-            .value
-            .trim()
-          ){
-
-            return true;
+            return "";
 
           }
 
-
-          const q =
-            document
-              .getElementById(
-                "statusSearch"
-              )
-              .value
-              .toLowerCase();
+        }
 
 
-          return (
+        /*
+          Current month ALL orders
+          for this seller.
+        */
 
-            row.orderId
-              .toLowerCase()
-              .includes(q)
-
-            ||
-
-            row.seller
-              .toLowerCase()
-              .includes(q)
-
-            ||
-
-            row.cancelReason
-              .toLowerCase()
-              .includes(q)
-
+        const sellerCurrentMonth =
+          sellerAll.filter(
+            row =>
+              row.date.slice(0,7) ===
+              currentMonth
           );
 
-        }
-      )
-      .slice(0,500);
+
+        /*
+          Selected status current
+          month.
+        */
+
+        const sellerSelected =
+          sellerCurrentMonth.filter(
+            row =>
+              row.status ===
+              selectedStatus
+          );
 
 
-  document.getElementById(
-    "detailsBody"
-  ).innerHTML =
+        /*
+          DATE 1
+        */
 
-    detailRows.length
+        const day1 =
+          sellerAll.filter(
+            row =>
 
-      ?
+              row.date === date1
 
-      detailRows.map(
-        row => `
+              &&
+
+              row.status ===
+              selectedStatus
+
+          ).length;
+
+
+        /*
+          DATE 2
+        */
+
+        const day2 =
+          sellerAll.filter(
+            row =>
+
+              row.date === date2
+
+              &&
+
+              row.status ===
+              selectedStatus
+
+          ).length;
+
+
+        /*
+          SELLER PERCENTAGE
+
+          Selected status /
+          ALL orders of seller
+          in current month.
+        */
+
+        const sellerPercentage =
+
+          sellerCurrentMonth.length > 0
+
+            ?
+
+            (
+              sellerSelected.length /
+              sellerCurrentMonth.length
+            ) * 100
+
+            :
+
+            0;
+
+
+        return `
 
           <tr>
 
             <td>
-              ${esc(row.orderId)}
+
+              ${esc(sellerName)}
+
             </td>
+
 
             <td>
-              ${esc(row.seller)}
+
+              ${fmt(day1)}
+
             </td>
+
 
             <td>
-              ${formatDate(row.date)}
-            </td>
 
-            <td
-              class="${
-                row.status === "Cancelled"
-                  ? "status-cancelled"
-                  : row.status === "Delivered"
-                    ? "status-delivered"
-                    : "status-rto"
-              }">
-
-              ${esc(row.status)}
+              ${fmt(day2)}
 
             </td>
+
 
             <td>
-              ${esc(row.cancelReason)}
+
+              ${sellerPercentage.toFixed(2)}%
+
             </td>
 
           </tr>
 
-        `
-      ).join("")
+        `;
+
+      }
+    )
+    .filter(Boolean);
+
+
+  /*
+  =======================================================
+  OUTPUT TABLE
+  =======================================================
+  */
+
+  document.getElementById(
+    "statusSellerBody"
+  ).innerHTML =
+
+    rows.length
+
+      ?
+
+      rows.join("")
 
       :
 
       `
+
       <tr>
 
         <td
-          colspan="5"
+          colspan="4"
           class="loading">
 
-          No records found.
+          No data found.
 
         </td>
 
       </tr>
+
       `;
 
 }
 
 
-/* =========================================================
+/* =====================================================
    TAB SWITCH
-========================================================= */
+===================================================== */
 
 function showTab(tab){
 
-  const orders =
+  const ordersSection =
     document.getElementById(
       "ordersSection"
     );
 
 
-  const status =
+  const statusSection =
     document.getElementById(
       "statusSection"
     );
 
 
-  const ordersButton =
+  const ordersTab =
     document.getElementById(
       "ordersTab"
     );
 
 
-  const statusButton =
+  const statusTab =
     document.getElementById(
       "statusTab"
     );
@@ -2486,51 +2910,57 @@ function showTab(tab){
 
   if(tab === "orders"){
 
-    orders.classList.remove(
-      "hidden"
-    );
+    ordersSection
+      .classList
+      .remove("hidden");
 
-    status.classList.add(
-      "hidden"
-    );
 
-    ordersButton.classList.add(
-      "active"
-    );
+    statusSection
+      .classList
+      .add("hidden");
 
-    statusButton.classList.remove(
-      "active"
-    );
+
+    ordersTab
+      .classList
+      .add("active");
+
+
+    statusTab
+      .classList
+      .remove("active");
 
   }
 
-
   else{
 
-    orders.classList.add(
-      "hidden"
-    );
+    ordersSection
+      .classList
+      .add("hidden");
 
-    status.classList.remove(
-      "hidden"
-    );
 
-    ordersButton.classList.remove(
-      "active"
-    );
+    statusSection
+      .classList
+      .remove("hidden");
 
-    statusButton.classList.add(
-      "active"
-    );
+
+    ordersTab
+      .classList
+      .remove("active");
+
+
+    statusTab
+      .classList
+      .add("active");
 
   }
 
 }
 
 
-/* =========================================================
-   EVENT LISTENERS
-========================================================= */
+/* =====================================================
+   EVENTS
+===================================================== */
+
 
 document
   .getElementById("search")
@@ -2572,9 +3002,9 @@ document
   );
 
 
-/* =========================================================
+/* =====================================================
    START
-========================================================= */
+===================================================== */
 
 Promise.all([
 
